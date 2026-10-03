@@ -56,6 +56,9 @@ describe("registerFastifyApiAsync", () => {
 
     expect(response.statusCode).toBe(201);
     expect(response.headers["x-operation"]).toBe("health.read");
-    expect(response.json()).toEqual({ id: "one", query: "detail" });
+    expect(response.json<{ id: string; query: string }>()).toEqual({
+      id: "one",
+      query: "detail",
+    });
   });
 });
