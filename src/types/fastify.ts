@@ -1,14 +1,19 @@
 import type { ApiOperationBinding } from "@ankhorage/api";
-
-export type { FastifyCorsOptions } from "@fastify/cors";
-export type {
+import type { FastifyCorsOptions } from "@fastify/cors";
+import type {
   FastifyInstance,
   FastifyReply,
   FastifyRequest,
   FastifyServerOptions,
 } from "fastify";
 
-import type { FastifyReply, FastifyRequest } from "fastify";
+export type {
+  FastifyCorsOptions,
+  FastifyInstance,
+  FastifyReply,
+  FastifyRequest,
+  FastifyServerOptions,
+};
 
 export interface FastifyApiTransportRequest {
   readonly request: FastifyRequest;
