@@ -31,7 +31,9 @@ function toApiRequest(
     params: readStringRecord(transport.request.params),
     query: readQueryRecord(transport.request.query),
     headers: readHeaders(transport.request.headers),
-    ...(transport.request.body === undefined ? {} : { body: transport.request.body }),
+    ...(transport.request.body === undefined
+      ? {}
+      : { body: transport.request.body }),
   };
 }
 
