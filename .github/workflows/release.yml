@@ -376,7 +376,7 @@ jobs:
       - name: Setup Node for npm verification
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: "24"
           registry-url: https://registry.npmjs.org
 
       - name: Update npm

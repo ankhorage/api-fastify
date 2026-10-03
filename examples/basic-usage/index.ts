@@ -1,9 +1,9 @@
-import { createApiRuntime } from '@ankhorage/api';
+import { createApiRuntime } from "@ankhorage/api";
 
 import {
   createFastifyApiServer,
   registerFastifyApiAsync,
-} from '../../src/apiFastify.js';
+} from "../../src/apiFastify.js";
 
 /***
  * @title Basic Usage
@@ -16,28 +16,28 @@ import {
  */
 const runtime = createApiRuntime({
   definition: {
-    id: 'health-api',
-    origin: 'internal',
-    protocol: 'rest',
-    basePath: '/api',
+    id: "health-api",
+    origin: "internal",
+    protocol: "rest",
+    basePath: "/api",
     endpoints: {
       health: {
-        id: 'health',
-        kind: 'http',
+        id: "health",
+        kind: "http",
         operations: {
-          'health.read': {
-            id: 'health.read',
-            protocol: 'http',
-            intent: 'read',
-            method: 'GET',
-            path: '/health',
+          "health.read": {
+            id: "health.read",
+            protocol: "http",
+            intent: "read",
+            method: "GET",
+            path: "/health",
           },
         },
       },
     },
   },
   handlers: {
-    'health.read': () => ({ body: { ok: true } }),
+    "health.read": () => ({ body: { ok: true } }),
   },
 });
 
@@ -45,8 +45,8 @@ const server = createFastifyApiServer({ logger: false });
 await registerFastifyApiAsync(server, runtime);
 
 export const response = await server.inject({
-  method: 'GET',
-  url: '/api/health',
+  method: "GET",
+  url: "/api/health",
 });
 
 await server.close();
