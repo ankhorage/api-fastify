@@ -4,7 +4,8 @@ export default defineParadoxConfig({
   mode: 'write',
   docs: {
     title: '@ankhorage/api-fastify',
-    description: 'Fastify transport adapter and host integration for the Ankhorage API runtime.',
+    description:
+      'Fastify transport adapter and host integration for the Ankhorage API runtime.',
   },
   package: {
     root: '.',
