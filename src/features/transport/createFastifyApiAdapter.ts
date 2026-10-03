@@ -64,18 +64,20 @@ function readQueryRecord(
   value: unknown,
 ): Readonly<Record<string, string | readonly string[]>> {
   if (!isRecord(value)) return {};
-  return Object.fromEntries(
-    Object.entries(value).flatMap(([name, item]) => {
-      if (typeof item === "string") return [[name, item] as const];
-      if (
-        Array.isArray(item) &&
-        item.every((entry): entry is string => typeof entry === "string")
-      ) {
-        return [[name, item] as const];
-      }
-      return [];
-    }),
-  );
+  const entries = Object.entries(value).flatMap<
+    readonly [string, string | readonly string[]]
+  >(([name, item]) => {
+    if (typeof item === "string") return [[name, item]];
+    if (
+      Array.isArray(item) &&
+      item.every((entry): entry is string => typeof entry === "string")
+    ) {
+      return [[name, item]];
+    }
+    return [];
+  });
+
+  return Object.fromEntries(entries);
 }
 
 /*** Normalize Fastify headers into one stable string-valued record. */
