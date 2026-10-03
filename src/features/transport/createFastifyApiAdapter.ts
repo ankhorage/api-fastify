@@ -27,7 +27,7 @@ function toApiRequest(
 ): ApiRequest {
   return {
     operationId: binding.operationId,
-    method: binding.method,
+    method: transport.request.method,
     params: readStringRecord(transport.request.params),
     query: readQueryRecord(transport.request.query),
     headers: readHeaders(transport.request.headers),
