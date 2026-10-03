@@ -1,7 +1,7 @@
 import {
-  createApiTransportHandler,
   type ApiOperationBinding,
   type ApiRuntime,
+  createApiTransportHandler,
 } from "@ankhorage/api";
 import type { FastifyInstance, HTTPMethods } from "fastify";
 
