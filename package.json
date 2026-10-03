@@ -4,18 +4,44 @@
   "type": "module",
   "description": "Fastify transport adapter and host integration for the Ankhorage API runtime.",
   "license": "MIT",
-  "repository": {"type": "git", "url": "git+https://github.com/ankhorage/api-fastify.git"},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankhorage/api-fastify.git"
+  },
   "homepage": "https://github.com/ankhorage/api-fastify#readme",
-  "bugs": {"url": "https://github.com/ankhorage/api-fastify/issues"},
-  "keywords": ["ankhorage","api","adapter","fastify","http","ports-and-adapters","rest","typescript"],
+  "bugs": {
+    "url": "https://github.com/ankhorage/api-fastify/issues"
+  },
+  "keywords": [
+    "ankhorage",
+    "api",
+    "adapter",
+    "fastify",
+    "http",
+    "ports-and-adapters",
+    "rest",
+    "typescript"
+  ],
   "sideEffects": false,
-  "files": ["dist","README.md","CHANGELOG.md","LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "exports": {
-    ".": {"types": "./dist/apiFastify.d.ts", "import": "./dist/apiFastify.js"},
+    ".": {
+      "types": "./dist/apiFastify.d.ts",
+      "import": "./dist/apiFastify.js"
+    },
     "./package.json": "./package.json"
   },
-  "publishConfig": {"access": "public"},
-  "engines": {"node": ">=24"},
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.build.json",
     "changeset": "ankhorage-changeset",
@@ -44,5 +70,6 @@
     "@types/node": "^26.6.4",
     "typescript": "^6.0.3"
   },
-  "packageManager": "bun@1.4.2"
+  "packageManager": "bun@1.4.2",
+  "private": true
 }
