@@ -39,6 +39,10 @@
     "./cli": {
       "types": "./dist/cli/index.d.ts",
       "import": "./dist/cli/index.js"
+    },
+    "./capabilities": {
+      "types": "./dist/capabilities/index.d.ts",
+      "import": "./dist/capabilities/index.js"
     }
   },
   "publishConfig": {
@@ -64,6 +68,8 @@
   },
   "dependencies": {
     "@ankhorage/api": "^0.2.0",
+    "@ankhorage/ankh": "^0.12.0",
+    "@ankhorage/contracts": "^24.1.0",
     "@fastify/cors": "^11.3.0",
     "fastify": "^5.12.5"
   },
@@ -72,15 +78,28 @@
     "@ankhorage/paradox": "^0.2.28",
     "@types/bun": "^1.4.2",
     "@types/node": "^26.6.4",
-    "typescript": "^6.0.3",
-    "@ankhorage/ankh": "^0.11.1"
+    "typescript": "^6.0.3"
   },
   "packageManager": "bun@1.4.2",
   "ankh": {
     "category": "api-fastify",
     "provider": "./dist/cli/index.js",
     "capabilities": [
-      "api-fastify.routes"
+      {
+        "id": "api-fastify.routes",
+        "owner": "@ankhorage/api-fastify",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "action",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "label": "Inspect Fastify routes",
+        "description": "Inspect the Fastify route projection for a portable internal REST API definition."
+      }
     ]
   }
 }

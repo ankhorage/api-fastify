@@ -1,6 +1,8 @@
 import type { AnkhRuntimeCommandProvider } from "@ankhorage/ankh";
+import type { Capability } from "@ankhorage/contracts/capabilities";
 
 import packageJson from "../../package.json" with { type: "json" };
+import { CAPABILITIES } from "../capabilities/index.js";
 import { runRoutesCommandAsync } from "./commands/routes.js";
 
 /*** Create the Ankh provider for api-fastify adapter inspection commands. */
@@ -9,11 +11,11 @@ export function createApiAdapterCliProvider(): AnkhRuntimeCommandProvider {
     id: packageJson.name,
     category: "api-fastify",
     version: packageJson.version,
-    capabilities: ["api-fastify.routes"],
+    capabilities: CAPABILITIES,
     commands: [
       {
         path: ["routes"],
-        capability: "api-fastify.routes",
+        capability: "api-fastify.routes" satisfies Capability["id"],
         summary:
           "Inspect the Fastify route projection for a portable internal REST API definition.",
       },
