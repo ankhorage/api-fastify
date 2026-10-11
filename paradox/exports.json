@@ -1,0 +1,1747 @@
+[
+  {
+    "name": "createFastifyApiAdapter",
+    "title": null,
+    "description": "Create the Fastify transport mapper for the canonical Ankhorage API runtime.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/transport/createFastifyApiAdapter.ts",
+    "sourceLocation": {
+      "filePath": "src/features/transport/createFastifyApiAdapter.ts",
+      "line": 11,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [
+      "FastifyApiTransportRequest"
+    ],
+    "signatures": [
+      {
+        "label": "() => ApiTransportAdapter<FastifyApiTransportRequest, unknown>",
+        "parameters": [],
+        "returnType": "ApiTransportAdapter<FastifyApiTransportRequest, unknown>",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "createFastifyApiServer",
+    "title": null,
+    "description": "Create the Fastify server owned by the Ankhorage Fastify API adapter package.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/host/createFastifyApiServer.ts",
+    "sourceLocation": {
+      "filePath": "src/features/host/createFastifyApiServer.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [
+      "FastifyInstance",
+      "FastifyServerOptions"
+    ],
+    "signatures": [
+      {
+        "label": "(options?: FastifyServerOptions) => FastifyInstance<import(\"fastify\").RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, import(\"fastify\").FastifyBaseLogger, import(\"fastify\").FastifyTypeProviderDefault>",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "FastifyServerOptions",
+            "required": false,
+            "description": null
+          }
+        ],
+        "returnType": "FastifyInstance<import(\"fastify\").RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, import(\"fastify\").FastifyBaseLogger, import(\"fastify\").FastifyTypeProviderDefault>",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "FastifyApiTransportRequest",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/fastify.ts",
+    "sourceLocation": {
+      "filePath": "src/types/fastify.ts",
+      "line": 18,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [
+      "FastifyReply",
+      "FastifyRequest"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "reply",
+        "kind": "property",
+        "type": "FastifyReply<import(\"fastify\").RouteGenericInterface, import(\"fastify\").RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, unknown, import(\"fastify\").FastifySchema, import(\"fastify\").FastifyTypeProviderDefault, unknown>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "request",
+        "kind": "property",
+        "type": "FastifyRequest<import(\"fastify\").RouteGenericInterface, import(\"fastify\").RawServerDefault, import(\"node:http\").IncomingMessage, import(\"fastify\").FastifySchema, import(\"fastify\").FastifyTypeProviderDefault, unknown, import(\"fastify\").FastifyBaseLogger, import(\"fastify/types/type-provider\").ResolveFastifyRequestType<import(\"fastify\").FastifyTypeProviderDefault, import(\"fastify\").FastifySchema, import(\"fastify\").RouteGenericInterface>>",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "FastifyCorsOptions",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "node_modules/@fastify/cors/types/index.d.ts",
+    "sourceLocation": {
+      "filePath": "node_modules/@fastify/cors/types/index.d.ts",
+      "line": 28,
+      "column": 3
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "allowedHeaders",
+        "kind": "property",
+        "type": "string | string[]",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "cacheControl",
+        "kind": "property",
+        "type": "string | number",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "credentials",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "delegator",
+        "kind": "property",
+        "type": "FastifyCorsOptionsDelegate",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "exposedHeaders",
+        "kind": "property",
+        "type": "string | string[]",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "hideOptionsRoute",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "hook",
+        "kind": "property",
+        "type": "FastifyCorsHook",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "logLevel",
+        "kind": "property",
+        "type": "LogLevel",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "maxAge",
+        "kind": "property",
+        "type": "number",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "methods",
+        "kind": "property",
+        "type": "string | string[]",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "optionsSuccessStatus",
+        "kind": "property",
+        "type": "number",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "origin",
+        "kind": "property",
+        "type": "ValueOrArray<OriginType> | AsyncOriginFunction | OriginFunction",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "preflight",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "preflightContinue",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "strictPreflight",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "FastifyInstance",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "node_modules/fastify/types/instance.d.ts",
+    "sourceLocation": {
+      "filePath": "node_modules/fastify/types/instance.d.ts",
+      "line": 120,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [
+      "FastifyReply",
+      "FastifyRequest"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "__@asyncDispose@1446",
+        "kind": "method",
+        "type": "() => Promise<undefined>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "addConstraintStrategy",
+        "kind": "method",
+        "type": "(strategy: ConstraintStrategy<FindMyWayVersion<RawServer>, unknown>) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "addContentTypeParser",
+        "kind": "property",
+        "type": "AddContentTypeParser<RawServer, RawRequest, RouteGenericInterface, FastifySchema, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "addHook",
+        "kind": "method",
+        "type": "{ <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onRequestHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> | onRequestAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = onRequestHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: \"onRequest\", hook: Fn extends unknown ? Fn extends AsyncFunction ? onRequestAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : onRequestHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends preParsingHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> | preParsingAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = preParsingHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: \"preParsing\", hook: Fn extends unknown ? Fn extends AsyncFunction ? preParsingAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : preParsingHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends preValidationHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> | preValidationAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = preValidationHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: \"preValidation\", hook: Fn extends unknown ? Fn extends AsyncFunction ? preValidationAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : preValidationHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends preHandlerHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> | preHandlerAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = preHandlerHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: \"preHandler\", hook: Fn extends unknown ? Fn extends AsyncFunction ? preHandlerAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : preHandlerHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <PreSerializationPayload = unknown, RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends preSerializationHookHandler<PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> | preSerializationAsyncHookHandler<PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = preSerializationHookHandler<PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: \"preSerialization\", hook: Fn extends unknown ? Fn extends AsyncFunction ? preSerializationAsyncHookHandler<PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : preSerializationHookHandler<PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <OnSendPayload = unknown, RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onSendHookHandler<OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> | onSendAsyncHookHandler<OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = onSendHookHandler<OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: \"onSend\", hook: Fn extends unknown ? Fn extends AsyncFunction ? onSendAsyncHookHandler<OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : onSendHookHandler<OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onResponseHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> | onResponseAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = onResponseHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: \"onResponse\", hook: Fn extends unknown ? Fn extends AsyncFunction ? onResponseAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : onResponseHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onTimeoutHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> | onTimeoutAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = onTimeoutHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: \"onTimeout\", hook: Fn extends unknown ? Fn extends AsyncFunction ? onTimeoutAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : onTimeoutHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onRequestAbortHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> | onRequestAbortAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = onRequestAbortHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: \"onRequestAbort\", hook: Fn extends unknown ? Fn extends AsyncFunction ? onRequestAbortAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : onRequestAbortHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onErrorHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger> | onErrorAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger> = onErrorHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger>>(name: \"onError\", hook: Fn extends unknown ? Fn extends AsyncFunction ? onErrorAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger> : onErrorHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger>(name: \"onRoute\", hook: onRouteHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; (name: \"onRegister\", hook: onRegisterHookHandler<RawServer, RawRequest, RawReply, Logger, TypeProvider>): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <Fn extends onReadyHookHandler | onReadyAsyncHookHandler = onReadyHookHandler<RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, FastifyBaseLogger, FastifyTypeProviderDefault>>(name: \"onReady\", hook: Fn extends unknown ? Fn extends AsyncFunction ? onReadyAsyncHookHandler : onReadyHookHandler : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <Fn extends onListenHookHandler<RawServer, RawRequest, RawReply, Logger, TypeProvider> | onListenAsyncHookHandler<RawServer, RawRequest, RawReply, Logger, TypeProvider> = onListenHookHandler<RawServer, RawRequest, RawReply, Logger, TypeProvider>>(name: \"onListen\", hook: Fn extends unknown ? Fn extends AsyncFunction ? onListenAsyncHookHandler : onListenHookHandler : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <Fn extends onCloseHookHandler | onCloseAsyncHookHandler = onCloseHookHandler<RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, FastifyBaseLogger, FastifyTypeProviderDefault>>(name: \"onClose\", hook: Fn extends unknown ? Fn extends AsyncFunction ? onCloseAsyncHookHandler : onCloseHookHandler : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <Fn extends preCloseHookHandler | preCloseAsyncHookHandler = preCloseHookHandler<RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, FastifyBaseLogger, FastifyTypeProviderDefault>>(name: \"preClose\", hook: Fn extends unknown ? Fn extends AsyncFunction ? preCloseAsyncHookHandler : preCloseHookHandler : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <K extends ApplicationHook | LifecycleHook, Fn extends (...args: any) => Promise<any> | any>(name: K, hook: Fn extends unknown ? Fn extends AsyncFunction ? HookAsyncLookup<K> : HookLookup<K> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; }",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "addHttpMethod",
+        "kind": "method",
+        "type": "(method: string, methodOptions?: { hasBody?: boolean; overrideExisting?: boolean; }) => FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "addresses",
+        "kind": "method",
+        "type": "() => AddressInfo[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "addSchema",
+        "kind": "method",
+        "type": "(schema: unknown) => FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "after",
+        "kind": "method",
+        "type": "{ (): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider> & SafePromiseLike<undefined>; (afterListener: (err: Error | null) => void): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; }",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "all",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "childLoggerFactory",
+        "kind": "property",
+        "type": "FastifyChildLoggerFactory<RawServer, RawRequest, RawReply, Logger, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "close",
+        "kind": "method",
+        "type": "{ (): Promise<undefined>; (closeListener: () => void): undefined; }",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "copy",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "decorate",
+        "kind": "property",
+        "type": "DecorationMethod<FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>, FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "decorateReply",
+        "kind": "property",
+        "type": "DecorationMethod<FastifyReply<RouteGenericInterface, RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, unknown, FastifySchema, FastifyTypeProviderDefault, unknown>, FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "decorateRequest",
+        "kind": "property",
+        "type": "DecorationMethod<FastifyRequest<RouteGenericInterface, RawServerDefault, http.IncomingMessage, FastifySchema, FastifyTypeProviderDefault, unknown, FastifyBaseLogger, import(\"./type-provider\").ResolveFastifyRequestType<FastifyTypeProviderDefault, FastifySchema, RouteGenericInterface>>, FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "defaultTextParser",
+        "kind": "property",
+        "type": "FastifyBodyParser<string>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "delete",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "errorHandler",
+        "kind": "property",
+        "type": "<TError = unknown>(error: TError, request: FastifyRequest, reply: FastifyReply) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "findRoute",
+        "kind": "method",
+        "type": "<RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema>(opts: Pick<RouteOptions<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider>, \"method\" | \"url\" | \"constraints\">) => Omit<FindMyWayFindResult<RawServer>, \"store\">",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "get",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "getDecorator",
+        "kind": "method",
+        "type": "<T>(name: string | symbol) => T",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "getDefaultJsonParser",
+        "kind": "property",
+        "type": "getDefaultJsonParser",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "getSchema",
+        "kind": "method",
+        "type": "(schemaId: string) => unknown",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "getSchemas",
+        "kind": "method",
+        "type": "() => Record<string, unknown>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "hasConstraintStrategy",
+        "kind": "method",
+        "type": "(strategyName: string) => boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "hasContentTypeParser",
+        "kind": "property",
+        "type": "hasContentTypeParser",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "hasDecorator",
+        "kind": "method",
+        "type": "(decorator: string | symbol) => boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "hasPlugin",
+        "kind": "method",
+        "type": "(name: string) => boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "hasReplyDecorator",
+        "kind": "method",
+        "type": "(decorator: string | symbol) => boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "hasRequestDecorator",
+        "kind": "method",
+        "type": "(decorator: string | symbol) => boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "hasRoute",
+        "kind": "method",
+        "type": "<RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema>(opts: Pick<RouteOptions<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider>, \"method\" | \"url\" | \"constraints\">) => boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "head",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "initialConfig",
+        "kind": "property",
+        "type": "Readonly<{ connectionTimeout?: number; keepAliveTimeout?: number; forceCloseConnections?: boolean; bodyLimit?: number; caseSensitive?: boolean; allowUnsafeRegex?: boolean; http2?: boolean; https?: boolean | Readonly<{ allowHTTP1: boolean; }>; ignoreTrailingSlash?: boolean; ignoreDuplicateSlashes?: boolean; disableRequestLogging?: boolean | ((req: FastifyRequest) => boolean); maxParamLength?: number; onProtoPoisoning?: ProtoAction; onConstructorPoisoning?: ConstructorAction; pluginTimeout?: number; requestIdHeader?: string | false; requestIdLogLabel?: string; http2SessionTimeout?: number; useSemicolonDelimiter?: boolean; routerOptions?: FastifyRouterOptions<RawServer>; }>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "inject",
+        "kind": "method",
+        "type": "{ (opts: InjectOptions | string, cb: LightMyRequestCallback): void; (opts: InjectOptions | string): Promise<LightMyRequestResponse>; (): LightMyRequestChain; }",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "listen",
+        "kind": "method",
+        "type": "{ (opts: FastifyListenOptions, callback: (err: Error | null, address: string) => void): void; (opts?: FastifyListenOptions): Promise<string>; (callback: (err: Error | null, address: string) => void): void; }",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "listeningOrigin",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "lock",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "log",
+        "kind": "property",
+        "type": "Logger",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "mkcalendar",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "mkcol",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "move",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "options",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "patch",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "pluginName",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "post",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "prefix",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "printPlugins",
+        "kind": "method",
+        "type": "() => string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "printRoutes",
+        "kind": "method",
+        "type": "(opts?: PrintRoutesOptions) => string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "propfind",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "proppatch",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "put",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "query",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "ready",
+        "kind": "method",
+        "type": "{ (): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider> & SafePromiseLike<undefined>; (readyListener: (err: Error | null) => void | Promise<void>): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; }",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "register",
+        "kind": "property",
+        "type": "FastifyRegister<FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider> & PromiseLike<undefined> & { __linterBrands: \"SafePromiseLike\"; }, RawServerDefault, FastifyTypeProvider, FastifyBaseLogger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "removeAllContentTypeParsers",
+        "kind": "property",
+        "type": "removeAllContentTypeParsers",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "removeContentTypeParser",
+        "kind": "property",
+        "type": "removeContentTypeParser",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "report",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "route",
+        "kind": "method",
+        "type": "<RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, const SchemaCompiler extends FastifySchema = FastifySchema>(opts: RouteOptions<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>) => FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "routing",
+        "kind": "method",
+        "type": "(req: RawRequest, res: RawReply) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "search",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "serializerCompiler",
+        "kind": "property",
+        "type": "FastifySerializerCompiler<any> | undefined",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "server",
+        "kind": "property",
+        "type": "RawServer",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "setChildLoggerFactory",
+        "kind": "method",
+        "type": "(factory: FastifyChildLoggerFactory<RawServer, RawRequest, RawReply, Logger, TypeProvider>) => FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "setErrorHandler",
+        "kind": "method",
+        "type": "<TError = unknown, RouteGeneric extends RouteGenericInterface = RouteGenericInterface, SchemaCompiler extends FastifySchema = FastifySchema, TypeProvider extends FastifyTypeProvider = FastifyTypeProviderDefault>(handler: (this: FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>, error: TError, request: FastifyRequest<RouteGeneric, RawServer, RawRequest, SchemaCompiler, TypeProvider>, reply: FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfigDefault, SchemaCompiler, TypeProvider>) => any | Promise<any>) => FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "setGenReqId",
+        "kind": "method",
+        "type": "(fn: (req: RawRequestDefaultExpression<RawServer>) => string) => FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "setNotFoundHandler",
+        "kind": "method",
+        "type": "{ <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig extends ContextConfigDefault = unknown, TypeProvider extends FastifyTypeProvider = FastifyTypeProviderDefault, SchemaCompiler extends FastifySchema = FastifySchema>(handler: RouteHandlerMethod<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig extends ContextConfigDefault = unknown, TypeProvider extends FastifyTypeProvider = FastifyTypeProviderDefault, SchemaCompiler extends FastifySchema = FastifySchema>(opts: { preValidation?: preValidationHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider> | preValidationAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider> | preValidationHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider>[] | preValidationAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider>[]; preHandler?: preHandlerHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider> | preHandlerAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider> | preHandlerHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider>[] | preHandlerAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider>[]; }, handler: RouteHandlerMethod<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; }",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "setReplySerializer",
+        "kind": "method",
+        "type": "(replySerializer: (payload: unknown, statusCode: number) => string) => FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "setSchemaController",
+        "kind": "method",
+        "type": "(schemaControllerOpts: FastifySchemaControllerOptions) => FastifyInstance<RawServer, RawRequest, RawReply, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "setSchemaErrorFormatter",
+        "kind": "method",
+        "type": "(errorFormatter: SchemaErrorFormatter) => FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "setSerializerCompiler",
+        "kind": "method",
+        "type": "<T = FastifySchema>(schemaCompiler: FastifySerializerCompiler<T>) => FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "setValidatorCompiler",
+        "kind": "method",
+        "type": "<T = FastifySchema>(schemaCompiler: FastifySchemaCompiler<T>) => FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "supportedMethods",
+        "kind": "property",
+        "type": "string[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "trace",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "unlock",
+        "kind": "property",
+        "type": "RouteShorthandMethod<RawServer, RawRequest, RawReply, TypeProvider, Logger>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "validatorCompiler",
+        "kind": "property",
+        "type": "FastifySchemaCompiler<any> | undefined",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "version",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "withTypeProvider",
+        "kind": "method",
+        "type": "<Provider extends FastifyTypeProvider>() => FastifyInstance<RawServer, RawRequest, RawReply, Logger, Provider>",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "FastifyRegisteredOperation",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/fastify.ts",
+    "sourceLocation": {
+      "filePath": "src/types/fastify.ts",
+      "line": 27,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "binding",
+        "kind": "property",
+        "type": "ApiOperationBinding",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "path",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "FastifyReply",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "node_modules/fastify/types/reply.d.ts",
+    "sourceLocation": {
+      "filePath": "node_modules/fastify/types/reply.d.ts",
+      "line": 33,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [
+      "FastifyInstance",
+      "FastifyRequest"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "callNotFound",
+        "kind": "method",
+        "type": "() => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "code",
+        "kind": "method",
+        "type": "<Code extends keyof SchemaCompiler[\"response\"] extends never ? ReplyKeysToCodes<keyof RouteGeneric[\"Reply\"]> : keyof SchemaCompiler[\"response\"] extends ReplyKeysToCodes<keyof RouteGeneric[\"Reply\"]> ? keyof SchemaCompiler[\"response\"] : ReplyKeysToCodes<keyof RouteGeneric[\"Reply\"]>>(statusCode: Code) => FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider, ResolveReplyTypeWithRouteGeneric<RouteGeneric[\"Reply\"], Code, SchemaCompiler, TypeProvider>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "compileSerializationSchema",
+        "kind": "method",
+        "type": "(schema: { [key: string]: unknown; }, httpStatus?: string, contentType?: string) => (payload: { [key: string]: unknown; }) => string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "elapsedTime",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "getDecorator",
+        "kind": "method",
+        "type": "<T>(name: string | symbol) => T",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "getHeader",
+        "kind": "method",
+        "type": "(key: HttpHeader) => number | string | string[] | undefined",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "getHeaders",
+        "kind": "method",
+        "type": "() => Record<HttpHeader, number | string | string[] | undefined>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "getSerializationFunction",
+        "kind": "method",
+        "type": "{ (httpStatus: string, contentType?: string): ((payload: { [key: string]: unknown; }) => string) | undefined; (schema: { [key: string]: unknown; }): ((payload: { [key: string]: unknown; }) => string) | undefined; }",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "hasHeader",
+        "kind": "method",
+        "type": "(key: HttpHeader) => boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "hasTrailer",
+        "kind": "method",
+        "type": "(key: string) => boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "header",
+        "kind": "method",
+        "type": "(key: HttpHeader, value: any) => FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "headers",
+        "kind": "method",
+        "type": "(values: Partial<Record<HttpHeader, number | string | string[] | undefined>>) => FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "hijack",
+        "kind": "method",
+        "type": "() => FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "log",
+        "kind": "property",
+        "type": "FastifyBaseLogger",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "raw",
+        "kind": "property",
+        "type": "RawReply",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "redirect",
+        "kind": "method",
+        "type": "(url: string, statusCode?: number) => FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "removeHeader",
+        "kind": "method",
+        "type": "(key: HttpHeader) => FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "removeTrailer",
+        "kind": "method",
+        "type": "(key: string) => FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "request",
+        "kind": "property",
+        "type": "FastifyRequest<RouteGeneric, RawServer, RawRequest, SchemaCompiler, TypeProvider, unknown, FastifyBaseLogger, import(\"./type-provider\").ResolveFastifyRequestType<TypeProvider, SchemaCompiler, RouteGeneric>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "routeOptions",
+        "kind": "property",
+        "type": "Readonly<RequestRouteOptions<ContextConfig, SchemaCompiler>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "send",
+        "kind": "method",
+        "type": "(...args: SendArgs<ReplyType>) => FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "sent",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "serialize",
+        "kind": "method",
+        "type": "(payload: any) => string | ArrayBuffer | Buffer",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "serializeInput",
+        "kind": "method",
+        "type": "{ (input: { [key: string]: unknown; }, schema: { [key: string]: unknown; }, httpStatus?: string, contentType?: string): string; (input: { [key: string]: unknown; }, httpStatus: string, contentType?: string): unknown; }",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "serializer",
+        "kind": "method",
+        "type": "(fn: (payload: any) => string) => FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "server",
+        "kind": "property",
+        "type": "FastifyInstance<RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, FastifyBaseLogger, FastifyTypeProviderDefault>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "status",
+        "kind": "method",
+        "type": "<Code extends keyof SchemaCompiler[\"response\"] extends never ? ReplyKeysToCodes<keyof RouteGeneric[\"Reply\"]> : keyof SchemaCompiler[\"response\"] extends ReplyKeysToCodes<keyof RouteGeneric[\"Reply\"]> ? keyof SchemaCompiler[\"response\"] : ReplyKeysToCodes<keyof RouteGeneric[\"Reply\"]>>(statusCode: Code) => FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider, ResolveReplyTypeWithRouteGeneric<RouteGeneric[\"Reply\"], Code, SchemaCompiler, TypeProvider>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "statusCode",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "then",
+        "kind": "method",
+        "type": "(fulfilled: () => void, rejected: (err: Error) => void) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "trailer",
+        "kind": "property",
+        "type": "(key: string, fn: ((reply: FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider>, payload: string | Buffer | null) => Promise<string>) | ((reply: FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider>, payload: string | Buffer | null, done: (err: Error | null, value?: string) => void) => void)) => FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "type",
+        "kind": "method",
+        "type": "(contentType: string) => FastifyReply<RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "writeEarlyHints",
+        "kind": "method",
+        "type": "(hints: Record<string, string | string[]>, callback?: () => void) => void",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "FastifyRequest",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "node_modules/fastify/types/request.d.ts",
+    "sourceLocation": {
+      "filePath": "node_modules/fastify/types/request.d.ts",
+      "line": 43,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [
+      "FastifyInstance"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "body",
+        "kind": "property",
+        "type": "RequestType[\"body\"]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "compileValidationSchema",
+        "kind": "method",
+        "type": "(schema: { [key: string]: any; }, httpPart?: HTTPRequestPart) => ValidationFunction",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "getDecorator",
+        "kind": "method",
+        "type": "<T>(name: string | symbol) => T",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "getValidationFunction",
+        "kind": "method",
+        "type": "{ (httpPart: HTTPRequestPart): ValidationFunction | undefined; (schema: { [key: string]: any; }): ValidationFunction | undefined; }",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "headers",
+        "kind": "property",
+        "type": "RawRequest[\"headers\"] & RequestType[\"headers\"]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "host",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "hostname",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "ip",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "ips",
+        "kind": "property",
+        "type": "string[]",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "is404",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "log",
+        "kind": "property",
+        "type": "Logger",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "mediaType",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "method",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "originalUrl",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "params",
+        "kind": "property",
+        "type": "RequestType[\"params\"]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "port",
+        "kind": "property",
+        "type": "number | null",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "protocol",
+        "kind": "property",
+        "type": "\"http\" | \"https\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "query",
+        "kind": "property",
+        "type": "RequestType[\"query\"]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "raw",
+        "kind": "property",
+        "type": "RawRequest",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "req",
+        "kind": "property",
+        "type": "RawRequest & RouteGeneric[\"Headers\"]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "routeOptions",
+        "kind": "property",
+        "type": "Readonly<RequestRouteOptions<ContextConfig, SchemaCompiler>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "server",
+        "kind": "property",
+        "type": "FastifyInstance<RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, FastifyBaseLogger, FastifyTypeProviderDefault>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "setDecorator",
+        "kind": "method",
+        "type": "<T = unknown>(name: string | symbol, value: T) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "signal",
+        "kind": "property",
+        "type": "AbortSignal",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "socket",
+        "kind": "property",
+        "type": "RawRequest[\"socket\"]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "url",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "validateInput",
+        "kind": "method",
+        "type": "{ (input: any, schema: { [key: string]: any; }, httpPart?: HTTPRequestPart): boolean; (input: any, httpPart?: HTTPRequestPart): boolean; }",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "validationError",
+        "kind": "property",
+        "type": "Error & { validation: any; validationContext: string; }",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "FastifyServerOptions",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "node_modules/fastify/fastify.d.ts",
+    "sourceLocation": {
+      "filePath": "node_modules/fastify/fastify.d.ts",
+      "line": 120,
+      "column": 3
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [
+      "FastifyInstance",
+      "FastifyReply",
+      "FastifyRequest"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "ajv",
+        "kind": "property",
+        "type": "({ onCreate?: (ajvInstance: import(\"@fastify/ajv-compiler\").Ajv) => void; plugins?: (import(\"ajv\").Plugin<unknown> | [import(\"ajv\").Plugin<unknown>, unknown])[]; } & { mode: \"JTD\"; customOptions?: import(\"ajv/dist/jtd\").JTDOptions; }) | ({ onCreate?: (ajvInstance: import(\"@fastify/ajv-compiler\").Ajv) => void; plugins?: (import(\"ajv\").Plugin<unknown> | [import(\"ajv\").Plugin<unknown>, unknown])[]; } & { mode?: never; customOptions?: import(\"@fastify/ajv-compiler\").Options; }) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "allowErrorHandlerOverride",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "allowUnsafeRegex",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "bodyLimit",
+        "kind": "property",
+        "type": "number",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "caseSensitive",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "childLoggerFactory",
+        "kind": "property",
+        "type": "FastifyChildLoggerFactory<RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, FastifyBaseLogger, FastifyTypeProviderDefault>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "clientErrorHandler",
+        "kind": "property",
+        "type": "(error: ConnectionError, socket: Socket) => void",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "connectionTimeout",
+        "kind": "property",
+        "type": "number",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "constraints",
+        "kind": "property",
+        "type": "{ [name: string]: ConstraintStrategy<RawServer extends http.Server<typeof http.IncomingMessage, typeof http.ServerResponse> ? HTTPVersion.V1 : HTTPVersion.V2, unknown>; }",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disableRequestLogging",
+        "kind": "property",
+        "type": "boolean | ((req: FastifyRequest) => boolean)",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "exposeHeadRoutes",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "forceCloseConnections",
+        "kind": "property",
+        "type": "boolean | \"idle\"",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "frameworkErrors",
+        "kind": "property",
+        "type": "<RequestGeneric extends RequestGenericInterface = RequestGenericInterface, TypeProvider extends FastifyTypeProvider = FastifyTypeProviderDefault, SchemaCompiler extends FastifySchema = FastifySchema>(error: FastifyError, req: FastifyRequest<RequestGeneric, RawServer, RawRequestDefaultExpression<RawServer>, FastifySchema, TypeProvider>, res: FastifyReply<RequestGeneric, RawServer, RawRequestDefaultExpression<RawServer>, RawReplyDefaultExpression<RawServer>, FastifyContextConfig, SchemaCompiler, TypeProvider>) => void",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "genReqId",
+        "kind": "property",
+        "type": "(req: RawRequestDefaultExpression<RawServer>) => string",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "handlerTimeout",
+        "kind": "property",
+        "type": "number",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "ignoreDuplicateSlashes",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "ignoreTrailingSlash",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "keepAliveTimeout",
+        "kind": "property",
+        "type": "number",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "logController",
+        "kind": "property",
+        "type": "LogControllerClass",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "logger",
+        "kind": "property",
+        "type": "boolean | (FastifyLoggerOptions<RawServer, FastifyRequest<RouteGenericInterface, RawServer, RawRequestDefaultExpression<RawServer>, FastifySchema, FastifyTypeProviderDefault, unknown, FastifyBaseLogger, import(\"./types/type-provider\").ResolveFastifyRequestType<FastifyTypeProviderDefault, FastifySchema, RouteGenericInterface>>, FastifyReply<RouteGenericInterface, RawServer, RawRequestDefaultExpression<RawServer>, RawReplyDefaultExpression<RawServer>, unknown, FastifySchema, FastifyTypeProviderDefault, unknown>> & PinoLoggerOptions<never, boolean>)",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "loggerInstance",
+        "kind": "property",
+        "type": "Logger",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "maxParamLength",
+        "kind": "property",
+        "type": "number",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "maxRequestsPerSocket",
+        "kind": "property",
+        "type": "number",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onConstructorPoisoning",
+        "kind": "property",
+        "type": "ConstructorAction",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onProtoPoisoning",
+        "kind": "property",
+        "type": "ProtoAction",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pluginTimeout",
+        "kind": "property",
+        "type": "number",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "querystringParser",
+        "kind": "property",
+        "type": "(str: string) => { [key: string]: unknown; }",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "requestIdHeader",
+        "kind": "property",
+        "type": "string | false",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "requestIdLogLabel",
+        "kind": "property",
+        "type": "string",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "requestTimeout",
+        "kind": "property",
+        "type": "number",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "return503OnClosing",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "rewriteUrl",
+        "kind": "property",
+        "type": "(this: FastifyInstance<RawServer, RawRequestDefaultExpression<RawServer>, RawReplyDefaultExpression<RawServer>, Logger, FastifyTypeProviderDefault>, req: RawRequestDefaultExpression<RawServer>) => string",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "routerOptions",
+        "kind": "property",
+        "type": "FastifyRouterOptions<RawServer>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "schemaController",
+        "kind": "property",
+        "type": "{ bucket?: (parentSchemas?: unknown) => { add(schema: unknown): FastifyInstance; getSchema(schemaId: string): unknown; getSchemas(): Record<string, unknown>; }; compilersFactory?: { buildValidator?: ValidatorFactory; buildSerializer?: SerializerFactory; }; }",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "schemaErrorFormatter",
+        "kind": "property",
+        "type": "SchemaErrorFormatter",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "serializerOpts",
+        "kind": "property",
+        "type": "Record<string, unknown> | FJSOptions",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "serverFactory",
+        "kind": "property",
+        "type": "FastifyServerFactory<RawServer>",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "trustProxy",
+        "kind": "property",
+        "type": "string | boolean | string[] | ((address: string, hop: number) => boolean)",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "useSemicolonDelimiter",
+        "kind": "property",
+        "type": "boolean",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "registerFastifyApiAsync",
+    "title": null,
+    "description": "Register every runtime operation as a Fastify route using one shared transport adapter.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/transport/registerFastifyApiAsync.ts",
+    "sourceLocation": {
+      "filePath": "src/features/transport/registerFastifyApiAsync.ts",
+      "line": 16,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [
+      "FastifyInstance",
+      "FastifyRegisteredOperation",
+      "RegisterFastifyApiOptions"
+    ],
+    "signatures": [
+      {
+        "label": "(server: FastifyInstance<import(\"fastify\").RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, import(\"fastify\").FastifyBaseLogger, import(\"fastify\").FastifyTypeProviderDefault>, runtime: ApiRuntime, options?: RegisterFastifyApiOptions) => Promise<readonly FastifyRegisteredOperation[]>",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RegisterFastifyApiOptions",
+            "required": false,
+            "description": null
+          },
+          {
+            "name": "runtime",
+            "type": "ApiRuntime",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "server",
+            "type": "FastifyInstance<import(\"fastify\").RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, import(\"fastify\").FastifyBaseLogger, import(\"fastify\").FastifyTypeProviderDefault>",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "Promise<readonly FastifyRegisteredOperation[]>",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "RegisterFastifyApiOptions",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/fastify.ts",
+    "sourceLocation": {
+      "filePath": "src/types/fastify.ts",
+      "line": 23,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "prefix",
+        "kind": "property",
+        "type": "string",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "registerFastifyCorsAsync",
+    "title": null,
+    "description": "Register Fastify CORS so consumers do not own the plugin directly.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/host/registerFastifyCorsAsync.ts",
+    "sourceLocation": {
+      "filePath": "src/features/host/registerFastifyCorsAsync.ts",
+      "line": 5,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [
+      "FastifyCorsOptions",
+      "FastifyInstance"
+    ],
+    "signatures": [
+      {
+        "label": "(server: FastifyInstance<import(\"fastify\").RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, import(\"fastify\").FastifyBaseLogger, import(\"fastify\").FastifyTypeProviderDefault>, options: FastifyCorsOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "FastifyCorsOptions",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "server",
+            "type": "FastifyInstance<import(\"fastify\").RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, import(\"fastify\").FastifyBaseLogger, import(\"fastify\").FastifyTypeProviderDefault>",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "Promise<void>",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  }
+]

@@ -1,0 +1,5 @@
+sequenceDiagram
+  participant participant_createFastifyApiAdapter as createFastifyApiAdapter
+  participant participant_registerFastifyApiAsync as registerFastifyApiAsync
+  participant_registerFastifyApiAsync->>participant_createFastifyApiAdapter: createFastifyApiAdapter()
+  participant_createFastifyApiAdapter-->>participant_registerFastifyApiAsync: return

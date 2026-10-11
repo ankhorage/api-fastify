@@ -1,0 +1,2266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ankhorage/api-fastify • Paradox</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #f5f7fb;
+        color: #11203b;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; }
+      a { color: #2459d3; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      button { font: inherit; }
+      code, pre { font-family: "SFMono-Regular", ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr);
+        min-height: 100vh;
+      }
+      .sidebar {
+        padding: 1.5rem;
+        border-right: 1px solid #d8dfec;
+        background: #ffffff;
+        position: sticky;
+        top: 0;
+        max-height: 100vh;
+        overflow: auto;
+      }
+      .content { padding: 2rem; }
+      .panel, .item {
+        background: #ffffff;
+        border: 1px solid #d8dfec;
+        border-radius: 0.9rem;
+        padding: 1rem 1.2rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 8px 24px rgba(17, 32, 59, 0.06);
+      }
+      .summary {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+      }
+      .summary strong {
+        display: block;
+        font-size: 1.5rem;
+      }
+      .search {
+        width: 100%;
+        padding: 0.75rem 0.9rem;
+        border-radius: 0.75rem;
+        border: 1px solid #c7d2e5;
+        margin: 1rem 0 1.5rem;
+      }
+      .nav-list, .meta-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .nav-list li + li { margin-top: 0.5rem; }
+      .nav-button {
+        width: 100%;
+        display: block;
+        border: 0;
+        border-radius: 0.7rem;
+        background: transparent;
+        color: #24427a;
+        cursor: pointer;
+        padding: 0.55rem 0.7rem;
+        text-align: left;
+      }
+      .nav-button:hover, .nav-button[aria-current="page"] {
+        background: #e8eefb;
+        text-decoration: none;
+      }
+      .nav-button small {
+        display: block;
+        color: #5e6d8c;
+        margin-top: 0.15rem;
+      }
+      .view[hidden] { display: none; }
+      .muted { color: #5e6d8c; }
+      .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; }
+      .chip {
+        border-radius: 999px;
+        background: #e8eefb;
+        color: #24427a;
+        padding: 0.25rem 0.65rem;
+        font-size: 0.85rem;
+      }
+      table { width: 100%; border-collapse: collapse; margin-top: 0.8rem; }
+      th, td { padding: 0.6rem; border-bottom: 1px solid #e2e7f2; text-align: left; vertical-align: top; }
+      pre {
+        overflow: auto;
+        border-radius: 0.75rem;
+        background: #0f1729;
+        color: #e7edf7;
+        padding: 1rem;
+      }
+      .empty { font-style: italic; color: #6f7f9c; }
+      .mermaid { margin: 1rem 0; overflow: auto; }
+      details > summary { cursor: pointer; color: #5e6d8c; font-size: 0.9rem; margin-top: 0.5rem; user-select: none; }
+      @media (max-width: 900px) {
+        .layout { grid-template-columns: 1fr; }
+        .sidebar { position: static; max-height: none; border-right: 0; border-bottom: 1px solid #d8dfec; }
+        .content { padding: 1rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <p class="muted">Generated with Paradox</p>
+        <h1>@ankhorage/api-fastify</h1>
+        <p>Fastify transport adapter and host integration for the Ankhorage API runtime.</p>
+        <input id="search" class="search" type="search" placeholder="Search current view" />
+        <nav aria-label="Documentation sections">
+          <ul class="nav-list">
+            <li>
+              <button class="nav-button" type="button" data-target="home" aria-current="page">
+                Home
+                <small>Overview, CLI, public API, diagrams</small>
+              </button>
+            </li>
+            <li>
+    <button class="nav-button" type="button" data-target="src/cli/commands/routes.ts">
+      src/cli/commands/routes.ts
+      <small>1 function</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/cli/createApiAdapterCliProvider.ts">
+      src/cli/createApiAdapterCliProvider.ts
+      <small>1 function</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/host/createFastifyApiServer.ts">
+      src/features/host/createFastifyApiServer.ts
+      <small>1 function</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/host/registerFastifyCorsAsync.ts">
+      src/features/host/registerFastifyCorsAsync.ts
+      <small>1 function</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/transport/createFastifyApiAdapter.ts">
+      src/features/transport/createFastifyApiAdapter.ts
+      <small>7 functions</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/transport/registerFastifyApiAsync.ts">
+      src/features/transport/registerFastifyApiAsync.ts
+      <small>3 functions</small>
+    </button>
+  </li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="content">
+        <section id="view-home" class="view" data-view="home">
+          
+    <section class="panel">
+      <h2>Package overview</h2>
+      <div class="summary">
+        <div><strong>12</strong><span class="muted">public exports</span></div>
+        <div><strong>0</strong><span class="muted">components</span></div>
+        <div><strong>17</strong><span class="muted">modules</span></div>
+        <div><strong>1</strong><span class="muted">entrypoints</span></div>
+      </div>
+      <h3>Entrypoints</h3>
+      <ul class="meta-list">
+        <li><code>src/apiFastify.ts</code></li>
+      </ul>
+    </section>
+    <section class="panel" data-search="usage ankh api-fastify --help Basic Usage Create a framework-neutral API runtime and expose it through Fastify without moving application&#10;handlers into Fastify request/reply code. examples/basic-usage/index.ts">
+    <h2>Usage</h2>
+    <article class="item">
+      <h3>CLI</h3>
+      <pre>ankh api-fastify --help</pre>
+    </article>
+    <article class="item" data-search="Basic Usage Create a framework-neutral API runtime and expose it through Fastify without moving application&#10;handlers into Fastify request/reply code. examples/basic-usage/index.ts">
+    <h3>Basic Usage</h3>
+    <p class="muted"><code>examples/basic-usage/index.ts</code></p>
+    <p>Create a framework-neutral API runtime and expose it through Fastify without moving application
+handlers into Fastify request/reply code.</p>
+    
+    <pre>const runtime = createApiRuntime({
+  definition: {
+    id: &quot;health-api&quot;,
+    origin: &quot;internal&quot;,
+    protocol: &quot;rest&quot;,
+    basePath: &quot;/api&quot;,
+    endpoints: {
+      health: {
+        id: &quot;health&quot;,
+        kind: &quot;http&quot;,
+        operations: {
+          &quot;health.read&quot;: {
+            id: &quot;health.read&quot;,
+            protocol: &quot;http&quot;,
+            intent: &quot;read&quot;,
+            method: &quot;GET&quot;,
+            path: &quot;/health&quot;,
+          },
+        },
+      },
+    },
+  },
+  handlers: {
+    &quot;health.read&quot;: () =&gt; ({ body: { ok: true } }),
+  },
+});</pre>
+  </article>
+  </section>
+    <section class="panel"><h2>Policy</h2><p>No documentation findings.</p></section>
+    <section class="panel">
+      <h2>Modules</h2>
+      <article class="item" data-search="examples/basic-usage/index.ts src/apiFastify.ts response">
+    <h3>examples/basic-usage/index.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/apiFastify.ts</code></p>
+    <p><strong>Exports:</strong> <code>response</code></p>
+  </article><article class="item" data-search="package.json">
+    <h3>package.json</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <span class="empty">None</span></p>
+  </article><article class="item" data-search="paradox.config.ts default">
+    <h3>paradox.config.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>default</code></p>
+  </article><article class="item" data-search="src/apiFastify.test.ts package.json src/apiFastify.ts">
+    <h3>src/apiFastify.test.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>package.json</code>, <code>src/apiFastify.ts</code></p>
+    <p><strong>Exports:</strong> <span class="empty">None</span></p>
+  </article><article class="item" data-search="src/apiFastify.ts createFastifyApiAdapter createFastifyApiServer FastifyApiTransportRequest FastifyCorsOptions FastifyInstance FastifyRegisteredOperation FastifyReply FastifyRequest FastifyServerOptions registerFastifyApiAsync RegisterFastifyApiOptions registerFastifyCorsAsync">
+    <h3>src/apiFastify.ts</h3>
+    <p class="muted">Configured entrypoint</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>createFastifyApiAdapter</code>, <code>createFastifyApiServer</code>, <code>FastifyApiTransportRequest</code>, <code>FastifyCorsOptions</code>, <code>FastifyInstance</code>, <code>FastifyRegisteredOperation</code>, <code>FastifyReply</code>, <code>FastifyRequest</code>, <code>FastifyServerOptions</code>, <code>registerFastifyApiAsync</code>, <code>RegisterFastifyApiOptions</code>, <code>registerFastifyCorsAsync</code></p>
+  </article><article class="item" data-search="src/capabilities/index.test.ts src/capabilities/index.ts">
+    <h3>src/capabilities/index.test.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/capabilities/index.ts</code></p>
+    <p><strong>Exports:</strong> <span class="empty">None</span></p>
+  </article><article class="item" data-search="src/capabilities/index.ts CAPABILITIES">
+    <h3>src/capabilities/index.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>CAPABILITIES</code></p>
+  </article><article class="item" data-search="src/cli/commands/routes.ts runRoutesCommandAsync">
+    <h3>src/cli/commands/routes.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>runRoutesCommandAsync</code></p>
+  </article><article class="item" data-search="src/cli/createApiAdapterCliProvider.test.ts src/capabilities/index.ts src/cli/createApiAdapterCliProvider.ts">
+    <h3>src/cli/createApiAdapterCliProvider.test.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/capabilities/index.ts</code>, <code>src/cli/createApiAdapterCliProvider.ts</code></p>
+    <p><strong>Exports:</strong> <span class="empty">None</span></p>
+  </article><article class="item" data-search="src/cli/createApiAdapterCliProvider.ts package.json src/capabilities/index.ts src/cli/commands/routes.ts createApiAdapterCliProvider">
+    <h3>src/cli/createApiAdapterCliProvider.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>package.json</code>, <code>src/capabilities/index.ts</code>, <code>src/cli/commands/routes.ts</code></p>
+    <p><strong>Exports:</strong> <code>createApiAdapterCliProvider</code></p>
+  </article><article class="item" data-search="src/cli/index.ts src/cli/createApiAdapterCliProvider.ts createApiAdapterCliProvider default">
+    <h3>src/cli/index.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/cli/createApiAdapterCliProvider.ts</code></p>
+    <p><strong>Exports:</strong> <code>createApiAdapterCliProvider</code>, <code>default</code></p>
+  </article><article class="item" data-search="src/features/host/createFastifyApiServer.ts createFastifyApiServer">
+    <h3>src/features/host/createFastifyApiServer.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>createFastifyApiServer</code></p>
+  </article><article class="item" data-search="src/features/host/registerFastifyCorsAsync.ts registerFastifyCorsAsync">
+    <h3>src/features/host/registerFastifyCorsAsync.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>registerFastifyCorsAsync</code></p>
+  </article><article class="item" data-search="src/features/transport/createFastifyApiAdapter.ts src/types/fastify.ts createFastifyApiAdapter">
+    <h3>src/features/transport/createFastifyApiAdapter.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/types/fastify.ts</code></p>
+    <p><strong>Exports:</strong> <code>createFastifyApiAdapter</code></p>
+  </article><article class="item" data-search="src/features/transport/registerFastifyApiAsync.test.ts src/features/host/createFastifyApiServer.ts src/features/transport/registerFastifyApiAsync.ts">
+    <h3>src/features/transport/registerFastifyApiAsync.test.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/features/host/createFastifyApiServer.ts</code>, <code>src/features/transport/registerFastifyApiAsync.ts</code></p>
+    <p><strong>Exports:</strong> <span class="empty">None</span></p>
+  </article><article class="item" data-search="src/features/transport/registerFastifyApiAsync.ts src/features/transport/createFastifyApiAdapter.ts src/types/fastify.ts registerFastifyApiAsync">
+    <h3>src/features/transport/registerFastifyApiAsync.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/features/transport/createFastifyApiAdapter.ts</code>, <code>src/types/fastify.ts</code></p>
+    <p><strong>Exports:</strong> <code>registerFastifyApiAsync</code></p>
+  </article><article class="item" data-search="src/types/fastify.ts FastifyApiTransportRequest FastifyCorsOptions FastifyInstance FastifyRegisteredOperation FastifyReply FastifyRequest FastifyServerOptions RegisterFastifyApiOptions">
+    <h3>src/types/fastify.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>FastifyApiTransportRequest</code>, <code>FastifyCorsOptions</code>, <code>FastifyInstance</code>, <code>FastifyRegisteredOperation</code>, <code>FastifyReply</code>, <code>FastifyRequest</code>, <code>FastifyServerOptions</code>, <code>RegisterFastifyApiOptions</code></p>
+  </article>
+    </section>
+    <section class="panel">
+      <h2>Public API</h2>
+      
+            <section>
+              <h3>node_modules/@fastify/cors/types/index.d.ts</h3>
+              <article class="item" id="symbol-fastifycorsoptions" data-search="FastifyCorsOptions  type node_modules/@fastify/cors/types/index.d.ts ">
+    <h4>FastifyCorsOptions</h4>
+    
+    <p class="muted">type • <code>node_modules/@fastify/cors/types/index.d.ts:28:3</code></p>
+    
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>allowedHeaders</code></td>
+            <td>property</td>
+            <td><code>string | string[]</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>cacheControl</code></td>
+            <td>property</td>
+            <td><code>string | number</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>credentials</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>delegator</code></td>
+            <td>property</td>
+            <td><code>FastifyCorsOptionsDelegate</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>exposedHeaders</code></td>
+            <td>property</td>
+            <td><code>string | string[]</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hideOptionsRoute</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hook</code></td>
+            <td>property</td>
+            <td><code>FastifyCorsHook</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>logLevel</code></td>
+            <td>property</td>
+            <td><code>LogLevel</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>maxAge</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>methods</code></td>
+            <td>property</td>
+            <td><code>string | string[]</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>optionsSuccessStatus</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>origin</code></td>
+            <td>property</td>
+            <td><code>ValueOrArray&lt;OriginType&gt; | AsyncOriginFunction | OriginFunction</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>preflight</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>preflightContinue</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>strictPreflight</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article>
+            </section>
+            <section>
+              <h3>node_modules/fastify/fastify.d.ts</h3>
+              <article class="item" id="symbol-fastifyserveroptions" data-search="FastifyServerOptions  unknown node_modules/fastify/fastify.d.ts  FastifyInstance FastifyReply FastifyRequest">
+    <h4>FastifyServerOptions</h4>
+    
+    <p class="muted">unknown • <code>node_modules/fastify/fastify.d.ts:120:3</code></p>
+    
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">FastifyInstance</li><li class="chip">FastifyReply</li><li class="chip">FastifyRequest</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>ajv</code></td>
+            <td>property</td>
+            <td><code>({ onCreate?: (ajvInstance: import(&quot;@fastify/ajv-compiler&quot;).Ajv) =&gt; void; plugins?: (import(&quot;ajv&quot;).Plugin&lt;unknown&gt; | [import(&quot;ajv&quot;).Plugin&lt;unknown&gt;, unknown])[]; } &amp; { mode: &quot;JTD&quot;; customOptions?: import(&quot;ajv/dist/jtd&quot;).JTDOptions; }) | ({ onCreate?: (ajvInstance: import(&quot;@fastify/ajv-compiler&quot;).Ajv) =&gt; void; plugins?: (import(&quot;ajv&quot;).Plugin&lt;unknown&gt; | [import(&quot;ajv&quot;).Plugin&lt;unknown&gt;, unknown])[]; } &amp; { mode?: never; customOptions?: import(&quot;@fastify/ajv-compiler&quot;).Options; }) | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>allowErrorHandlerOverride</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>allowUnsafeRegex</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>bodyLimit</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>caseSensitive</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>childLoggerFactory</code></td>
+            <td>property</td>
+            <td><code>FastifyChildLoggerFactory&lt;RawServerDefault, http.IncomingMessage, http.ServerResponse&lt;http.IncomingMessage&gt;, FastifyBaseLogger, FastifyTypeProviderDefault&gt;</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>clientErrorHandler</code></td>
+            <td>property</td>
+            <td><code>(error: ConnectionError, socket: Socket) =&gt; void</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>connectionTimeout</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>constraints</code></td>
+            <td>property</td>
+            <td><code>{ [name: string]: ConstraintStrategy&lt;RawServer extends http.Server&lt;typeof http.IncomingMessage, typeof http.ServerResponse&gt; ? HTTPVersion.V1 : HTTPVersion.V2, unknown&gt;; }</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>disableRequestLogging</code></td>
+            <td>property</td>
+            <td><code>boolean | ((req: FastifyRequest) =&gt; boolean)</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>exposeHeadRoutes</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>forceCloseConnections</code></td>
+            <td>property</td>
+            <td><code>boolean | &quot;idle&quot;</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>frameworkErrors</code></td>
+            <td>property</td>
+            <td><code>&lt;RequestGeneric extends RequestGenericInterface = RequestGenericInterface, TypeProvider extends FastifyTypeProvider = FastifyTypeProviderDefault, SchemaCompiler extends FastifySchema = FastifySchema&gt;(error: FastifyError, req: FastifyRequest&lt;RequestGeneric, RawServer, RawRequestDefaultExpression&lt;RawServer&gt;, FastifySchema, TypeProvider&gt;, res: FastifyReply&lt;RequestGeneric, RawServer, RawRequestDefaultExpression&lt;RawServer&gt;, RawReplyDefaultExpression&lt;RawServer&gt;, FastifyContextConfig, SchemaCompiler, TypeProvider&gt;) =&gt; void</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>genReqId</code></td>
+            <td>property</td>
+            <td><code>(req: RawRequestDefaultExpression&lt;RawServer&gt;) =&gt; string</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>handlerTimeout</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>ignoreDuplicateSlashes</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>ignoreTrailingSlash</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>keepAliveTimeout</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>logController</code></td>
+            <td>property</td>
+            <td><code>LogControllerClass</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>logger</code></td>
+            <td>property</td>
+            <td><code>boolean | (FastifyLoggerOptions&lt;RawServer, FastifyRequest&lt;RouteGenericInterface, RawServer, RawRequestDefaultExpression&lt;RawServer&gt;, FastifySchema, FastifyTypeProviderDefault, unknown, FastifyBaseLogger, import(&quot;./types/type-provider&quot;).ResolveFastifyRequestType&lt;FastifyTypeProviderDefault, FastifySchema, RouteGenericInterface&gt;&gt;, FastifyReply&lt;RouteGenericInterface, RawServer, RawRequestDefaultExpression&lt;RawServer&gt;, RawReplyDefaultExpression&lt;RawServer&gt;, unknown, FastifySchema, FastifyTypeProviderDefault, unknown&gt;&gt; &amp; PinoLoggerOptions&lt;never, boolean&gt;)</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>loggerInstance</code></td>
+            <td>property</td>
+            <td><code>Logger</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>maxParamLength</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>maxRequestsPerSocket</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>onConstructorPoisoning</code></td>
+            <td>property</td>
+            <td><code>ConstructorAction</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>onProtoPoisoning</code></td>
+            <td>property</td>
+            <td><code>ProtoAction</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>pluginTimeout</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>querystringParser</code></td>
+            <td>property</td>
+            <td><code>(str: string) =&gt; { [key: string]: unknown; }</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>requestIdHeader</code></td>
+            <td>property</td>
+            <td><code>string | false</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>requestIdLogLabel</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>requestTimeout</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>return503OnClosing</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>rewriteUrl</code></td>
+            <td>property</td>
+            <td><code>(this: FastifyInstance&lt;RawServer, RawRequestDefaultExpression&lt;RawServer&gt;, RawReplyDefaultExpression&lt;RawServer&gt;, Logger, FastifyTypeProviderDefault&gt;, req: RawRequestDefaultExpression&lt;RawServer&gt;) =&gt; string</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>routerOptions</code></td>
+            <td>property</td>
+            <td><code>FastifyRouterOptions&lt;RawServer&gt;</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>schemaController</code></td>
+            <td>property</td>
+            <td><code>{ bucket?: (parentSchemas?: unknown) =&gt; { add(schema: unknown): FastifyInstance; getSchema(schemaId: string): unknown; getSchemas(): Record&lt;string, unknown&gt;; }; compilersFactory?: { buildValidator?: ValidatorFactory; buildSerializer?: SerializerFactory; }; }</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>schemaErrorFormatter</code></td>
+            <td>property</td>
+            <td><code>SchemaErrorFormatter</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>serializerOpts</code></td>
+            <td>property</td>
+            <td><code>Record&lt;string, unknown&gt; | FJSOptions</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>serverFactory</code></td>
+            <td>property</td>
+            <td><code>FastifyServerFactory&lt;RawServer&gt;</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>trustProxy</code></td>
+            <td>property</td>
+            <td><code>string | boolean | string[] | ((address: string, hop: number) =&gt; boolean)</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>useSemicolonDelimiter</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>no</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article>
+            </section>
+            <section>
+              <h3>node_modules/fastify/types/instance.d.ts</h3>
+              <article class="item" id="symbol-fastifyinstance" data-search="FastifyInstance  type node_modules/fastify/types/instance.d.ts  FastifyReply FastifyRequest">
+    <h4>FastifyInstance</h4>
+    
+    <p class="muted">type • <code>node_modules/fastify/types/instance.d.ts:120:1</code></p>
+    
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">FastifyReply</li><li class="chip">FastifyRequest</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>__@asyncDispose@1446</code></td>
+            <td>method</td>
+            <td><code>() =&gt; Promise&lt;undefined&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>addConstraintStrategy</code></td>
+            <td>method</td>
+            <td><code>(strategy: ConstraintStrategy&lt;FindMyWayVersion&lt;RawServer&gt;, unknown&gt;) =&gt; void</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>addContentTypeParser</code></td>
+            <td>property</td>
+            <td><code>AddContentTypeParser&lt;RawServer, RawRequest, RouteGenericInterface, FastifySchema, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>addHook</code></td>
+            <td>method</td>
+            <td><code>{ &lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onRequestHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; | onRequestAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; = onRequestHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;&gt;(name: &quot;onRequest&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? onRequestAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : onRequestHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends preParsingHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; | preParsingAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; = preParsingHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;&gt;(name: &quot;preParsing&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? preParsingAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : preParsingHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends preValidationHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; | preValidationAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; = preValidationHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;&gt;(name: &quot;preValidation&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? preValidationAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : preValidationHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends preHandlerHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; | preHandlerAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; = preHandlerHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;&gt;(name: &quot;preHandler&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? preHandlerAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : preHandlerHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;PreSerializationPayload = unknown, RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends preSerializationHookHandler&lt;PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; | preSerializationAsyncHookHandler&lt;PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; = preSerializationHookHandler&lt;PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;&gt;(name: &quot;preSerialization&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? preSerializationAsyncHookHandler&lt;PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : preSerializationHookHandler&lt;PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;OnSendPayload = unknown, RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onSendHookHandler&lt;OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; | onSendAsyncHookHandler&lt;OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; = onSendHookHandler&lt;OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;&gt;(name: &quot;onSend&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? onSendAsyncHookHandler&lt;OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : onSendHookHandler&lt;OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onResponseHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; | onResponseAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; = onResponseHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;&gt;(name: &quot;onResponse&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? onResponseAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : onResponseHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onTimeoutHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; | onTimeoutAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; = onTimeoutHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;&gt;(name: &quot;onTimeout&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? onTimeoutAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : onTimeoutHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onRequestAbortHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; | onRequestAbortAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; = onRequestAbortHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;&gt;(name: &quot;onRequestAbort&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? onRequestAbortAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : onRequestAbortHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt; : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onErrorHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger&gt; | onErrorAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger&gt; = onErrorHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger&gt;&gt;(name: &quot;onError&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? onErrorAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger&gt; : onErrorHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger&gt; : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger&gt;(name: &quot;onRoute&quot;, hook: onRouteHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; (name: &quot;onRegister&quot;, hook: onRegisterHookHandler&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;Fn extends onReadyHookHandler | onReadyAsyncHookHandler = onReadyHookHandler&lt;RawServerDefault, http.IncomingMessage, http.ServerResponse&lt;http.IncomingMessage&gt;, FastifyBaseLogger, FastifyTypeProviderDefault&gt;&gt;(name: &quot;onReady&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? onReadyAsyncHookHandler : onReadyHookHandler : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;Fn extends onListenHookHandler&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt; | onListenAsyncHookHandler&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt; = onListenHookHandler&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;&gt;(name: &quot;onListen&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? onListenAsyncHookHandler : onListenHookHandler : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;Fn extends onCloseHookHandler | onCloseAsyncHookHandler = onCloseHookHandler&lt;RawServerDefault, http.IncomingMessage, http.ServerResponse&lt;http.IncomingMessage&gt;, FastifyBaseLogger, FastifyTypeProviderDefault&gt;&gt;(name: &quot;onClose&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? onCloseAsyncHookHandler : onCloseHookHandler : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;Fn extends preCloseHookHandler | preCloseAsyncHookHandler = preCloseHookHandler&lt;RawServerDefault, http.IncomingMessage, http.ServerResponse&lt;http.IncomingMessage&gt;, FastifyBaseLogger, FastifyTypeProviderDefault&gt;&gt;(name: &quot;preClose&quot;, hook: Fn extends unknown ? Fn extends AsyncFunction ? preCloseAsyncHookHandler : preCloseHookHandler : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;K extends ApplicationHook | LifecycleHook, Fn extends (...args: any) =&gt; Promise&lt;any&gt; | any&gt;(name: K, hook: Fn extends unknown ? Fn extends AsyncFunction ? HookAsyncLookup&lt;K&gt; : HookLookup&lt;K&gt; : Fn): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; }</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>addHttpMethod</code></td>
+            <td>method</td>
+            <td><code>(method: string, methodOptions?: { hasBody?: boolean; overrideExisting?: boolean; }) =&gt; FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>addresses</code></td>
+            <td>method</td>
+            <td><code>() =&gt; AddressInfo[]</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>addSchema</code></td>
+            <td>method</td>
+            <td><code>(schema: unknown) =&gt; FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>after</code></td>
+            <td>method</td>
+            <td><code>{ (): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt; &amp; SafePromiseLike&lt;undefined&gt;; (afterListener: (err: Error | null) =&gt; void): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; }</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>all</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>childLoggerFactory</code></td>
+            <td>property</td>
+            <td><code>FastifyChildLoggerFactory&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>close</code></td>
+            <td>method</td>
+            <td><code>{ (): Promise&lt;undefined&gt;; (closeListener: () =&gt; void): undefined; }</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>copy</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>decorate</code></td>
+            <td>property</td>
+            <td><code>DecorationMethod&lt;FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;, FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>decorateReply</code></td>
+            <td>property</td>
+            <td><code>DecorationMethod&lt;FastifyReply&lt;RouteGenericInterface, RawServerDefault, http.IncomingMessage, http.ServerResponse&lt;http.IncomingMessage&gt;, unknown, FastifySchema, FastifyTypeProviderDefault, unknown&gt;, FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>decorateRequest</code></td>
+            <td>property</td>
+            <td><code>DecorationMethod&lt;FastifyRequest&lt;RouteGenericInterface, RawServerDefault, http.IncomingMessage, FastifySchema, FastifyTypeProviderDefault, unknown, FastifyBaseLogger, import(&quot;./type-provider&quot;).ResolveFastifyRequestType&lt;FastifyTypeProviderDefault, FastifySchema, RouteGenericInterface&gt;&gt;, FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>defaultTextParser</code></td>
+            <td>property</td>
+            <td><code>FastifyBodyParser&lt;string&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>delete</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>errorHandler</code></td>
+            <td>property</td>
+            <td><code>&lt;TError = unknown&gt;(error: TError, request: FastifyRequest, reply: FastifyReply) =&gt; void</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>findRoute</code></td>
+            <td>method</td>
+            <td><code>&lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema&gt;(opts: Pick&lt;RouteOptions&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider&gt;, &quot;method&quot; | &quot;url&quot; | &quot;constraints&quot;&gt;) =&gt; Omit&lt;FindMyWayFindResult&lt;RawServer&gt;, &quot;store&quot;&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>get</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>getDecorator</code></td>
+            <td>method</td>
+            <td><code>&lt;T&gt;(name: string | symbol) =&gt; T</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>getDefaultJsonParser</code></td>
+            <td>property</td>
+            <td><code>getDefaultJsonParser</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>getSchema</code></td>
+            <td>method</td>
+            <td><code>(schemaId: string) =&gt; unknown</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>getSchemas</code></td>
+            <td>method</td>
+            <td><code>() =&gt; Record&lt;string, unknown&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hasConstraintStrategy</code></td>
+            <td>method</td>
+            <td><code>(strategyName: string) =&gt; boolean</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hasContentTypeParser</code></td>
+            <td>property</td>
+            <td><code>hasContentTypeParser</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hasDecorator</code></td>
+            <td>method</td>
+            <td><code>(decorator: string | symbol) =&gt; boolean</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hasPlugin</code></td>
+            <td>method</td>
+            <td><code>(name: string) =&gt; boolean</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hasReplyDecorator</code></td>
+            <td>method</td>
+            <td><code>(decorator: string | symbol) =&gt; boolean</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hasRequestDecorator</code></td>
+            <td>method</td>
+            <td><code>(decorator: string | symbol) =&gt; boolean</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hasRoute</code></td>
+            <td>method</td>
+            <td><code>&lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema&gt;(opts: Pick&lt;RouteOptions&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider&gt;, &quot;method&quot; | &quot;url&quot; | &quot;constraints&quot;&gt;) =&gt; boolean</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>head</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>initialConfig</code></td>
+            <td>property</td>
+            <td><code>Readonly&lt;{ connectionTimeout?: number; keepAliveTimeout?: number; forceCloseConnections?: boolean; bodyLimit?: number; caseSensitive?: boolean; allowUnsafeRegex?: boolean; http2?: boolean; https?: boolean | Readonly&lt;{ allowHTTP1: boolean; }&gt;; ignoreTrailingSlash?: boolean; ignoreDuplicateSlashes?: boolean; disableRequestLogging?: boolean | ((req: FastifyRequest) =&gt; boolean); maxParamLength?: number; onProtoPoisoning?: ProtoAction; onConstructorPoisoning?: ConstructorAction; pluginTimeout?: number; requestIdHeader?: string | false; requestIdLogLabel?: string; http2SessionTimeout?: number; useSemicolonDelimiter?: boolean; routerOptions?: FastifyRouterOptions&lt;RawServer&gt;; }&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>inject</code></td>
+            <td>method</td>
+            <td><code>{ (opts: InjectOptions | string, cb: LightMyRequestCallback): void; (opts: InjectOptions | string): Promise&lt;LightMyRequestResponse&gt;; (): LightMyRequestChain; }</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>listen</code></td>
+            <td>method</td>
+            <td><code>{ (opts: FastifyListenOptions, callback: (err: Error | null, address: string) =&gt; void): void; (opts?: FastifyListenOptions): Promise&lt;string&gt;; (callback: (err: Error | null, address: string) =&gt; void): void; }</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>listeningOrigin</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>lock</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>log</code></td>
+            <td>property</td>
+            <td><code>Logger</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>mkcalendar</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>mkcol</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>move</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>options</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>patch</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>pluginName</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>post</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>prefix</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>printPlugins</code></td>
+            <td>method</td>
+            <td><code>() =&gt; string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>printRoutes</code></td>
+            <td>method</td>
+            <td><code>(opts?: PrintRoutesOptions) =&gt; string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>propfind</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>proppatch</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>put</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>query</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>ready</code></td>
+            <td>method</td>
+            <td><code>{ (): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt; &amp; SafePromiseLike&lt;undefined&gt;; (readyListener: (err: Error | null) =&gt; void | Promise&lt;void&gt;): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; }</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>register</code></td>
+            <td>property</td>
+            <td><code>FastifyRegister&lt;FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt; &amp; PromiseLike&lt;undefined&gt; &amp; { __linterBrands: &quot;SafePromiseLike&quot;; }, RawServerDefault, FastifyTypeProvider, FastifyBaseLogger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>removeAllContentTypeParsers</code></td>
+            <td>property</td>
+            <td><code>removeAllContentTypeParsers</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>removeContentTypeParser</code></td>
+            <td>property</td>
+            <td><code>removeContentTypeParser</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>report</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>route</code></td>
+            <td>method</td>
+            <td><code>&lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, const SchemaCompiler extends FastifySchema = FastifySchema&gt;(opts: RouteOptions&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;) =&gt; FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>routing</code></td>
+            <td>method</td>
+            <td><code>(req: RawRequest, res: RawReply) =&gt; void</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>search</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>serializerCompiler</code></td>
+            <td>property</td>
+            <td><code>FastifySerializerCompiler&lt;any&gt; | undefined</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>server</code></td>
+            <td>property</td>
+            <td><code>RawServer</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>setChildLoggerFactory</code></td>
+            <td>method</td>
+            <td><code>(factory: FastifyChildLoggerFactory&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;) =&gt; FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>setErrorHandler</code></td>
+            <td>method</td>
+            <td><code>&lt;TError = unknown, RouteGeneric extends RouteGenericInterface = RouteGenericInterface, SchemaCompiler extends FastifySchema = FastifySchema, TypeProvider extends FastifyTypeProvider = FastifyTypeProviderDefault&gt;(handler: (this: FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;, error: TError, request: FastifyRequest&lt;RouteGeneric, RawServer, RawRequest, SchemaCompiler, TypeProvider&gt;, reply: FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfigDefault, SchemaCompiler, TypeProvider&gt;) =&gt; any | Promise&lt;any&gt;) =&gt; FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>setGenReqId</code></td>
+            <td>method</td>
+            <td><code>(fn: (req: RawRequestDefaultExpression&lt;RawServer&gt;) =&gt; string) =&gt; FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>setNotFoundHandler</code></td>
+            <td>method</td>
+            <td><code>{ &lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig extends ContextConfigDefault = unknown, TypeProvider extends FastifyTypeProvider = FastifyTypeProviderDefault, SchemaCompiler extends FastifySchema = FastifySchema&gt;(handler: RouteHandlerMethod&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; &lt;RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig extends ContextConfigDefault = unknown, TypeProvider extends FastifyTypeProvider = FastifyTypeProviderDefault, SchemaCompiler extends FastifySchema = FastifySchema&gt;(opts: { preValidation?: preValidationHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider&gt; | preValidationAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider&gt; | preValidationHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider&gt;[] | preValidationAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider&gt;[]; preHandler?: preHandlerHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider&gt; | preHandlerAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider&gt; | preHandlerHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider&gt;[] | preHandlerAsyncHookHandler&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider&gt;[]; }, handler: RouteHandlerMethod&lt;RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger&gt;): FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;; }</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>setReplySerializer</code></td>
+            <td>method</td>
+            <td><code>(replySerializer: (payload: unknown, statusCode: number) =&gt; string) =&gt; FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>setSchemaController</code></td>
+            <td>method</td>
+            <td><code>(schemaControllerOpts: FastifySchemaControllerOptions) =&gt; FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>setSchemaErrorFormatter</code></td>
+            <td>method</td>
+            <td><code>(errorFormatter: SchemaErrorFormatter) =&gt; FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>setSerializerCompiler</code></td>
+            <td>method</td>
+            <td><code>&lt;T = FastifySchema&gt;(schemaCompiler: FastifySerializerCompiler&lt;T&gt;) =&gt; FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>setValidatorCompiler</code></td>
+            <td>method</td>
+            <td><code>&lt;T = FastifySchema&gt;(schemaCompiler: FastifySchemaCompiler&lt;T&gt;) =&gt; FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>supportedMethods</code></td>
+            <td>property</td>
+            <td><code>string[]</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>trace</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>unlock</code></td>
+            <td>property</td>
+            <td><code>RouteShorthandMethod&lt;RawServer, RawRequest, RawReply, TypeProvider, Logger&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>validatorCompiler</code></td>
+            <td>property</td>
+            <td><code>FastifySchemaCompiler&lt;any&gt; | undefined</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>version</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>withTypeProvider</code></td>
+            <td>method</td>
+            <td><code>&lt;Provider extends FastifyTypeProvider&gt;() =&gt; FastifyInstance&lt;RawServer, RawRequest, RawReply, Logger, Provider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article>
+            </section>
+            <section>
+              <h3>node_modules/fastify/types/reply.d.ts</h3>
+              <article class="item" id="symbol-fastifyreply" data-search="FastifyReply  type node_modules/fastify/types/reply.d.ts  FastifyInstance FastifyRequest">
+    <h4>FastifyReply</h4>
+    
+    <p class="muted">type • <code>node_modules/fastify/types/reply.d.ts:33:1</code></p>
+    
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">FastifyInstance</li><li class="chip">FastifyRequest</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>callNotFound</code></td>
+            <td>method</td>
+            <td><code>() =&gt; void</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>code</code></td>
+            <td>method</td>
+            <td><code>&lt;Code extends keyof SchemaCompiler[&quot;response&quot;] extends never ? ReplyKeysToCodes&lt;keyof RouteGeneric[&quot;Reply&quot;]&gt; : keyof SchemaCompiler[&quot;response&quot;] extends ReplyKeysToCodes&lt;keyof RouteGeneric[&quot;Reply&quot;]&gt; ? keyof SchemaCompiler[&quot;response&quot;] : ReplyKeysToCodes&lt;keyof RouteGeneric[&quot;Reply&quot;]&gt;&gt;(statusCode: Code) =&gt; FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider, ResolveReplyTypeWithRouteGeneric&lt;RouteGeneric[&quot;Reply&quot;], Code, SchemaCompiler, TypeProvider&gt;&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>compileSerializationSchema</code></td>
+            <td>method</td>
+            <td><code>(schema: { [key: string]: unknown; }, httpStatus?: string, contentType?: string) =&gt; (payload: { [key: string]: unknown; }) =&gt; string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>elapsedTime</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>getDecorator</code></td>
+            <td>method</td>
+            <td><code>&lt;T&gt;(name: string | symbol) =&gt; T</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>getHeader</code></td>
+            <td>method</td>
+            <td><code>(key: HttpHeader) =&gt; number | string | string[] | undefined</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>getHeaders</code></td>
+            <td>method</td>
+            <td><code>() =&gt; Record&lt;HttpHeader, number | string | string[] | undefined&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>getSerializationFunction</code></td>
+            <td>method</td>
+            <td><code>{ (httpStatus: string, contentType?: string): ((payload: { [key: string]: unknown; }) =&gt; string) | undefined; (schema: { [key: string]: unknown; }): ((payload: { [key: string]: unknown; }) =&gt; string) | undefined; }</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hasHeader</code></td>
+            <td>method</td>
+            <td><code>(key: HttpHeader) =&gt; boolean</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hasTrailer</code></td>
+            <td>method</td>
+            <td><code>(key: string) =&gt; boolean</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>header</code></td>
+            <td>method</td>
+            <td><code>(key: HttpHeader, value: any) =&gt; FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>headers</code></td>
+            <td>method</td>
+            <td><code>(values: Partial&lt;Record&lt;HttpHeader, number | string | string[] | undefined&gt;&gt;) =&gt; FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hijack</code></td>
+            <td>method</td>
+            <td><code>() =&gt; FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>log</code></td>
+            <td>property</td>
+            <td><code>FastifyBaseLogger</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>raw</code></td>
+            <td>property</td>
+            <td><code>RawReply</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>redirect</code></td>
+            <td>method</td>
+            <td><code>(url: string, statusCode?: number) =&gt; FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>removeHeader</code></td>
+            <td>method</td>
+            <td><code>(key: HttpHeader) =&gt; FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>removeTrailer</code></td>
+            <td>method</td>
+            <td><code>(key: string) =&gt; FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>request</code></td>
+            <td>property</td>
+            <td><code>FastifyRequest&lt;RouteGeneric, RawServer, RawRequest, SchemaCompiler, TypeProvider, unknown, FastifyBaseLogger, import(&quot;./type-provider&quot;).ResolveFastifyRequestType&lt;TypeProvider, SchemaCompiler, RouteGeneric&gt;&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>routeOptions</code></td>
+            <td>property</td>
+            <td><code>Readonly&lt;RequestRouteOptions&lt;ContextConfig, SchemaCompiler&gt;&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>send</code></td>
+            <td>method</td>
+            <td><code>(...args: SendArgs&lt;ReplyType&gt;) =&gt; FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>sent</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>serialize</code></td>
+            <td>method</td>
+            <td><code>(payload: any) =&gt; string | ArrayBuffer | Buffer</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>serializeInput</code></td>
+            <td>method</td>
+            <td><code>{ (input: { [key: string]: unknown; }, schema: { [key: string]: unknown; }, httpStatus?: string, contentType?: string): string; (input: { [key: string]: unknown; }, httpStatus: string, contentType?: string): unknown; }</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>serializer</code></td>
+            <td>method</td>
+            <td><code>(fn: (payload: any) =&gt; string) =&gt; FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>server</code></td>
+            <td>property</td>
+            <td><code>FastifyInstance&lt;RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, FastifyBaseLogger, FastifyTypeProviderDefault&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>status</code></td>
+            <td>method</td>
+            <td><code>&lt;Code extends keyof SchemaCompiler[&quot;response&quot;] extends never ? ReplyKeysToCodes&lt;keyof RouteGeneric[&quot;Reply&quot;]&gt; : keyof SchemaCompiler[&quot;response&quot;] extends ReplyKeysToCodes&lt;keyof RouteGeneric[&quot;Reply&quot;]&gt; ? keyof SchemaCompiler[&quot;response&quot;] : ReplyKeysToCodes&lt;keyof RouteGeneric[&quot;Reply&quot;]&gt;&gt;(statusCode: Code) =&gt; FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider, ResolveReplyTypeWithRouteGeneric&lt;RouteGeneric[&quot;Reply&quot;], Code, SchemaCompiler, TypeProvider&gt;&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>statusCode</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>then</code></td>
+            <td>method</td>
+            <td><code>(fulfilled: () =&gt; void, rejected: (err: Error) =&gt; void) =&gt; void</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>trailer</code></td>
+            <td>property</td>
+            <td><code>(key: string, fn: ((reply: FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider&gt;, payload: string | Buffer | null) =&gt; Promise&lt;string&gt;) | ((reply: FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider&gt;, payload: string | Buffer | null, done: (err: Error | null, value?: string) =&gt; void) =&gt; void)) =&gt; FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>type</code></td>
+            <td>method</td>
+            <td><code>(contentType: string) =&gt; FastifyReply&lt;RouteGeneric, RawServer, RawRequest, RawReply, ContextConfig, SchemaCompiler, TypeProvider&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>writeEarlyHints</code></td>
+            <td>method</td>
+            <td><code>(hints: Record&lt;string, string | string[]&gt;, callback?: () =&gt; void) =&gt; void</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article>
+            </section>
+            <section>
+              <h3>node_modules/fastify/types/request.d.ts</h3>
+              <article class="item" id="symbol-fastifyrequest" data-search="FastifyRequest  type node_modules/fastify/types/request.d.ts  FastifyInstance">
+    <h4>FastifyRequest</h4>
+    
+    <p class="muted">type • <code>node_modules/fastify/types/request.d.ts:43:1</code></p>
+    
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">FastifyInstance</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>body</code></td>
+            <td>property</td>
+            <td><code>RequestType[&quot;body&quot;]</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>compileValidationSchema</code></td>
+            <td>method</td>
+            <td><code>(schema: { [key: string]: any; }, httpPart?: HTTPRequestPart) =&gt; ValidationFunction</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>getDecorator</code></td>
+            <td>method</td>
+            <td><code>&lt;T&gt;(name: string | symbol) =&gt; T</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>getValidationFunction</code></td>
+            <td>method</td>
+            <td><code>{ (httpPart: HTTPRequestPart): ValidationFunction | undefined; (schema: { [key: string]: any; }): ValidationFunction | undefined; }</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>headers</code></td>
+            <td>property</td>
+            <td><code>RawRequest[&quot;headers&quot;] &amp; RequestType[&quot;headers&quot;]</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>host</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>hostname</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>id</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>ip</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>ips</code></td>
+            <td>property</td>
+            <td><code>string[]</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>is404</code></td>
+            <td>property</td>
+            <td><code>boolean</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>log</code></td>
+            <td>property</td>
+            <td><code>Logger</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>mediaType</code></td>
+            <td>property</td>
+            <td><code>string | undefined</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>method</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>originalUrl</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>params</code></td>
+            <td>property</td>
+            <td><code>RequestType[&quot;params&quot;]</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>port</code></td>
+            <td>property</td>
+            <td><code>number | null</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>protocol</code></td>
+            <td>property</td>
+            <td><code>&quot;http&quot; | &quot;https&quot;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>query</code></td>
+            <td>property</td>
+            <td><code>RequestType[&quot;query&quot;]</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>raw</code></td>
+            <td>property</td>
+            <td><code>RawRequest</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>req</code></td>
+            <td>property</td>
+            <td><code>RawRequest &amp; RouteGeneric[&quot;Headers&quot;]</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>routeOptions</code></td>
+            <td>property</td>
+            <td><code>Readonly&lt;RequestRouteOptions&lt;ContextConfig, SchemaCompiler&gt;&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>server</code></td>
+            <td>property</td>
+            <td><code>FastifyInstance&lt;RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, FastifyBaseLogger, FastifyTypeProviderDefault&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>setDecorator</code></td>
+            <td>method</td>
+            <td><code>&lt;T = unknown&gt;(name: string | symbol, value: T) =&gt; void</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>signal</code></td>
+            <td>property</td>
+            <td><code>AbortSignal</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>socket</code></td>
+            <td>property</td>
+            <td><code>RawRequest[&quot;socket&quot;]</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>url</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>validateInput</code></td>
+            <td>method</td>
+            <td><code>{ (input: any, schema: { [key: string]: any; }, httpPart?: HTTPRequestPart): boolean; (input: any, httpPart?: HTTPRequestPart): boolean; }</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>validationError</code></td>
+            <td>property</td>
+            <td><code>Error &amp; { validation: any; validationContext: string; }</code></td>
+            <td>no</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article>
+            </section>
+            <section>
+              <h3>src/features/host/createFastifyApiServer.ts</h3>
+              <article class="item" id="symbol-createfastifyapiserver" data-search="createFastifyApiServer  function src/features/host/createFastifyApiServer.ts Create the Fastify server owned by the Ankhorage Fastify API adapter package. FastifyInstance FastifyServerOptions (options?: FastifyServerOptions) =&gt; FastifyInstance&lt;import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify&quot;).FastifyTypeProviderDefault&gt;">
+    <h4>createFastifyApiServer</h4>
+    
+    <p class="muted">function • <code>src/features/host/createFastifyApiServer.ts:7:1</code></p>
+    <p>Create the Fastify server owned by the Ankhorage Fastify API adapter package.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">FastifyInstance</li><li class="chip">FastifyServerOptions</li></ul></div>
+    <div>
+        <h5>Signature</h5>
+        <pre>(options?: FastifyServerOptions) =&gt; FastifyInstance&lt;import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify&quot;).FastifyTypeProviderDefault&gt;</pre>
+        <table>
+                <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr>
+                        <td><code>options</code></td>
+                        <td><code>FastifyServerOptions</code></td>
+                        <td>no</td>
+                        <td></td>
+                      </tr>
+                </tbody>
+              </table>
+        <p><strong>Returns:</strong> <code>FastifyInstance&lt;import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify&quot;).FastifyTypeProviderDefault&gt;</code></p>
+      </div>
+    
+  </article>
+            </section>
+            <section>
+              <h3>src/features/host/registerFastifyCorsAsync.ts</h3>
+              <article class="item" id="symbol-registerfastifycorsasync" data-search="registerFastifyCorsAsync  function src/features/host/registerFastifyCorsAsync.ts Register Fastify CORS so consumers do not own the plugin directly. FastifyCorsOptions FastifyInstance (server: FastifyInstance&lt;import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify&quot;).FastifyTypeProviderDefault&gt;, options: FastifyCorsOptions) =&gt; Promise&lt;void&gt;">
+    <h4>registerFastifyCorsAsync</h4>
+    
+    <p class="muted">function • <code>src/features/host/registerFastifyCorsAsync.ts:5:1</code></p>
+    <p>Register Fastify CORS so consumers do not own the plugin directly.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">FastifyCorsOptions</li><li class="chip">FastifyInstance</li></ul></div>
+    <div>
+        <h5>Signature</h5>
+        <pre>(server: FastifyInstance&lt;import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify&quot;).FastifyTypeProviderDefault&gt;, options: FastifyCorsOptions) =&gt; Promise&lt;void&gt;</pre>
+        <table>
+                <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr>
+                        <td><code>options</code></td>
+                        <td><code>FastifyCorsOptions</code></td>
+                        <td>yes</td>
+                        <td></td>
+                      </tr><tr>
+                        <td><code>server</code></td>
+                        <td><code>FastifyInstance&lt;import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify&quot;).FastifyTypeProviderDefault&gt;</code></td>
+                        <td>yes</td>
+                        <td></td>
+                      </tr>
+                </tbody>
+              </table>
+        <p><strong>Returns:</strong> <code>Promise&lt;void&gt;</code></p>
+      </div>
+    
+  </article>
+            </section>
+            <section>
+              <h3>src/features/transport/createFastifyApiAdapter.ts</h3>
+              <article class="item" id="symbol-createfastifyapiadapter" data-search="createFastifyApiAdapter  function src/features/transport/createFastifyApiAdapter.ts Create the Fastify transport mapper for the canonical Ankhorage API runtime. FastifyApiTransportRequest () =&gt; ApiTransportAdapter&lt;FastifyApiTransportRequest, unknown&gt;">
+    <h4>createFastifyApiAdapter</h4>
+    
+    <p class="muted">function • <code>src/features/transport/createFastifyApiAdapter.ts:11:1</code></p>
+    <p>Create the Fastify transport mapper for the canonical Ankhorage API runtime.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">FastifyApiTransportRequest</li></ul></div>
+    <div>
+        <h5>Signature</h5>
+        <pre>() =&gt; ApiTransportAdapter&lt;FastifyApiTransportRequest, unknown&gt;</pre>
+        
+        <p><strong>Returns:</strong> <code>ApiTransportAdapter&lt;FastifyApiTransportRequest, unknown&gt;</code></p>
+      </div>
+    
+  </article>
+            </section>
+            <section>
+              <h3>src/features/transport/registerFastifyApiAsync.ts</h3>
+              <article class="item" id="symbol-registerfastifyapiasync" data-search="registerFastifyApiAsync  function src/features/transport/registerFastifyApiAsync.ts Register every runtime operation as a Fastify route using one shared transport adapter. FastifyInstance FastifyRegisteredOperation RegisterFastifyApiOptions (server: FastifyInstance&lt;import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify&quot;).FastifyTypeProviderDefault&gt;, runtime: ApiRuntime, options?: RegisterFastifyApiOptions) =&gt; Promise&lt;readonly FastifyRegisteredOperation[]&gt;">
+    <h4>registerFastifyApiAsync</h4>
+    
+    <p class="muted">function • <code>src/features/transport/registerFastifyApiAsync.ts:16:1</code></p>
+    <p>Register every runtime operation as a Fastify route using one shared transport adapter.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">FastifyInstance</li><li class="chip">FastifyRegisteredOperation</li><li class="chip">RegisterFastifyApiOptions</li></ul></div>
+    <div>
+        <h5>Signature</h5>
+        <pre>(server: FastifyInstance&lt;import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify&quot;).FastifyTypeProviderDefault&gt;, runtime: ApiRuntime, options?: RegisterFastifyApiOptions) =&gt; Promise&lt;readonly FastifyRegisteredOperation[]&gt;</pre>
+        <table>
+                <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr>
+                        <td><code>options</code></td>
+                        <td><code>RegisterFastifyApiOptions</code></td>
+                        <td>no</td>
+                        <td></td>
+                      </tr><tr>
+                        <td><code>runtime</code></td>
+                        <td><code>ApiRuntime</code></td>
+                        <td>yes</td>
+                        <td></td>
+                      </tr><tr>
+                        <td><code>server</code></td>
+                        <td><code>FastifyInstance&lt;import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify&quot;).FastifyTypeProviderDefault&gt;</code></td>
+                        <td>yes</td>
+                        <td></td>
+                      </tr>
+                </tbody>
+              </table>
+        <p><strong>Returns:</strong> <code>Promise&lt;readonly FastifyRegisteredOperation[]&gt;</code></p>
+      </div>
+    
+  </article>
+            </section>
+            <section>
+              <h3>src/types/fastify.ts</h3>
+              <article class="item" id="symbol-fastifyapitransportrequest" data-search="FastifyApiTransportRequest  type src/types/fastify.ts  FastifyReply FastifyRequest">
+    <h4>FastifyApiTransportRequest</h4>
+    
+    <p class="muted">type • <code>src/types/fastify.ts:18:1</code></p>
+    
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">FastifyReply</li><li class="chip">FastifyRequest</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>reply</code></td>
+            <td>property</td>
+            <td><code>FastifyReply&lt;import(&quot;fastify&quot;).RouteGenericInterface, import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, unknown, import(&quot;fastify&quot;).FastifySchema, import(&quot;fastify&quot;).FastifyTypeProviderDefault, unknown&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>request</code></td>
+            <td>property</td>
+            <td><code>FastifyRequest&lt;import(&quot;fastify&quot;).RouteGenericInterface, import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;fastify&quot;).FastifySchema, import(&quot;fastify&quot;).FastifyTypeProviderDefault, unknown, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify/types/type-provider&quot;).ResolveFastifyRequestType&lt;import(&quot;fastify&quot;).FastifyTypeProviderDefault, import(&quot;fastify&quot;).FastifySchema, import(&quot;fastify&quot;).RouteGenericInterface&gt;&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-fastifyregisteredoperation" data-search="FastifyRegisteredOperation  type src/types/fastify.ts ">
+    <h4>FastifyRegisteredOperation</h4>
+    
+    <p class="muted">type • <code>src/types/fastify.ts:27:1</code></p>
+    
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>binding</code></td>
+            <td>property</td>
+            <td><code>ApiOperationBinding</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>path</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-registerfastifyapioptions" data-search="RegisterFastifyApiOptions  type src/types/fastify.ts ">
+    <h4>RegisterFastifyApiOptions</h4>
+    
+    <p class="muted">type • <code>src/types/fastify.ts:23:1</code></p>
+    
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>prefix</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>no</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article>
+            </section>
+    </section>
+    <section class="panel">
+      <h2>Component registry</h2>
+      <p class="empty">No components were detected.</p>
+    </section>
+    <section class="panel">
+      <h2>Diagrams</h2>
+      <article class="item" data-search="Architecture overview diagrams/architecture-overview.mmd">
+    <h3>Architecture overview</h3>
+    <p class="muted"><code>diagrams/architecture-overview.mmd</code></p>
+    <div class="mermaid">graph TD
+  package__ankhorage_api_fastify[&quot;@ankhorage/api-fastify&quot;]
+  entrypoint_src_apiFastify_ts[&quot;src/apiFastify.ts&quot;]
+  package__ankhorage_api_fastify --&gt; entrypoint_src_apiFastify_ts
+  module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_examples_basic_usage_index_ts
+  module_examples_basic_usage_index_ts --&gt; module_src_apiFastify_ts
+  module_package_json[&quot;package.json&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_package_json
+  module_paradox_config_ts[&quot;paradox.config.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_paradox_config_ts
+  module_src_apiFastify_test_ts[&quot;src/apiFastify.test.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_apiFastify_test_ts
+  module_src_apiFastify_test_ts --&gt; module_package_json
+  module_src_apiFastify_test_ts --&gt; module_src_apiFastify_ts
+  module_src_apiFastify_ts[&quot;src/apiFastify.ts&quot;]
+  module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_capabilities_index_test_ts
+  module_src_capabilities_index_test_ts --&gt; module_src_capabilities_index_ts
+  module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_capabilities_index_ts
+  module_src_cli_commands_routes_ts[&quot;src/cli/commands/routes.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_cli_commands_routes_ts
+  module_src_cli_createApiAdapterCliProvider_test_ts[&quot;src/cli/createApiAdapterCliProvider.test.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_cli_createApiAdapterCliProvider_test_ts
+  module_src_cli_createApiAdapterCliProvider_test_ts --&gt; module_src_capabilities_index_ts
+  module_src_cli_createApiAdapterCliProvider_test_ts --&gt; module_src_cli_createApiAdapterCliProvider_ts
+  module_src_cli_createApiAdapterCliProvider_ts[&quot;src/cli/createApiAdapterCliProvider.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_cli_createApiAdapterCliProvider_ts
+  module_src_cli_createApiAdapterCliProvider_ts --&gt; module_package_json
+  module_src_cli_createApiAdapterCliProvider_ts --&gt; module_src_capabilities_index_ts
+  module_src_cli_createApiAdapterCliProvider_ts --&gt; module_src_cli_commands_routes_ts
+  module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_cli_index_ts
+  module_src_cli_index_ts --&gt; module_src_cli_createApiAdapterCliProvider_ts
+  module_src_features_host_createFastifyApiServer_ts[&quot;src/features/host/createFastifyApiServer.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_host_createFastifyApiServer_ts
+  module_src_features_host_registerFastifyCorsAsync_ts[&quot;src/features/host/registerFastifyCorsAsync.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_host_registerFastifyCorsAsync_ts
+  module_src_features_transport_createFastifyApiAdapter_ts[&quot;src/features/transport/createFastifyApiAdapter.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_transport_createFastifyApiAdapter_ts
+  module_src_features_transport_createFastifyApiAdapter_ts --&gt; module_src_types_fastify_ts
+  module_src_features_transport_registerFastifyApiAsync_test_ts[&quot;src/features/transport/registerFastifyApiAsync.test.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_transport_registerFastifyApiAsync_test_ts
+  module_src_features_transport_registerFastifyApiAsync_test_ts --&gt; module_src_features_host_createFastifyApiServer_ts
+  module_src_features_transport_registerFastifyApiAsync_test_ts --&gt; module_src_features_transport_registerFastifyApiAsync_ts
+  module_src_features_transport_registerFastifyApiAsync_ts[&quot;src/features/transport/registerFastifyApiAsync.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_transport_registerFastifyApiAsync_ts
+  module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_features_transport_createFastifyApiAdapter_ts
+  module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_types_fastify_ts
+  module_src_types_fastify_ts[&quot;src/types/fastify.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_types_fastify_ts
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>graph TD
+  package__ankhorage_api_fastify[&quot;@ankhorage/api-fastify&quot;]
+  entrypoint_src_apiFastify_ts[&quot;src/apiFastify.ts&quot;]
+  package__ankhorage_api_fastify --&gt; entrypoint_src_apiFastify_ts
+  module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_examples_basic_usage_index_ts
+  module_examples_basic_usage_index_ts --&gt; module_src_apiFastify_ts
+  module_package_json[&quot;package.json&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_package_json
+  module_paradox_config_ts[&quot;paradox.config.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_paradox_config_ts
+  module_src_apiFastify_test_ts[&quot;src/apiFastify.test.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_apiFastify_test_ts
+  module_src_apiFastify_test_ts --&gt; module_package_json
+  module_src_apiFastify_test_ts --&gt; module_src_apiFastify_ts
+  module_src_apiFastify_ts[&quot;src/apiFastify.ts&quot;]
+  module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_capabilities_index_test_ts
+  module_src_capabilities_index_test_ts --&gt; module_src_capabilities_index_ts
+  module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_capabilities_index_ts
+  module_src_cli_commands_routes_ts[&quot;src/cli/commands/routes.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_cli_commands_routes_ts
+  module_src_cli_createApiAdapterCliProvider_test_ts[&quot;src/cli/createApiAdapterCliProvider.test.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_cli_createApiAdapterCliProvider_test_ts
+  module_src_cli_createApiAdapterCliProvider_test_ts --&gt; module_src_capabilities_index_ts
+  module_src_cli_createApiAdapterCliProvider_test_ts --&gt; module_src_cli_createApiAdapterCliProvider_ts
+  module_src_cli_createApiAdapterCliProvider_ts[&quot;src/cli/createApiAdapterCliProvider.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_cli_createApiAdapterCliProvider_ts
+  module_src_cli_createApiAdapterCliProvider_ts --&gt; module_package_json
+  module_src_cli_createApiAdapterCliProvider_ts --&gt; module_src_capabilities_index_ts
+  module_src_cli_createApiAdapterCliProvider_ts --&gt; module_src_cli_commands_routes_ts
+  module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_cli_index_ts
+  module_src_cli_index_ts --&gt; module_src_cli_createApiAdapterCliProvider_ts
+  module_src_features_host_createFastifyApiServer_ts[&quot;src/features/host/createFastifyApiServer.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_host_createFastifyApiServer_ts
+  module_src_features_host_registerFastifyCorsAsync_ts[&quot;src/features/host/registerFastifyCorsAsync.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_host_registerFastifyCorsAsync_ts
+  module_src_features_transport_createFastifyApiAdapter_ts[&quot;src/features/transport/createFastifyApiAdapter.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_transport_createFastifyApiAdapter_ts
+  module_src_features_transport_createFastifyApiAdapter_ts --&gt; module_src_types_fastify_ts
+  module_src_features_transport_registerFastifyApiAsync_test_ts[&quot;src/features/transport/registerFastifyApiAsync.test.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_transport_registerFastifyApiAsync_test_ts
+  module_src_features_transport_registerFastifyApiAsync_test_ts --&gt; module_src_features_host_createFastifyApiServer_ts
+  module_src_features_transport_registerFastifyApiAsync_test_ts --&gt; module_src_features_transport_registerFastifyApiAsync_ts
+  module_src_features_transport_registerFastifyApiAsync_ts[&quot;src/features/transport/registerFastifyApiAsync.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_transport_registerFastifyApiAsync_ts
+  module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_features_transport_createFastifyApiAdapter_ts
+  module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_types_fastify_ts
+  module_src_types_fastify_ts[&quot;src/types/fastify.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_types_fastify_ts
+</pre>
+    </details>
+  </article><article class="item" data-search="Module relationships diagrams/module-relationships.mmd">
+    <h3>Module relationships</h3>
+    <p class="muted"><code>diagrams/module-relationships.mmd</code></p>
+    <div class="mermaid">graph LR
+  module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
+  module_package_json[&quot;package.json&quot;]
+  module_paradox_config_ts[&quot;paradox.config.ts&quot;]
+  module_src_apiFastify_test_ts[&quot;src/apiFastify.test.ts&quot;]
+  module_src_apiFastify_ts[&quot;src/apiFastify.ts&quot;]
+  module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
+  module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
+  module_src_cli_commands_routes_ts[&quot;src/cli/commands/routes.ts&quot;]
+  module_src_cli_createApiAdapterCliProvider_test_ts[&quot;src/cli/createApiAdapterCliProvider.test.ts&quot;]
+  module_src_cli_createApiAdapterCliProvider_ts[&quot;src/cli/createApiAdapterCliProvider.ts&quot;]
+  module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
+  module_src_features_host_createFastifyApiServer_ts[&quot;src/features/host/createFastifyApiServer.ts&quot;]
+  module_src_features_host_registerFastifyCorsAsync_ts[&quot;src/features/host/registerFastifyCorsAsync.ts&quot;]
+  module_src_features_transport_createFastifyApiAdapter_ts[&quot;src/features/transport/createFastifyApiAdapter.ts&quot;]
+  module_src_features_transport_registerFastifyApiAsync_test_ts[&quot;src/features/transport/registerFastifyApiAsync.test.ts&quot;]
+  module_src_features_transport_registerFastifyApiAsync_ts[&quot;src/features/transport/registerFastifyApiAsync.ts&quot;]
+  module_src_types_fastify_ts[&quot;src/types/fastify.ts&quot;]
+  module_examples_basic_usage_index_ts --&gt; module_src_apiFastify_ts
+  module_src_apiFastify_test_ts --&gt; module_package_json
+  module_src_apiFastify_test_ts --&gt; module_src_apiFastify_ts
+  module_src_capabilities_index_test_ts --&gt; module_src_capabilities_index_ts
+  module_src_cli_createApiAdapterCliProvider_test_ts --&gt; module_src_capabilities_index_ts
+  module_src_cli_createApiAdapterCliProvider_test_ts --&gt; module_src_cli_createApiAdapterCliProvider_ts
+  module_src_cli_createApiAdapterCliProvider_ts --&gt; module_package_json
+  module_src_cli_createApiAdapterCliProvider_ts --&gt; module_src_capabilities_index_ts
+  module_src_cli_createApiAdapterCliProvider_ts --&gt; module_src_cli_commands_routes_ts
+  module_src_cli_index_ts --&gt; module_src_cli_createApiAdapterCliProvider_ts
+  module_src_features_transport_createFastifyApiAdapter_ts --&gt; module_src_types_fastify_ts
+  module_src_features_transport_registerFastifyApiAsync_test_ts --&gt; module_src_features_host_createFastifyApiServer_ts
+  module_src_features_transport_registerFastifyApiAsync_test_ts --&gt; module_src_features_transport_registerFastifyApiAsync_ts
+  module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_features_transport_createFastifyApiAdapter_ts
+  module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_types_fastify_ts
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>graph LR
+  module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
+  module_package_json[&quot;package.json&quot;]
+  module_paradox_config_ts[&quot;paradox.config.ts&quot;]
+  module_src_apiFastify_test_ts[&quot;src/apiFastify.test.ts&quot;]
+  module_src_apiFastify_ts[&quot;src/apiFastify.ts&quot;]
+  module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
+  module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
+  module_src_cli_commands_routes_ts[&quot;src/cli/commands/routes.ts&quot;]
+  module_src_cli_createApiAdapterCliProvider_test_ts[&quot;src/cli/createApiAdapterCliProvider.test.ts&quot;]
+  module_src_cli_createApiAdapterCliProvider_ts[&quot;src/cli/createApiAdapterCliProvider.ts&quot;]
+  module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
+  module_src_features_host_createFastifyApiServer_ts[&quot;src/features/host/createFastifyApiServer.ts&quot;]
+  module_src_features_host_registerFastifyCorsAsync_ts[&quot;src/features/host/registerFastifyCorsAsync.ts&quot;]
+  module_src_features_transport_createFastifyApiAdapter_ts[&quot;src/features/transport/createFastifyApiAdapter.ts&quot;]
+  module_src_features_transport_registerFastifyApiAsync_test_ts[&quot;src/features/transport/registerFastifyApiAsync.test.ts&quot;]
+  module_src_features_transport_registerFastifyApiAsync_ts[&quot;src/features/transport/registerFastifyApiAsync.ts&quot;]
+  module_src_types_fastify_ts[&quot;src/types/fastify.ts&quot;]
+  module_examples_basic_usage_index_ts --&gt; module_src_apiFastify_ts
+  module_src_apiFastify_test_ts --&gt; module_package_json
+  module_src_apiFastify_test_ts --&gt; module_src_apiFastify_ts
+  module_src_capabilities_index_test_ts --&gt; module_src_capabilities_index_ts
+  module_src_cli_createApiAdapterCliProvider_test_ts --&gt; module_src_capabilities_index_ts
+  module_src_cli_createApiAdapterCliProvider_test_ts --&gt; module_src_cli_createApiAdapterCliProvider_ts
+  module_src_cli_createApiAdapterCliProvider_ts --&gt; module_package_json
+  module_src_cli_createApiAdapterCliProvider_ts --&gt; module_src_capabilities_index_ts
+  module_src_cli_createApiAdapterCliProvider_ts --&gt; module_src_cli_commands_routes_ts
+  module_src_cli_index_ts --&gt; module_src_cli_createApiAdapterCliProvider_ts
+  module_src_features_transport_createFastifyApiAdapter_ts --&gt; module_src_types_fastify_ts
+  module_src_features_transport_registerFastifyApiAsync_test_ts --&gt; module_src_features_host_createFastifyApiServer_ts
+  module_src_features_transport_registerFastifyApiAsync_test_ts --&gt; module_src_features_transport_registerFastifyApiAsync_ts
+  module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_features_transport_createFastifyApiAdapter_ts
+  module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_types_fastify_ts
+</pre>
+    </details>
+  </article><article class="item" data-search="Export graph diagrams/export-graph.mmd">
+    <h3>Export graph</h3>
+    <p class="muted"><code>diagrams/export-graph.mmd</code></p>
+    <div class="mermaid">graph LR
+  module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
+  module_package_json[&quot;package.json&quot;]
+  module_paradox_config_ts[&quot;paradox.config.ts&quot;]
+  module_src_apiFastify_test_ts[&quot;src/apiFastify.test.ts&quot;]
+  module_src_apiFastify_ts[&quot;src/apiFastify.ts&quot;]
+  module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
+  module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
+  module_src_cli_commands_routes_ts[&quot;src/cli/commands/routes.ts&quot;]
+  module_src_cli_createApiAdapterCliProvider_test_ts[&quot;src/cli/createApiAdapterCliProvider.test.ts&quot;]
+  module_src_cli_createApiAdapterCliProvider_ts[&quot;src/cli/createApiAdapterCliProvider.ts&quot;]
+  module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
+  module_src_features_host_createFastifyApiServer_ts[&quot;src/features/host/createFastifyApiServer.ts&quot;]
+  module_src_features_host_registerFastifyCorsAsync_ts[&quot;src/features/host/registerFastifyCorsAsync.ts&quot;]
+  module_src_features_transport_createFastifyApiAdapter_ts[&quot;src/features/transport/createFastifyApiAdapter.ts&quot;]
+  module_src_features_transport_registerFastifyApiAsync_test_ts[&quot;src/features/transport/registerFastifyApiAsync.test.ts&quot;]
+  module_src_features_transport_registerFastifyApiAsync_ts[&quot;src/features/transport/registerFastifyApiAsync.ts&quot;]
+  module_src_types_fastify_ts[&quot;src/types/fastify.ts&quot;]
+  export_createFastifyApiAdapter[&quot;createFastifyApiAdapter&quot;]
+  module_src_features_transport_createFastifyApiAdapter_ts --&gt; export_createFastifyApiAdapter
+  export_createFastifyApiAdapter -.-&gt; export_FastifyApiTransportRequest
+  export_createFastifyApiServer[&quot;createFastifyApiServer&quot;]
+  module_src_features_host_createFastifyApiServer_ts --&gt; export_createFastifyApiServer
+  export_createFastifyApiServer -.-&gt; export_FastifyInstance
+  export_createFastifyApiServer -.-&gt; export_FastifyServerOptions
+  export_FastifyApiTransportRequest[&quot;FastifyApiTransportRequest&quot;]
+  module_src_types_fastify_ts --&gt; export_FastifyApiTransportRequest
+  export_FastifyApiTransportRequest -.-&gt; export_FastifyReply
+  export_FastifyApiTransportRequest -.-&gt; export_FastifyRequest
+  export_FastifyCorsOptions[&quot;FastifyCorsOptions&quot;]
+  module_node_modules__fastify_cors_types_index_d_ts --&gt; export_FastifyCorsOptions
+  export_FastifyInstance[&quot;FastifyInstance&quot;]
+  module_node_modules_fastify_types_instance_d_ts --&gt; export_FastifyInstance
+  export_FastifyInstance -.-&gt; export_FastifyReply
+  export_FastifyInstance -.-&gt; export_FastifyRequest
+  export_FastifyRegisteredOperation[&quot;FastifyRegisteredOperation&quot;]
+  module_src_types_fastify_ts --&gt; export_FastifyRegisteredOperation
+  export_FastifyReply[&quot;FastifyReply&quot;]
+  module_node_modules_fastify_types_reply_d_ts --&gt; export_FastifyReply
+  export_FastifyReply -.-&gt; export_FastifyInstance
+  export_FastifyReply -.-&gt; export_FastifyRequest
+  export_FastifyRequest[&quot;FastifyRequest&quot;]
+  module_node_modules_fastify_types_request_d_ts --&gt; export_FastifyRequest
+  export_FastifyRequest -.-&gt; export_FastifyInstance
+  export_FastifyServerOptions[&quot;FastifyServerOptions&quot;]
+  module_node_modules_fastify_fastify_d_ts --&gt; export_FastifyServerOptions
+  export_FastifyServerOptions -.-&gt; export_FastifyInstance
+  export_FastifyServerOptions -.-&gt; export_FastifyReply
+  export_FastifyServerOptions -.-&gt; export_FastifyRequest
+  export_registerFastifyApiAsync[&quot;registerFastifyApiAsync&quot;]
+  module_src_features_transport_registerFastifyApiAsync_ts --&gt; export_registerFastifyApiAsync
+  export_registerFastifyApiAsync -.-&gt; export_FastifyInstance
+  export_registerFastifyApiAsync -.-&gt; export_FastifyRegisteredOperation
+  export_registerFastifyApiAsync -.-&gt; export_RegisterFastifyApiOptions
+  export_RegisterFastifyApiOptions[&quot;RegisterFastifyApiOptions&quot;]
+  module_src_types_fastify_ts --&gt; export_RegisterFastifyApiOptions
+  export_registerFastifyCorsAsync[&quot;registerFastifyCorsAsync&quot;]
+  module_src_features_host_registerFastifyCorsAsync_ts --&gt; export_registerFastifyCorsAsync
+  export_registerFastifyCorsAsync -.-&gt; export_FastifyCorsOptions
+  export_registerFastifyCorsAsync -.-&gt; export_FastifyInstance
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>graph LR
+  module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
+  module_package_json[&quot;package.json&quot;]
+  module_paradox_config_ts[&quot;paradox.config.ts&quot;]
+  module_src_apiFastify_test_ts[&quot;src/apiFastify.test.ts&quot;]
+  module_src_apiFastify_ts[&quot;src/apiFastify.ts&quot;]
+  module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
+  module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
+  module_src_cli_commands_routes_ts[&quot;src/cli/commands/routes.ts&quot;]
+  module_src_cli_createApiAdapterCliProvider_test_ts[&quot;src/cli/createApiAdapterCliProvider.test.ts&quot;]
+  module_src_cli_createApiAdapterCliProvider_ts[&quot;src/cli/createApiAdapterCliProvider.ts&quot;]
+  module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
+  module_src_features_host_createFastifyApiServer_ts[&quot;src/features/host/createFastifyApiServer.ts&quot;]
+  module_src_features_host_registerFastifyCorsAsync_ts[&quot;src/features/host/registerFastifyCorsAsync.ts&quot;]
+  module_src_features_transport_createFastifyApiAdapter_ts[&quot;src/features/transport/createFastifyApiAdapter.ts&quot;]
+  module_src_features_transport_registerFastifyApiAsync_test_ts[&quot;src/features/transport/registerFastifyApiAsync.test.ts&quot;]
+  module_src_features_transport_registerFastifyApiAsync_ts[&quot;src/features/transport/registerFastifyApiAsync.ts&quot;]
+  module_src_types_fastify_ts[&quot;src/types/fastify.ts&quot;]
+  export_createFastifyApiAdapter[&quot;createFastifyApiAdapter&quot;]
+  module_src_features_transport_createFastifyApiAdapter_ts --&gt; export_createFastifyApiAdapter
+  export_createFastifyApiAdapter -.-&gt; export_FastifyApiTransportRequest
+  export_createFastifyApiServer[&quot;createFastifyApiServer&quot;]
+  module_src_features_host_createFastifyApiServer_ts --&gt; export_createFastifyApiServer
+  export_createFastifyApiServer -.-&gt; export_FastifyInstance
+  export_createFastifyApiServer -.-&gt; export_FastifyServerOptions
+  export_FastifyApiTransportRequest[&quot;FastifyApiTransportRequest&quot;]
+  module_src_types_fastify_ts --&gt; export_FastifyApiTransportRequest
+  export_FastifyApiTransportRequest -.-&gt; export_FastifyReply
+  export_FastifyApiTransportRequest -.-&gt; export_FastifyRequest
+  export_FastifyCorsOptions[&quot;FastifyCorsOptions&quot;]
+  module_node_modules__fastify_cors_types_index_d_ts --&gt; export_FastifyCorsOptions
+  export_FastifyInstance[&quot;FastifyInstance&quot;]
+  module_node_modules_fastify_types_instance_d_ts --&gt; export_FastifyInstance
+  export_FastifyInstance -.-&gt; export_FastifyReply
+  export_FastifyInstance -.-&gt; export_FastifyRequest
+  export_FastifyRegisteredOperation[&quot;FastifyRegisteredOperation&quot;]
+  module_src_types_fastify_ts --&gt; export_FastifyRegisteredOperation
+  export_FastifyReply[&quot;FastifyReply&quot;]
+  module_node_modules_fastify_types_reply_d_ts --&gt; export_FastifyReply
+  export_FastifyReply -.-&gt; export_FastifyInstance
+  export_FastifyReply -.-&gt; export_FastifyRequest
+  export_FastifyRequest[&quot;FastifyRequest&quot;]
+  module_node_modules_fastify_types_request_d_ts --&gt; export_FastifyRequest
+  export_FastifyRequest -.-&gt; export_FastifyInstance
+  export_FastifyServerOptions[&quot;FastifyServerOptions&quot;]
+  module_node_modules_fastify_fastify_d_ts --&gt; export_FastifyServerOptions
+  export_FastifyServerOptions -.-&gt; export_FastifyInstance
+  export_FastifyServerOptions -.-&gt; export_FastifyReply
+  export_FastifyServerOptions -.-&gt; export_FastifyRequest
+  export_registerFastifyApiAsync[&quot;registerFastifyApiAsync&quot;]
+  module_src_features_transport_registerFastifyApiAsync_ts --&gt; export_registerFastifyApiAsync
+  export_registerFastifyApiAsync -.-&gt; export_FastifyInstance
+  export_registerFastifyApiAsync -.-&gt; export_FastifyRegisteredOperation
+  export_registerFastifyApiAsync -.-&gt; export_RegisterFastifyApiOptions
+  export_RegisterFastifyApiOptions[&quot;RegisterFastifyApiOptions&quot;]
+  module_src_types_fastify_ts --&gt; export_RegisterFastifyApiOptions
+  export_registerFastifyCorsAsync[&quot;registerFastifyCorsAsync&quot;]
+  module_src_features_host_registerFastifyCorsAsync_ts --&gt; export_registerFastifyCorsAsync
+  export_registerFastifyCorsAsync -.-&gt; export_FastifyCorsOptions
+  export_registerFastifyCorsAsync -.-&gt; export_FastifyInstance
+</pre>
+    </details>
+  </article><article class="item" data-search="createFastifyApiServer sequence diagrams/sequences/create-fastify-api-server.mmd">
+    <h3>createFastifyApiServer sequence</h3>
+    <p class="muted"><code>diagrams/sequences/create-fastify-api-server.mmd</code></p>
+    <div class="mermaid">sequenceDiagram
+  participant participant_createFastifyApiServer as createFastifyApiServer
+  participant participant_Fastify as Fastify
+  participant_createFastifyApiServer-&gt;&gt;participant_Fastify: Fastify()
+  participant_Fastify--&gt;&gt;participant_createFastifyApiServer: return
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>sequenceDiagram
+  participant participant_createFastifyApiServer as createFastifyApiServer
+  participant participant_Fastify as Fastify
+  participant_createFastifyApiServer-&gt;&gt;participant_Fastify: Fastify()
+  participant_Fastify--&gt;&gt;participant_createFastifyApiServer: return
+</pre>
+    </details>
+  </article><article class="item" data-search="registerFastifyApiAsync sequence diagrams/sequences/register-fastify-api-async.mmd">
+    <h3>registerFastifyApiAsync sequence</h3>
+    <p class="muted"><code>diagrams/sequences/register-fastify-api-async.mmd</code></p>
+    <div class="mermaid">sequenceDiagram
+  participant participant_createFastifyApiAdapter as createFastifyApiAdapter
+  participant participant_registerFastifyApiAsync as registerFastifyApiAsync
+  participant_registerFastifyApiAsync-&gt;&gt;participant_createFastifyApiAdapter: createFastifyApiAdapter()
+  participant_createFastifyApiAdapter--&gt;&gt;participant_registerFastifyApiAsync: return
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>sequenceDiagram
+  participant participant_createFastifyApiAdapter as createFastifyApiAdapter
+  participant participant_registerFastifyApiAsync as registerFastifyApiAsync
+  participant_registerFastifyApiAsync-&gt;&gt;participant_createFastifyApiAdapter: createFastifyApiAdapter()
+  participant_createFastifyApiAdapter--&gt;&gt;participant_registerFastifyApiAsync: return
+</pre>
+    </details>
+  </article>
+    </section>
+        </section>
+        <section id="view-src-cli-commands-routes-ts" class="view" data-view="src/cli/commands/routes.ts" hidden>
+    <section class="panel">
+      <h2>src/cli/commands/routes.ts</h2>
+      <article class="item" data-search="runRoutesCommandAsync src/cli/commands/routes.ts Inspect the fastify route projection for one portable internal REST API definition.">
+    <h3>runRoutesCommandAsync</h3>
+    <p class="muted"><code>src/cli/commands/routes.ts:8:14</code></p>
+    <p>Inspect the fastify route projection for one portable internal REST API definition.</p>
+    
+  </article>
+    </section>
+  </section><section id="view-src-cli-createapiadaptercliprovider-ts" class="view" data-view="src/cli/createApiAdapterCliProvider.ts" hidden>
+    <section class="panel">
+      <h2>src/cli/createApiAdapterCliProvider.ts</h2>
+      <article class="item" data-search="createApiAdapterCliProvider src/cli/createApiAdapterCliProvider.ts Create the Ankh provider for api-fastify adapter inspection commands.">
+    <h3>createApiAdapterCliProvider</h3>
+    <p class="muted"><code>src/cli/createApiAdapterCliProvider.ts:9:1</code></p>
+    <p>Create the Ankh provider for api-fastify adapter inspection commands.</p>
+    
+  </article>
+    </section>
+  </section><section id="view-src-features-host-createfastifyapiserver-ts" class="view" data-view="src/features/host/createFastifyApiServer.ts" hidden>
+    <section class="panel">
+      <h2>src/features/host/createFastifyApiServer.ts</h2>
+      <article class="item" data-search="createFastifyApiServer src/features/host/createFastifyApiServer.ts Create the Fastify server owned by the Ankhorage Fastify API adapter package.">
+    <h3>createFastifyApiServer</h3>
+    <p class="muted"><code>src/features/host/createFastifyApiServer.ts:7:1</code></p>
+    <p>Create the Fastify server owned by the Ankhorage Fastify API adapter package.</p>
+    
+  </article>
+    </section>
+  </section><section id="view-src-features-host-registerfastifycorsasync-ts" class="view" data-view="src/features/host/registerFastifyCorsAsync.ts" hidden>
+    <section class="panel">
+      <h2>src/features/host/registerFastifyCorsAsync.ts</h2>
+      <article class="item" data-search="registerFastifyCorsAsync src/features/host/registerFastifyCorsAsync.ts Register Fastify CORS so consumers do not own the plugin directly.">
+    <h3>registerFastifyCorsAsync</h3>
+    <p class="muted"><code>src/features/host/registerFastifyCorsAsync.ts:5:1</code></p>
+    <p>Register Fastify CORS so consumers do not own the plugin directly.</p>
+    
+  </article>
+    </section>
+  </section><section id="view-src-features-transport-createfastifyapiadapter-ts" class="view" data-view="src/features/transport/createFastifyApiAdapter.ts" hidden>
+    <section class="panel">
+      <h2>src/features/transport/createFastifyApiAdapter.ts</h2>
+      <article class="item" data-search="createFastifyApiAdapter src/features/transport/createFastifyApiAdapter.ts Create the Fastify transport mapper for the canonical Ankhorage API runtime.">
+    <h3>createFastifyApiAdapter</h3>
+    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:11:1</code></p>
+    <p>Create the Fastify transport mapper for the canonical Ankhorage API runtime.</p>
+    
+  </article><article class="item" data-search="toApiRequest src/features/transport/createFastifyApiAdapter.ts Normalize one Fastify request into the framework-neutral API request contract.">
+    <h3>toApiRequest</h3>
+    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:24:1</code></p>
+    <p>Normalize one Fastify request into the framework-neutral API request contract.</p>
+    
+  </article><article class="item" data-search="sendApiResponse src/features/transport/createFastifyApiAdapter.ts Send one framework-neutral API response through the original Fastify reply object.">
+    <h3>sendApiResponse</h3>
+    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:41:1</code></p>
+    <p>Send one framework-neutral API response through the original Fastify reply object.</p>
+    
+  </article><article class="item" data-search="readStringRecord src/features/transport/createFastifyApiAdapter.ts Normalize unknown route params into string values.">
+    <h3>readStringRecord</h3>
+    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:55:1</code></p>
+    <p>Normalize unknown route params into string values.</p>
+    
+  </article><article class="item" data-search="readQueryRecord src/features/transport/createFastifyApiAdapter.ts Normalize Fastify query values to the portable API query contract.">
+    <h3>readQueryRecord</h3>
+    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:65:1</code></p>
+    <p>Normalize Fastify query values to the portable API query contract.</p>
+    
+  </article><article class="item" data-search="readHeaders src/features/transport/createFastifyApiAdapter.ts Normalize Fastify headers into one stable string-valued record.">
+    <h3>readHeaders</h3>
+    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:86:1</code></p>
+    <p>Normalize Fastify headers into one stable string-valued record.</p>
+    
+  </article><article class="item" data-search="isRecord src/features/transport/createFastifyApiAdapter.ts Detect a record at the external transport boundary.">
+    <h3>isRecord</h3>
+    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:99:1</code></p>
+    <p>Detect a record at the external transport boundary.</p>
+    
+  </article>
+    </section>
+  </section><section id="view-src-features-transport-registerfastifyapiasync-ts" class="view" data-view="src/features/transport/registerFastifyApiAsync.ts" hidden>
+    <section class="panel">
+      <h2>src/features/transport/registerFastifyApiAsync.ts</h2>
+      <article class="item" data-search="registerFastifyApiAsync src/features/transport/registerFastifyApiAsync.ts Register every runtime operation as a Fastify route using one shared transport adapter.">
+    <h3>registerFastifyApiAsync</h3>
+    <p class="muted"><code>src/features/transport/registerFastifyApiAsync.ts:16:1</code></p>
+    <p>Register every runtime operation as a Fastify route using one shared transport adapter.</p>
+    
+  </article><article class="item" data-search="toFastifyMethod src/features/transport/registerFastifyApiAsync.ts Map one portable HTTP method onto the Fastify method union.">
+    <h3>toFastifyMethod</h3>
+    <p class="muted"><code>src/features/transport/registerFastifyApiAsync.ts:43:1</code></p>
+    <p>Map one portable HTTP method onto the Fastify method union.</p>
+    
+  </article><article class="item" data-search="joinPrefix src/features/transport/registerFastifyApiAsync.ts Prefix one generated route without duplicating slash separators.">
+    <h3>joinPrefix</h3>
+    <p class="muted"><code>src/features/transport/registerFastifyApiAsync.ts:61:1</code></p>
+    <p>Prefix one generated route without duplicating slash separators.</p>
+    
+  </article>
+    </section>
+  </section>
+      </main>
+    </div>
+    <script>
+      const search = document.getElementById('search');
+      const navButtons = Array.from(document.querySelectorAll('[data-target]'));
+      const views = Array.from(document.querySelectorAll('[data-view]'));
+
+      function getActiveView() {
+        return document.querySelector('[data-view]:not([hidden])');
+      }
+
+      function applySearch() {
+        const value = search?.value.trim().toLowerCase() || '';
+        const activeView = getActiveView();
+        const items = Array.from(activeView?.querySelectorAll('[data-search]') || []);
+
+        for (const item of items) {
+          const haystack = (item.getAttribute('data-search') || '').toLowerCase();
+          item.style.display = value === '' || haystack.includes(value) ? '' : 'none';
+        }
+      }
+
+      for (const button of navButtons) {
+        button.addEventListener('click', () => {
+          const target = button.getAttribute('data-target');
+
+          for (const view of views) {
+            view.hidden = view.getAttribute('data-view') !== target;
+          }
+
+          for (const item of navButtons) {
+            item.setAttribute('aria-current', item === button ? 'page' : 'false');
+          }
+
+          if (search) search.value = '';
+          applySearch();
+        });
+      }
+
+      search?.addEventListener('input', applySearch);
+    </script>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

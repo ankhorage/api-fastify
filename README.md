@@ -3,6 +3,65 @@
 
 # @ankhorage/api-fastify
 
+![license: MIT](././paradox/badges/license.svg) ![npm: v0.1.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![paradox: canonical](././paradox/badges/docs.svg)
+
 Fastify transport adapter and host integration for the Ankhorage API runtime.
 
-It maps Fastify requests/replies onto `@ankhorage/api`, registers runtime operation bindings as Fastify routes, and owns Fastify server/CORS integration for consumers.
+## Usage
+
+### CLI
+
+Ankhorage packages expose their command-line interface through `ankh`. Use `ankh --help` to discover available package commands, or run a package command with `--help` for package-specific usage.
+
+```zsh
+# Install the Ankhorage CLI
+bun add --global @ankhorage/ankh
+
+# Show usage information for api-fastify
+ankh api-fastify --help
+```
+
+### Basic Usage
+
+Create a framework-neutral API runtime and expose it through Fastify without moving application
+handlers into Fastify request/reply code.
+
+```ts
+const runtime = createApiRuntime({
+  definition: {
+    id: "health-api",
+    origin: "internal",
+    protocol: "rest",
+    basePath: "/api",
+    endpoints: {
+      health: {
+        id: "health",
+        kind: "http",
+        operations: {
+          "health.read": {
+            id: "health.read",
+            protocol: "http",
+            intent: "read",
+            method: "GET",
+            path: "/health",
+          },
+        },
+      },
+    },
+  },
+  handlers: {
+    "health.read": () => ({ body: { ok: true } }),
+  },
+});
+```
+
+## Generated documentation
+
+- [Interactive documentation app](././paradox/index.html)
+- [Public API reference](././paradox/exports.md)
+- [Component registry](././paradox/components.md)
+- [Architecture overview](././paradox/diagrams/architecture-overview.mmd)
+- [Module relationships](././paradox/diagrams/module-relationships.mmd)
+- [Export graph](././paradox/diagrams/export-graph.mmd)
+- [createFastifyApiServer sequence](././paradox/diagrams/sequences/create-fastify-api-server.mmd)
+- [registerFastifyApiAsync sequence](././paradox/diagrams/sequences/register-fastify-api-async.mmd)

@@ -1,6 +1,6 @@
 {
   "name": "@ankhorage/api-fastify",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "description": "Fastify transport adapter and host integration for the Ankhorage API runtime.",
   "license": "MIT",
