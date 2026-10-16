@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.1.0",
+      "value": "v0.1.1",
       "color": "cb3837"
     },
     {
@@ -517,7 +517,7 @@
       "signatures": [],
       "members": [
         {
-          "name": "__@asyncDispose@1446",
+          "name": "__@asyncDispose@1486",
           "kind": "method",
           "type": "() => Promise<undefined>",
           "required": true,
