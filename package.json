@@ -67,9 +67,10 @@
     "knip:check": "ankhorage-knip"
   },
   "dependencies": {
-    "@ankhorage/api": "^0.2.0",
+    "@ankhorage/api": "^0.3.1",
     "@ankhorage/ankh": "^0.12.0",
-    "@ankhorage/contracts": "^24.1.0",
+    "@ankhorage/capability": "^0.2.1",
+    "@ankhorage/contracts": "^26.0.0",
     "@fastify/cors": "^11.3.0",
     "fastify": "^5.12.5"
   },
