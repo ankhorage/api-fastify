@@ -13,9 +13,12 @@ graph LR
   module_src_features_host_createFastifyApiServer_ts["src/features/host/createFastifyApiServer.ts"]
   module_src_features_host_registerFastifyCorsAsync_ts["src/features/host/registerFastifyCorsAsync.ts"]
   module_src_features_transport_createFastifyApiAdapter_ts["src/features/transport/createFastifyApiAdapter.ts"]
+  module_src_features_transport_registerAuthorizedFastifyApiAsync_ts["src/features/transport/registerAuthorizedFastifyApiAsync.ts"]
   module_src_features_transport_registerFastifyApiAsync_test_ts["src/features/transport/registerFastifyApiAsync.test.ts"]
   module_src_features_transport_registerFastifyApiAsync_ts["src/features/transport/registerFastifyApiAsync.ts"]
   module_src_types_fastify_ts["src/types/fastify.ts"]
+  export_ComposeAuthorizedApiRuntimeOptions["ComposeAuthorizedApiRuntimeOptions"]
+  module_node_modules__ankhorage_api_dist_types_api_d_ts --> export_ComposeAuthorizedApiRuntimeOptions
   export_createFastifyApiAdapter["createFastifyApiAdapter"]
   module_src_features_transport_createFastifyApiAdapter_ts --> export_createFastifyApiAdapter
   export_createFastifyApiAdapter -.-> export_FastifyApiTransportRequest
@@ -47,6 +50,12 @@ graph LR
   export_FastifyServerOptions -.-> export_FastifyInstance
   export_FastifyServerOptions -.-> export_FastifyReply
   export_FastifyServerOptions -.-> export_FastifyRequest
+  export_registerAuthorizedFastifyApiAsync["registerAuthorizedFastifyApiAsync"]
+  module_src_features_transport_registerAuthorizedFastifyApiAsync_ts --> export_registerAuthorizedFastifyApiAsync
+  export_registerAuthorizedFastifyApiAsync -.-> export_ComposeAuthorizedApiRuntimeOptions
+  export_registerAuthorizedFastifyApiAsync -.-> export_FastifyInstance
+  export_registerAuthorizedFastifyApiAsync -.-> export_FastifyRegisteredOperation
+  export_registerAuthorizedFastifyApiAsync -.-> export_RegisterFastifyApiOptions
   export_registerFastifyApiAsync["registerFastifyApiAsync"]
   module_src_features_transport_registerFastifyApiAsync_ts --> export_registerFastifyApiAsync
   export_registerFastifyApiAsync -.-> export_FastifyInstance

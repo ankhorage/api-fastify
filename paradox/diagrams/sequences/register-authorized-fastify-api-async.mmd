@@ -1,0 +1,11 @@
+sequenceDiagram
+  participant participant_composeAuthorizedApiRuntime as composeAuthorizedApiRuntime
+  participant participant_createFastifyApiAdapter as createFastifyApiAdapter
+  participant participant_registerAuthorizedFastifyApiAsync as registerAuthorizedFastifyApiAsync
+  participant participant_registerFastifyApiAsync as registerFastifyApiAsync
+  participant_registerAuthorizedFastifyApiAsync->>participant_registerFastifyApiAsync: registerFastifyApiAsync()
+  participant_registerFastifyApiAsync->>participant_createFastifyApiAdapter: createFastifyApiAdapter()
+  participant_createFastifyApiAdapter-->>participant_registerFastifyApiAsync: return
+  participant_registerFastifyApiAsync-->>participant_registerAuthorizedFastifyApiAsync: return
+  participant_registerAuthorizedFastifyApiAsync->>participant_composeAuthorizedApiRuntime: composeAuthorizedApiRuntime()
+  participant_composeAuthorizedApiRuntime-->>participant_registerAuthorizedFastifyApiAsync: return

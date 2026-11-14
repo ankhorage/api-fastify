@@ -1,5 +1,56 @@
 [
   {
+    "name": "ComposeAuthorizedApiRuntimeOptions",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "node_modules/@ankhorage/api/dist/types/api.d.ts",
+    "sourceLocation": {
+      "filePath": "node_modules/@ankhorage/api/dist/types/api.d.ts",
+      "line": 49,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "authorizeAsync",
+        "kind": "property",
+        "type": "ApiAuthorizationPolicy",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "context",
+        "kind": "property",
+        "type": "ApiCompositionContext",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "definition",
+        "kind": "property",
+        "type": "InternalRestApiDefinition",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "resolveHandler",
+        "kind": "property",
+        "type": "ApiHandlerResolver",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "createFastifyApiAdapter",
     "title": null,
     "description": "Create the Fastify transport mapper for the canonical Ankhorage API runtime.",
@@ -80,7 +131,7 @@
     "modulePath": "src/types/fastify.ts",
     "sourceLocation": {
       "filePath": "src/types/fastify.ts",
-      "line": 18,
+      "line": 22,
       "column": 1
     },
     "exportPaths": [
@@ -261,7 +312,7 @@
     "signatures": [],
     "members": [
       {
-        "name": "__@asyncDispose@1486",
+        "name": "__@asyncDispose@1528",
         "kind": "method",
         "type": "() => Promise<undefined>",
         "required": true,
@@ -813,7 +864,7 @@
     "modulePath": "src/types/fastify.ts",
     "sourceLocation": {
       "filePath": "src/types/fastify.ts",
-      "line": 27,
+      "line": 31,
       "column": 1
     },
     "exportPaths": [
@@ -1618,6 +1669,59 @@
     "structuredRows": []
   },
   {
+    "name": "registerAuthorizedFastifyApiAsync",
+    "title": null,
+    "description": "Compose authorized API handlers before registering their canonical operation bindings with Fastify.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/transport/registerAuthorizedFastifyApiAsync.ts",
+    "sourceLocation": {
+      "filePath": "src/features/transport/registerAuthorizedFastifyApiAsync.ts",
+      "line": 14,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/apiFastify.ts"
+    ],
+    "relatedSymbols": [
+      "ComposeAuthorizedApiRuntimeOptions",
+      "FastifyInstance",
+      "FastifyRegisteredOperation",
+      "RegisterFastifyApiOptions"
+    ],
+    "signatures": [
+      {
+        "label": "(server: FastifyInstance<import(\"fastify\").RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, import(\"fastify\").FastifyBaseLogger, import(\"fastify\").FastifyTypeProviderDefault>, composition: ComposeAuthorizedApiRuntimeOptions, options?: RegisterFastifyApiOptions) => Promise<readonly FastifyRegisteredOperation[]>",
+        "parameters": [
+          {
+            "name": "composition",
+            "type": "ComposeAuthorizedApiRuntimeOptions",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "options",
+            "type": "RegisterFastifyApiOptions",
+            "required": false,
+            "description": null
+          },
+          {
+            "name": "server",
+            "type": "FastifyInstance<import(\"fastify\").RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, import(\"fastify\").FastifyBaseLogger, import(\"fastify\").FastifyTypeProviderDefault>",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "Promise<readonly FastifyRegisteredOperation[]>",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "registerFastifyApiAsync",
     "title": null,
     "description": "Register every runtime operation as a Fastify route using one shared transport adapter.",
@@ -1680,7 +1784,7 @@
     "modulePath": "src/types/fastify.ts",
     "sourceLocation": {
       "filePath": "src/types/fastify.ts",
-      "line": 23,
+      "line": 27,
       "column": 1
     },
     "exportPaths": [

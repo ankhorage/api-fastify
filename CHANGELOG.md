@@ -1,5 +1,11 @@
 # @ankhorage/api-fastify
 
+## 0.2.0
+
+### Minor Changes
+
+- ed93101: Host authorized Ankhorage API runtimes through the canonical API composition and upgrade to the published API and Contracts releases.
+
 ## 0.1.1
 
 ### Patch Changes

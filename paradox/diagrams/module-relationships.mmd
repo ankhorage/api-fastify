@@ -13,6 +13,7 @@ graph LR
   module_src_features_host_createFastifyApiServer_ts["src/features/host/createFastifyApiServer.ts"]
   module_src_features_host_registerFastifyCorsAsync_ts["src/features/host/registerFastifyCorsAsync.ts"]
   module_src_features_transport_createFastifyApiAdapter_ts["src/features/transport/createFastifyApiAdapter.ts"]
+  module_src_features_transport_registerAuthorizedFastifyApiAsync_ts["src/features/transport/registerAuthorizedFastifyApiAsync.ts"]
   module_src_features_transport_registerFastifyApiAsync_test_ts["src/features/transport/registerFastifyApiAsync.test.ts"]
   module_src_features_transport_registerFastifyApiAsync_ts["src/features/transport/registerFastifyApiAsync.ts"]
   module_src_types_fastify_ts["src/types/fastify.ts"]
@@ -27,7 +28,10 @@ graph LR
   module_src_cli_createApiAdapterCliProvider_ts --> module_src_cli_commands_routes_ts
   module_src_cli_index_ts --> module_src_cli_createApiAdapterCliProvider_ts
   module_src_features_transport_createFastifyApiAdapter_ts --> module_src_types_fastify_ts
+  module_src_features_transport_registerAuthorizedFastifyApiAsync_ts --> module_src_features_transport_registerFastifyApiAsync_ts
+  module_src_features_transport_registerAuthorizedFastifyApiAsync_ts --> module_src_types_fastify_ts
   module_src_features_transport_registerFastifyApiAsync_test_ts --> module_src_features_host_createFastifyApiServer_ts
+  module_src_features_transport_registerFastifyApiAsync_test_ts --> module_src_features_transport_registerAuthorizedFastifyApiAsync_ts
   module_src_features_transport_registerFastifyApiAsync_test_ts --> module_src_features_transport_registerFastifyApiAsync_ts
   module_src_features_transport_registerFastifyApiAsync_ts --> module_src_features_transport_createFastifyApiAdapter_ts
   module_src_features_transport_registerFastifyApiAsync_ts --> module_src_types_fastify_ts
