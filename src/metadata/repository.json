@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "kind": "adapter",
+  "title": "Ankhorage API Fastify Adapter",
+  "summary": "Adapts the Ankhorage API runtime to Fastify routes, requests, replies, and host integration.",
+  "purpose": "Host portable Ankhorage APIs with Fastify while preserving the framework-neutral runtime and contracts.",
+  "domain": "Fastify API transport",
+  "responsibilities": [
+    "Translate Fastify requests and replies at the transport boundary.",
+    "Register projected API routes with a Fastify host.",
+    "Own Fastify-specific host creation and configuration."
+  ],
+  "boundaries": [
+    "Does not own API operation dispatch or handler semantics.",
+    "Does not own portable API contracts.",
+    "Does not add Fastify-specific behavior to @ankhorage/api."
+  ],
+  "audience": [
+    "Applications hosting Ankhorage APIs through Fastify."
+  ],
+  "useCases": [
+    "Register a portable API definition on a Fastify server.",
+    "Create a configured Fastify host for the Ankhorage API runtime.",
+    "Inspect the projected Fastify routes for an API definition."
+  ],
+  "architecture": {
+    "role": "Inbound Fastify transport adapter over @ankhorage/api.",
+    "invariants": [
+      "API dispatch remains owned by @ankhorage/api.",
+      "Portable definitions remain owned by @ankhorage/contracts.",
+      "Fastify translation and host configuration stay at the adapter edge."
+    ]
+  }
+}
