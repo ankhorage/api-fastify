@@ -1,4 +1,7 @@
-import type { ApiOperationBinding } from "@ankhorage/api";
+import type {
+  ApiOperationBinding,
+  ComposeAuthorizedApiRuntimeOptions,
+} from "@ankhorage/api";
 import type { FastifyCorsOptions } from "@fastify/cors";
 import type {
   FastifyInstance,
@@ -8,6 +11,7 @@ import type {
 } from "fastify";
 
 export type {
+  ComposeAuthorizedApiRuntimeOptions,
   FastifyCorsOptions,
   FastifyInstance,
   FastifyReply,

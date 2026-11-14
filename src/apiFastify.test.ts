@@ -4,6 +4,7 @@ import packageJson from "../package.json" with { type: "json" };
 import {
   createFastifyApiAdapter,
   createFastifyApiServer,
+  registerAuthorizedFastifyApiAsync,
   registerFastifyApiAsync,
   registerFastifyCorsAsync,
 } from "./apiFastify.js";
@@ -12,6 +13,7 @@ describe("@ankhorage/api-fastify public entrypoint", () => {
   test("exports the canonical adapter operations", () => {
     expect(createFastifyApiAdapter).toBeFunction();
     expect(createFastifyApiServer).toBeFunction();
+    expect(registerAuthorizedFastifyApiAsync).toBeFunction();
     expect(registerFastifyApiAsync).toBeFunction();
     expect(registerFastifyCorsAsync).toBeFunction();
   });
