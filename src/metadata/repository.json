@@ -15,9 +15,7 @@
     "Does not own portable API contracts.",
     "Does not add Fastify-specific behavior to @ankhorage/api."
   ],
-  "audience": [
-    "Applications hosting Ankhorage APIs through Fastify."
-  ],
+  "audience": ["Applications hosting Ankhorage APIs through Fastify."],
   "useCases": [
     "Register a portable API definition on a Fastify server.",
     "Create a configured Fastify host for the Ankhorage API runtime.",
