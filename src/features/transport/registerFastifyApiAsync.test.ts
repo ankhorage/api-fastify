@@ -1,4 +1,9 @@
-import { createApiRuntime } from "@ankhorage/api";
+import {
+  type ApiApprovedHandler,
+  type ApiHandler,
+  createApiRuntime,
+} from "@ankhorage/api";
+import type { InternalRestApiDefinition } from "@ankhorage/contracts/data";
 import { afterEach, describe, expect, test } from "bun:test";
 import type { FastifyInstance } from "fastify";
 
@@ -65,16 +70,58 @@ describe("registerFastifyApiAsync", () => {
 });
 
 describe("registerAuthorizedFastifyApiAsync", () => {
-  test("hosts only API-approved handlers and denies an unauthorized request", async () => {
+  test("delegates approved operation, method, intent, and scope to API 0.5 authorization", async () => {
     const server = createFastifyApiServer({ logger: false });
     servers.push(server);
-    const handler = () => ({ body: { ok: true } });
 
     await registerAuthorizedFastifyApiAsync(server, {
       definition: healthDefinition,
-      context: { appId: "app", projectId: "project" },
+      context: healthScope,
+      resolveHandler: ({ binding, declaration, context }) => {
+        expect(binding.operationId).toBe("health.read");
+        expect(binding.method).toBe("GET");
+        expect(binding.operation.intent).toBe("read");
+        expect(declaration).toEqual({
+          operationId: "health.read",
+          capability: "health.status",
+        });
+        expect(context).toEqual(healthScope);
+
+        return approvedHealthHandler((request, handlerContext) => ({
+          status: 201,
+          headers: { "x-operation": request.operationId },
+          body: {
+            capability: handlerContext.capability?.id,
+            projectId: handlerContext.composition?.projectId,
+          },
+        }));
+      },
+      authorizeAsync: () => true,
+    });
+
+    const response = await server.inject({ method: "GET", url: "/api/health" });
+
+    expect(response.statusCode).toBe(201);
+    expect(response.headers["x-operation"]).toBe("health.read");
+    expect(response.json<{ capability: string; projectId: string }>()).toEqual({
+      capability: "health.status",
+      projectId: "project",
+    });
+  });
+});
+
+describe("authorized API authorization", () => {
+  test("hosts only API-approved handlers and denies an unauthorized request", async () => {
+    const server = createFastifyApiServer({ logger: false });
+    servers.push(server);
+
+    await registerAuthorizedFastifyApiAsync(server, {
+      definition: healthDefinition,
+      context: healthScope,
       resolveHandler: ({ binding }) =>
-        binding.operationId === "health.read" ? handler : undefined,
+        binding.operationId === "health.read"
+          ? approvedHealthHandler(() => ({ body: { ok: true } }))
+          : undefined,
       authorizeAsync: () => false,
     });
 
@@ -96,10 +143,11 @@ describe("authorized API registration validation", () => {
 
     await registerAuthorizedFastifyApiAsync(server, {
       definition: healthDefinition,
-      context: { appId: "app", projectId: "project" },
-      resolveHandler: () => () => {
-        throw new Error("handler failure");
-      },
+      context: healthScope,
+      resolveHandler: () =>
+        approvedHealthHandler(() => {
+          throw new Error("handler failure");
+        }),
       authorizeAsync: () => true,
     });
 
@@ -122,7 +170,7 @@ describe("authorized route exposure", () => {
     expect(
       registerAuthorizedFastifyApiAsync(server, {
         definition: healthDefinition,
-        context: { appId: "app", projectId: "project" },
+        context: healthScope,
         resolveHandler: () => undefined,
         authorizeAsync: () => true,
       }),
@@ -141,8 +189,9 @@ describe("authorized route exposure", () => {
 
     await registerAuthorizedFastifyApiAsync(server, {
       definition: healthDefinition,
-      context: { appId: "app", projectId: "project" },
-      resolveHandler: () => () => ({ body: { ok: true } }),
+      context: healthScope,
+      resolveHandler: () =>
+        approvedHealthHandler(() => ({ body: { ok: true } })),
       authorizeAsync: () => true,
     });
 
@@ -154,6 +203,28 @@ describe("authorized route exposure", () => {
     ).toBe(404);
   });
 });
+
+const healthScope = { appId: "app", projectId: "project" };
+
+function approvedHealthHandler(handler: ApiHandler): ApiApprovedHandler {
+  return {
+    capability: {
+      id: "health.status" as const,
+      owner: "@ankhorage/health",
+      access: ["read"] as const,
+      binding: { kind: "api" as const, bindableAs: ["target"] as const },
+    },
+    approval: {
+      operationId: "health.read",
+      intent: "read" as const,
+      method: "GET" as const,
+      capabilityId: "health.status" as const,
+      owner: "@ankhorage/health",
+      scope: healthScope,
+    },
+    handler,
+  };
+}
 
 const healthDefinition = {
   id: "health-api",
@@ -175,4 +246,10 @@ const healthDefinition = {
       },
     },
   },
-};
+  handlers: {
+    "health.read": {
+      operationId: "health.read",
+      capability: "health.status" as const,
+    },
+  },
+} satisfies InternalRestApiDefinition;

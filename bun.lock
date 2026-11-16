@@ -6,7 +6,7 @@
       "name": "@ankhorage/api-fastify",
       "dependencies": {
         "@ankhorage/ankh": "^0.13.1",
-        "@ankhorage/api": "^0.4.0",
+        "@ankhorage/api": "^0.5.1",
         "@ankhorage/contracts": "^26.10.0",
         "@fastify/cors": "^11.3.0",
         "fastify": "^5.12.5",
@@ -24,7 +24,7 @@
   "packages": {
     "@ankhorage/ankh": ["@ankhorage/ankh@0.13.1", "", { "dependencies": { "@ankhorage/capability": "^0.2.1", "@ankhorage/contracts": "^25.0.0", "yaml": "^2.9.1" }, "bin": { "ankh": "dist/bin.js" } }, "sha512-z95oi3TZ6S9UxSaY7Ti9Q4XzTb1ECars9zpi0WkpO1P/8ORahEMk4XM2DE1z+p4HjHFUMGEmuKhbta3a1gKr6Q=="],
 
-    "@ankhorage/api": ["@ankhorage/api@0.4.0", "", { "dependencies": { "@ankhorage/capability": "^0.2.1", "@ankhorage/contracts": "^26.0.0" } }, "sha512-ooT9BcsryLsEvYKz1Sn62QjDZfOxdap7EodSdht28EaI0T4lxiFUqJkK0+r5cFNrNRO0hD8Uw3s2ccon1tT40g=="],
+    "@ankhorage/api": ["@ankhorage/api@0.5.1", "", { "dependencies": { "@ankhorage/capability": "^0.2.1", "@ankhorage/contracts": "^26.10.0" } }, "sha512-FxKMssY0eekMJnS+X7cn2iQMocAdCYL5P6th/3pncF3C4Xh4nPzCmr3zlTp6/3mFK2GzYPRoJn2bXvEkghDDOA=="],
 
     "@ankhorage/apm": ["@ankhorage/apm@0.8.14", "", { "dependencies": { "@ankhorage/project-detector": "^0.1.0", "@ankhorage/utility": "^1.4.0", "jsonc-parser": "^3.3.1", "semver": "^7.8.5", "yaml": "^2.9.1" }, "peerDependencies": { "@ankhorage/ankh": "^0.10.4" }, "optionalPeers": ["@ankhorage/ankh"], "bin": { "apm": "dist/cli/runAsync.js" } }, "sha512-2y3ZJzSPwWEhhKS+c5kAYwQoeDDGkqfmtqikw0bd/not+6vdICQBIuCumH86FwKoRKz/o3FpbznoIxscu42n2g=="],
 
