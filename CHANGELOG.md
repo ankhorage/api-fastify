@@ -1,5 +1,11 @@
 # @ankhorage/api-fastify
 
+## 0.3.0
+
+### Minor Changes
+
+- 31e3e74: Require the approved-handler authorization contract from `@ankhorage/api` 0.5.1.
+
 ## 0.2.0
 
 ### Minor Changes

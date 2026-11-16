@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.2.0",
+      "value": "v0.3.0",
       "color": "cb3837"
     },
     {
@@ -281,7 +281,7 @@
       "modulePath": "node_modules/@ankhorage/api/dist/types/api.d.ts",
       "sourceLocation": {
         "filePath": "node_modules/@ankhorage/api/dist/types/api.d.ts",
-        "line": 49,
+        "line": 66,
         "column": 1
       },
       "exportPaths": [
@@ -583,7 +583,7 @@
       "signatures": [],
       "members": [
         {
-          "name": "__@asyncDispose@1528",
+          "name": "__@asyncDispose@1535",
           "kind": "method",
           "type": "() => Promise<undefined>",
           "required": true,
@@ -2255,14 +2255,14 @@
       }
     },
     {
-      "name": "handler",
+      "name": "approvedHealthHandler",
       "description": null,
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/transport/registerFastifyApiAsync.test.ts",
-        "line": 71,
-        "column": 11
+        "line": 209,
+        "column": 1
       }
     },
     {
@@ -2679,6 +2679,18 @@
         "fromSymbol": "src/features/transport/registerFastifyApiAsync.test.ts",
         "toSymbol": "registerAuthorizedFastifyApiAsync",
         "callExpression": "registerAuthorizedFastifyApiAsync",
+        "sourcePath": "src/features/transport/registerFastifyApiAsync.test.ts"
+      },
+      {
+        "fromSymbol": "resolveHandler",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/features/transport/registerFastifyApiAsync.test.ts"
+      },
+      {
+        "fromSymbol": "resolveHandler",
+        "toSymbol": "approvedHealthHandler",
+        "callExpression": "approvedHealthHandler",
         "sourcePath": "src/features/transport/registerFastifyApiAsync.test.ts"
       },
       {

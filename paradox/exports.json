@@ -10,7 +10,7 @@
     "modulePath": "node_modules/@ankhorage/api/dist/types/api.d.ts",
     "sourceLocation": {
       "filePath": "node_modules/@ankhorage/api/dist/types/api.d.ts",
-      "line": 49,
+      "line": 66,
       "column": 1
     },
     "exportPaths": [
@@ -312,7 +312,7 @@
     "signatures": [],
     "members": [
       {
-        "name": "__@asyncDispose@1528",
+        "name": "__@asyncDispose@1535",
         "kind": "method",
         "type": "() => Promise<undefined>",
         "required": true,
