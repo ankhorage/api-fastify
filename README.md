@@ -3,7 +3,7 @@
 
 # @ankhorage/api-fastify
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v0.3.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![paradox: canonical](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v0.3.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: configured](././paradox/badges/tests.svg) ![paradox: canonical](././paradox/badges/docs.svg)
 
 Fastify transport adapter and host integration for the Ankhorage API runtime.
 
@@ -66,3 +66,4 @@ const runtime = createApiRuntime({
 - [createFastifyApiServer sequence](././paradox/diagrams/sequences/create-fastify-api-server.mmd)
 - [registerAuthorizedFastifyApiAsync sequence](././paradox/diagrams/sequences/register-authorized-fastify-api-async.mmd)
 - [registerFastifyApiAsync sequence](././paradox/diagrams/sequences/register-fastify-api-async.mmd)
+- [registerTrustedExternalApiBrokerFastifyAsync sequence](././paradox/diagrams/sequences/register-trusted-external-api-broker-fastify-async.mmd)

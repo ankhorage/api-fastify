@@ -149,7 +149,7 @@
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/transport/createFastifyApiAdapter.ts">
       src/features/transport/createFastifyApiAdapter.ts
-      <small>7 functions</small>
+      <small>6 functions</small>
     </button>
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/transport/registerAuthorizedFastifyApiAsync.ts">
@@ -166,6 +166,21 @@
       src/features/transport/registerFastifyApiAsync.ts
       <small>3 functions</small>
     </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts">
+      src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts
+      <small>4 functions</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts">
+      src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts
+      <small>7 functions</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/transport/sendFastifyApiResponse.ts">
+      src/features/transport/sendFastifyApiResponse.ts
+      <small>1 function</small>
+    </button>
   </li>
           </ul>
         </nav>
@@ -176,9 +191,9 @@
     <section class="panel">
       <h2>Package overview</h2>
       <div class="summary">
-        <div><strong>14</strong><span class="muted">public exports</span></div>
+        <div><strong>18</strong><span class="muted">public exports</span></div>
         <div><strong>0</strong><span class="muted">components</span></div>
-        <div><strong>18</strong><span class="muted">modules</span></div>
+        <div><strong>21</strong><span class="muted">modules</span></div>
         <div><strong>1</strong><span class="muted">entrypoints</span></div>
       </div>
       <h3>Entrypoints</h3>
@@ -249,11 +264,11 @@ handlers into Fastify request/reply code.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>package.json</code>, <code>src/apiFastify.ts</code></p>
     <p><strong>Exports:</strong> <span class="empty">None</span></p>
-  </article><article class="item" data-search="src/apiFastify.ts ComposeAuthorizedApiRuntimeOptions createFastifyApiAdapter createFastifyApiServer FastifyApiTransportRequest FastifyCorsOptions FastifyInstance FastifyRegisteredOperation FastifyReply FastifyRequest FastifyServerOptions registerAuthorizedFastifyApiAsync registerFastifyApiAsync RegisterFastifyApiOptions registerFastifyCorsAsync">
+  </article><article class="item" data-search="src/apiFastify.ts ComposeAuthorizedApiRuntimeOptions createFastifyApiAdapter createFastifyApiServer FastifyApiTransportRequest FastifyAuthenticatedCaller FastifyCorsOptions FastifyInstance FastifyRegisteredOperation FastifyReply FastifyRequest FastifyServerOptions FastifyTrustedExternalApiBrokerRoute registerAuthorizedFastifyApiAsync registerFastifyApiAsync RegisterFastifyApiOptions registerFastifyCorsAsync registerTrustedExternalApiBrokerFastifyAsync RegisterTrustedExternalApiBrokerFastifyOptions">
     <h3>src/apiFastify.ts</h3>
     <p class="muted">Configured entrypoint</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-    <p><strong>Exports:</strong> <code>ComposeAuthorizedApiRuntimeOptions</code>, <code>createFastifyApiAdapter</code>, <code>createFastifyApiServer</code>, <code>FastifyApiTransportRequest</code>, <code>FastifyCorsOptions</code>, <code>FastifyInstance</code>, <code>FastifyRegisteredOperation</code>, <code>FastifyReply</code>, <code>FastifyRequest</code>, <code>FastifyServerOptions</code>, <code>registerAuthorizedFastifyApiAsync</code>, <code>registerFastifyApiAsync</code>, <code>RegisterFastifyApiOptions</code>, <code>registerFastifyCorsAsync</code></p>
+    <p><strong>Exports:</strong> <code>ComposeAuthorizedApiRuntimeOptions</code>, <code>createFastifyApiAdapter</code>, <code>createFastifyApiServer</code>, <code>FastifyApiTransportRequest</code>, <code>FastifyAuthenticatedCaller</code>, <code>FastifyCorsOptions</code>, <code>FastifyInstance</code>, <code>FastifyRegisteredOperation</code>, <code>FastifyReply</code>, <code>FastifyRequest</code>, <code>FastifyServerOptions</code>, <code>FastifyTrustedExternalApiBrokerRoute</code>, <code>registerAuthorizedFastifyApiAsync</code>, <code>registerFastifyApiAsync</code>, <code>RegisterFastifyApiOptions</code>, <code>registerFastifyCorsAsync</code>, <code>registerTrustedExternalApiBrokerFastifyAsync</code>, <code>RegisterTrustedExternalApiBrokerFastifyOptions</code></p>
   </article><article class="item" data-search="src/capabilities/index.test.ts src/capabilities/index.ts">
     <h3>src/capabilities/index.test.ts</h3>
     <p class="muted">Referenced module</p>
@@ -294,10 +309,10 @@ handlers into Fastify request/reply code.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
     <p><strong>Exports:</strong> <code>registerFastifyCorsAsync</code></p>
-  </article><article class="item" data-search="src/features/transport/createFastifyApiAdapter.ts src/types/fastify.ts createFastifyApiAdapter">
+  </article><article class="item" data-search="src/features/transport/createFastifyApiAdapter.ts src/features/transport/sendFastifyApiResponse.ts src/types/fastify.ts createFastifyApiAdapter">
     <h3>src/features/transport/createFastifyApiAdapter.ts</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/types/fastify.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/features/transport/sendFastifyApiResponse.ts</code>, <code>src/types/fastify.ts</code></p>
     <p><strong>Exports:</strong> <code>createFastifyApiAdapter</code></p>
   </article><article class="item" data-search="src/features/transport/registerAuthorizedFastifyApiAsync.ts src/features/transport/registerFastifyApiAsync.ts src/types/fastify.ts registerAuthorizedFastifyApiAsync">
     <h3>src/features/transport/registerAuthorizedFastifyApiAsync.ts</h3>
@@ -314,11 +329,26 @@ handlers into Fastify request/reply code.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/features/transport/createFastifyApiAdapter.ts</code>, <code>src/types/fastify.ts</code></p>
     <p><strong>Exports:</strong> <code>registerFastifyApiAsync</code></p>
-  </article><article class="item" data-search="src/types/fastify.ts ComposeAuthorizedApiRuntimeOptions FastifyApiTransportRequest FastifyCorsOptions FastifyInstance FastifyRegisteredOperation FastifyReply FastifyRequest FastifyServerOptions RegisterFastifyApiOptions">
+  </article><article class="item" data-search="src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts src/features/host/createFastifyApiServer.ts src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts">
+    <h3>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/features/host/createFastifyApiServer.ts</code>, <code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts</code></p>
+    <p><strong>Exports:</strong> <span class="empty">None</span></p>
+  </article><article class="item" data-search="src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts src/features/transport/sendFastifyApiResponse.ts src/types/fastify.ts registerTrustedExternalApiBrokerFastifyAsync">
+    <h3>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/features/transport/sendFastifyApiResponse.ts</code>, <code>src/types/fastify.ts</code></p>
+    <p><strong>Exports:</strong> <code>registerTrustedExternalApiBrokerFastifyAsync</code></p>
+  </article><article class="item" data-search="src/features/transport/sendFastifyApiResponse.ts src/types/fastify.ts sendFastifyApiResponse">
+    <h3>src/features/transport/sendFastifyApiResponse.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/types/fastify.ts</code></p>
+    <p><strong>Exports:</strong> <code>sendFastifyApiResponse</code></p>
+  </article><article class="item" data-search="src/types/fastify.ts ComposeAuthorizedApiRuntimeOptions FastifyApiTransportRequest FastifyAuthenticatedCaller FastifyCorsOptions FastifyInstance FastifyRegisteredOperation FastifyReply FastifyRequest FastifyServerOptions FastifyTrustedExternalApiBrokerRoute RegisterFastifyApiOptions RegisterTrustedExternalApiBrokerFastifyOptions">
     <h3>src/types/fastify.ts</h3>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-    <p><strong>Exports:</strong> <code>ComposeAuthorizedApiRuntimeOptions</code>, <code>FastifyApiTransportRequest</code>, <code>FastifyCorsOptions</code>, <code>FastifyInstance</code>, <code>FastifyRegisteredOperation</code>, <code>FastifyReply</code>, <code>FastifyRequest</code>, <code>FastifyServerOptions</code>, <code>RegisterFastifyApiOptions</code></p>
+    <p><strong>Exports:</strong> <code>ComposeAuthorizedApiRuntimeOptions</code>, <code>FastifyApiTransportRequest</code>, <code>FastifyAuthenticatedCaller</code>, <code>FastifyCorsOptions</code>, <code>FastifyInstance</code>, <code>FastifyRegisteredOperation</code>, <code>FastifyReply</code>, <code>FastifyRequest</code>, <code>FastifyServerOptions</code>, <code>FastifyTrustedExternalApiBrokerRoute</code>, <code>RegisterFastifyApiOptions</code>, <code>RegisterTrustedExternalApiBrokerFastifyOptions</code></p>
   </article>
     </section>
     <section class="panel">
@@ -744,7 +774,7 @@ handlers into Fastify request/reply code.</p>
     <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
     <tbody>
       <tr>
-            <td><code>__@asyncDispose@1535</code></td>
+            <td><code>__@asyncDispose@1590</code></td>
             <td>method</td>
             <td><code>() =&gt; Promise&lt;undefined&gt;</code></td>
             <td>yes</td>
@@ -1775,11 +1805,45 @@ handlers into Fastify request/reply code.</p>
   </article>
             </section>
             <section>
+              <h3>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts</h3>
+              <article class="item" id="symbol-registertrustedexternalapibrokerfastifyasync" data-search="registerTrustedExternalApiBrokerFastifyAsync  function src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts Register the deployable Fastify transport for trusted generated-app external API operations. FastifyInstance FastifyTrustedExternalApiBrokerRoute RegisterTrustedExternalApiBrokerFastifyOptions (server: FastifyInstance&lt;import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify&quot;).FastifyTypeProviderDefault&gt;, options: RegisterTrustedExternalApiBrokerFastifyOptions) =&gt; Promise&lt;FastifyTrustedExternalApiBrokerRoute&gt;">
+    <h4>registerTrustedExternalApiBrokerFastifyAsync</h4>
+    
+    <p class="muted">function • <code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts:21:1</code></p>
+    <p>Register the deployable Fastify transport for trusted generated-app external API operations.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">FastifyInstance</li><li class="chip">FastifyTrustedExternalApiBrokerRoute</li><li class="chip">RegisterTrustedExternalApiBrokerFastifyOptions</li></ul></div>
+    <div>
+        <h5>Signature</h5>
+        <pre>(server: FastifyInstance&lt;import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify&quot;).FastifyTypeProviderDefault&gt;, options: RegisterTrustedExternalApiBrokerFastifyOptions) =&gt; Promise&lt;FastifyTrustedExternalApiBrokerRoute&gt;</pre>
+        <table>
+                <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr>
+                        <td><code>options</code></td>
+                        <td><code>RegisterTrustedExternalApiBrokerFastifyOptions</code></td>
+                        <td>yes</td>
+                        <td></td>
+                      </tr><tr>
+                        <td><code>server</code></td>
+                        <td><code>FastifyInstance&lt;import(&quot;fastify&quot;).RawServerDefault, import(&quot;node:http&quot;).IncomingMessage, import(&quot;node:http&quot;).ServerResponse&lt;import(&quot;node:http&quot;).IncomingMessage&gt;, import(&quot;fastify&quot;).FastifyBaseLogger, import(&quot;fastify&quot;).FastifyTypeProviderDefault&gt;</code></td>
+                        <td>yes</td>
+                        <td></td>
+                      </tr>
+                </tbody>
+              </table>
+        <p><strong>Returns:</strong> <code>Promise&lt;FastifyTrustedExternalApiBrokerRoute&gt;</code></p>
+      </div>
+    
+  </article>
+            </section>
+            <section>
               <h3>src/types/fastify.ts</h3>
               <article class="item" id="symbol-fastifyapitransportrequest" data-search="FastifyApiTransportRequest  type src/types/fastify.ts  FastifyReply FastifyRequest">
     <h4>FastifyApiTransportRequest</h4>
     
-    <p class="muted">type • <code>src/types/fastify.ts:22:1</code></p>
+    <p class="muted">type • <code>src/types/fastify.ts:24:1</code></p>
     
     
     <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
@@ -1803,10 +1867,20 @@ handlers into Fastify request/reply code.</p>
           </tr>
     </tbody>
   </table>
+  </article><article class="item" id="symbol-fastifyauthenticatedcaller" data-search="FastifyAuthenticatedCaller  unknown src/types/fastify.ts Describe one authenticated caller supplied by the deployable Fastify host.">
+    <h4>FastifyAuthenticatedCaller</h4>
+    
+    <p class="muted">unknown • <code>src/types/fastify.ts:30:1</code></p>
+    <p>Describe one authenticated caller supplied by the deployable Fastify host.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
   </article><article class="item" id="symbol-fastifyregisteredoperation" data-search="FastifyRegisteredOperation  type src/types/fastify.ts ">
     <h4>FastifyRegisteredOperation</h4>
     
-    <p class="muted">type • <code>src/types/fastify.ts:31:1</code></p>
+    <p class="muted">type • <code>src/types/fastify.ts:36:1</code></p>
     
     
     <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
@@ -1830,10 +1904,31 @@ handlers into Fastify request/reply code.</p>
           </tr>
     </tbody>
   </table>
+  </article><article class="item" id="symbol-fastifytrustedexternalapibrokerroute" data-search="FastifyTrustedExternalApiBrokerRoute  type src/types/fastify.ts Describe the route registered for the deployable generated-app external API broker.">
+    <h4>FastifyTrustedExternalApiBrokerRoute</h4>
+    
+    <p class="muted">type • <code>src/types/fastify.ts:64:1</code></p>
+    <p>Describe the route registered for the deployable generated-app external API broker.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>path</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
   </article><article class="item" id="symbol-registerfastifyapioptions" data-search="RegisterFastifyApiOptions  type src/types/fastify.ts ">
     <h4>RegisterFastifyApiOptions</h4>
     
-    <p class="muted">type • <code>src/types/fastify.ts:27:1</code></p>
+    <p class="muted">type • <code>src/types/fastify.ts:32:1</code></p>
     
     
     <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
@@ -1847,6 +1942,63 @@ handlers into Fastify request/reply code.</p>
             <td>property</td>
             <td><code>string</code></td>
             <td>no</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-registertrustedexternalapibrokerfastifyoptions" data-search="RegisterTrustedExternalApiBrokerFastifyOptions  type src/types/fastify.ts Configure the host-owned dependencies for one generated-app external API broker route. FastifyAuthenticatedCaller FastifyRequest">
+    <h4>RegisterTrustedExternalApiBrokerFastifyOptions</h4>
+    
+    <p class="muted">type • <code>src/types/fastify.ts:42:1</code></p>
+    <p>Configure the host-owned dependencies for one generated-app external API broker route.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/apiFastify.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">FastifyAuthenticatedCaller</li><li class="chip">FastifyRequest</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>authenticateCallerAsync</code></td>
+            <td>property</td>
+            <td><code>(request: FastifyRequest) =&gt; FastifyAuthenticatedCaller | undefined | Promise&lt;FastifyAuthenticatedCaller | undefined&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>authorizeAsync</code></td>
+            <td>property</td>
+            <td><code>(input: { readonly context: TrustedExternalApiBrokerContext; readonly request: import(&quot;@ankhorage/api&quot;).TrustedExternalApiBrokerRequest; }) =&gt; boolean | Promise&lt;boolean&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>executeOperationAsync</code></td>
+            <td>property</td>
+            <td><code>(input: { readonly operation: import(&quot;@ankhorage/api&quot;).TrustedExternalApiOperation; readonly input: unknown; readonly credentials?: import(&quot;@ankhorage/api&quot;).TrustedExternalApiCredentials; }) =&gt; import(&quot;@ankhorage/api&quot;).TrustedExternalApiExecutionResult | Promise&lt;import(&quot;@ankhorage/api&quot;).TrustedExternalApiExecutionResult&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>resolveCredentialsAsync</code></td>
+            <td>property</td>
+            <td><code>(input: { readonly scope: TrustedExternalApiBrokerContext[&quot;scope&quot;]; readonly operation: import(&quot;@ankhorage/api&quot;).TrustedExternalApiOperation; }) =&gt; import(&quot;@ankhorage/api&quot;).TrustedExternalApiCredentials | undefined | Promise&lt;import(&quot;@ankhorage/api&quot;).TrustedExternalApiCredentials | undefined&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>resolveOperationAsync</code></td>
+            <td>property</td>
+            <td><code>(input: { readonly scope: TrustedExternalApiBrokerContext[&quot;scope&quot;]; readonly request: import(&quot;@ankhorage/api&quot;).TrustedExternalApiBrokerRequest; }) =&gt; import(&quot;@ankhorage/api&quot;).TrustedExternalApiOperation | undefined | Promise&lt;import(&quot;@ankhorage/api&quot;).TrustedExternalApiOperation | undefined&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>resolveScopeAsync</code></td>
+            <td>property</td>
+            <td><code>(input: { readonly request: FastifyRequest; readonly caller: FastifyAuthenticatedCaller; }) =&gt; TrustedExternalApiBrokerContext[&quot;scope&quot;] | undefined | Promise&lt;TrustedExternalApiBrokerContext[&quot;scope&quot;] | undefined&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>validateInputAsync</code></td>
+            <td>property</td>
+            <td><code>(input: { readonly operation: import(&quot;@ankhorage/api&quot;).TrustedExternalApiOperation; readonly input: unknown; }) =&gt; unknown</code></td>
+            <td>yes</td>
             <td></td>
           </tr>
     </tbody>
@@ -1904,6 +2056,7 @@ handlers into Fastify request/reply code.</p>
   package__ankhorage_api_fastify -.-&gt; module_src_features_host_registerFastifyCorsAsync_ts
   module_src_features_transport_createFastifyApiAdapter_ts[&quot;src/features/transport/createFastifyApiAdapter.ts&quot;]
   package__ankhorage_api_fastify -.-&gt; module_src_features_transport_createFastifyApiAdapter_ts
+  module_src_features_transport_createFastifyApiAdapter_ts --&gt; module_src_features_transport_sendFastifyApiResponse_ts
   module_src_features_transport_createFastifyApiAdapter_ts --&gt; module_src_types_fastify_ts
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts[&quot;src/features/transport/registerAuthorizedFastifyApiAsync.ts&quot;]
   package__ankhorage_api_fastify -.-&gt; module_src_features_transport_registerAuthorizedFastifyApiAsync_ts
@@ -1918,6 +2071,17 @@ handlers into Fastify request/reply code.</p>
   package__ankhorage_api_fastify -.-&gt; module_src_features_transport_registerFastifyApiAsync_ts
   module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_features_transport_createFastifyApiAdapter_ts
   module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_types_fastify_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts[&quot;src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts --&gt; module_src_features_host_createFastifyApiServer_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts --&gt; module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts[&quot;src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --&gt; module_src_features_transport_sendFastifyApiResponse_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --&gt; module_src_types_fastify_ts
+  module_src_features_transport_sendFastifyApiResponse_ts[&quot;src/features/transport/sendFastifyApiResponse.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_transport_sendFastifyApiResponse_ts
+  module_src_features_transport_sendFastifyApiResponse_ts --&gt; module_src_types_fastify_ts
   module_src_types_fastify_ts[&quot;src/types/fastify.ts&quot;]
   package__ankhorage_api_fastify -.-&gt; module_src_types_fastify_ts
 </div>
@@ -1964,6 +2128,7 @@ handlers into Fastify request/reply code.</p>
   package__ankhorage_api_fastify -.-&gt; module_src_features_host_registerFastifyCorsAsync_ts
   module_src_features_transport_createFastifyApiAdapter_ts[&quot;src/features/transport/createFastifyApiAdapter.ts&quot;]
   package__ankhorage_api_fastify -.-&gt; module_src_features_transport_createFastifyApiAdapter_ts
+  module_src_features_transport_createFastifyApiAdapter_ts --&gt; module_src_features_transport_sendFastifyApiResponse_ts
   module_src_features_transport_createFastifyApiAdapter_ts --&gt; module_src_types_fastify_ts
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts[&quot;src/features/transport/registerAuthorizedFastifyApiAsync.ts&quot;]
   package__ankhorage_api_fastify -.-&gt; module_src_features_transport_registerAuthorizedFastifyApiAsync_ts
@@ -1978,6 +2143,17 @@ handlers into Fastify request/reply code.</p>
   package__ankhorage_api_fastify -.-&gt; module_src_features_transport_registerFastifyApiAsync_ts
   module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_features_transport_createFastifyApiAdapter_ts
   module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_types_fastify_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts[&quot;src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts --&gt; module_src_features_host_createFastifyApiServer_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts --&gt; module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts[&quot;src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --&gt; module_src_features_transport_sendFastifyApiResponse_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --&gt; module_src_types_fastify_ts
+  module_src_features_transport_sendFastifyApiResponse_ts[&quot;src/features/transport/sendFastifyApiResponse.ts&quot;]
+  package__ankhorage_api_fastify -.-&gt; module_src_features_transport_sendFastifyApiResponse_ts
+  module_src_features_transport_sendFastifyApiResponse_ts --&gt; module_src_types_fastify_ts
   module_src_types_fastify_ts[&quot;src/types/fastify.ts&quot;]
   package__ankhorage_api_fastify -.-&gt; module_src_types_fastify_ts
 </pre>
@@ -2003,6 +2179,9 @@ handlers into Fastify request/reply code.</p>
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts[&quot;src/features/transport/registerAuthorizedFastifyApiAsync.ts&quot;]
   module_src_features_transport_registerFastifyApiAsync_test_ts[&quot;src/features/transport/registerFastifyApiAsync.test.ts&quot;]
   module_src_features_transport_registerFastifyApiAsync_ts[&quot;src/features/transport/registerFastifyApiAsync.ts&quot;]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts[&quot;src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts&quot;]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts[&quot;src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts&quot;]
+  module_src_features_transport_sendFastifyApiResponse_ts[&quot;src/features/transport/sendFastifyApiResponse.ts&quot;]
   module_src_types_fastify_ts[&quot;src/types/fastify.ts&quot;]
   module_examples_basic_usage_index_ts --&gt; module_src_apiFastify_ts
   module_src_apiFastify_test_ts --&gt; module_package_json
@@ -2014,6 +2193,7 @@ handlers into Fastify request/reply code.</p>
   module_src_cli_createApiAdapterCliProvider_ts --&gt; module_src_capabilities_index_ts
   module_src_cli_createApiAdapterCliProvider_ts --&gt; module_src_cli_commands_routes_ts
   module_src_cli_index_ts --&gt; module_src_cli_createApiAdapterCliProvider_ts
+  module_src_features_transport_createFastifyApiAdapter_ts --&gt; module_src_features_transport_sendFastifyApiResponse_ts
   module_src_features_transport_createFastifyApiAdapter_ts --&gt; module_src_types_fastify_ts
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts --&gt; module_src_features_transport_registerFastifyApiAsync_ts
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts --&gt; module_src_types_fastify_ts
@@ -2022,6 +2202,11 @@ handlers into Fastify request/reply code.</p>
   module_src_features_transport_registerFastifyApiAsync_test_ts --&gt; module_src_features_transport_registerFastifyApiAsync_ts
   module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_features_transport_createFastifyApiAdapter_ts
   module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_types_fastify_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts --&gt; module_src_features_host_createFastifyApiServer_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts --&gt; module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --&gt; module_src_features_transport_sendFastifyApiResponse_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --&gt; module_src_types_fastify_ts
+  module_src_features_transport_sendFastifyApiResponse_ts --&gt; module_src_types_fastify_ts
 </div>
     <details>
       <summary>View Mermaid source</summary>
@@ -2043,6 +2228,9 @@ handlers into Fastify request/reply code.</p>
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts[&quot;src/features/transport/registerAuthorizedFastifyApiAsync.ts&quot;]
   module_src_features_transport_registerFastifyApiAsync_test_ts[&quot;src/features/transport/registerFastifyApiAsync.test.ts&quot;]
   module_src_features_transport_registerFastifyApiAsync_ts[&quot;src/features/transport/registerFastifyApiAsync.ts&quot;]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts[&quot;src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts&quot;]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts[&quot;src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts&quot;]
+  module_src_features_transport_sendFastifyApiResponse_ts[&quot;src/features/transport/sendFastifyApiResponse.ts&quot;]
   module_src_types_fastify_ts[&quot;src/types/fastify.ts&quot;]
   module_examples_basic_usage_index_ts --&gt; module_src_apiFastify_ts
   module_src_apiFastify_test_ts --&gt; module_package_json
@@ -2054,6 +2242,7 @@ handlers into Fastify request/reply code.</p>
   module_src_cli_createApiAdapterCliProvider_ts --&gt; module_src_capabilities_index_ts
   module_src_cli_createApiAdapterCliProvider_ts --&gt; module_src_cli_commands_routes_ts
   module_src_cli_index_ts --&gt; module_src_cli_createApiAdapterCliProvider_ts
+  module_src_features_transport_createFastifyApiAdapter_ts --&gt; module_src_features_transport_sendFastifyApiResponse_ts
   module_src_features_transport_createFastifyApiAdapter_ts --&gt; module_src_types_fastify_ts
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts --&gt; module_src_features_transport_registerFastifyApiAsync_ts
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts --&gt; module_src_types_fastify_ts
@@ -2062,6 +2251,11 @@ handlers into Fastify request/reply code.</p>
   module_src_features_transport_registerFastifyApiAsync_test_ts --&gt; module_src_features_transport_registerFastifyApiAsync_ts
   module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_features_transport_createFastifyApiAdapter_ts
   module_src_features_transport_registerFastifyApiAsync_ts --&gt; module_src_types_fastify_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts --&gt; module_src_features_host_createFastifyApiServer_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts --&gt; module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --&gt; module_src_features_transport_sendFastifyApiResponse_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --&gt; module_src_types_fastify_ts
+  module_src_features_transport_sendFastifyApiResponse_ts --&gt; module_src_types_fastify_ts
 </pre>
     </details>
   </article><article class="item" data-search="Export graph diagrams/export-graph.mmd">
@@ -2085,6 +2279,9 @@ handlers into Fastify request/reply code.</p>
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts[&quot;src/features/transport/registerAuthorizedFastifyApiAsync.ts&quot;]
   module_src_features_transport_registerFastifyApiAsync_test_ts[&quot;src/features/transport/registerFastifyApiAsync.test.ts&quot;]
   module_src_features_transport_registerFastifyApiAsync_ts[&quot;src/features/transport/registerFastifyApiAsync.ts&quot;]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts[&quot;src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts&quot;]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts[&quot;src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts&quot;]
+  module_src_features_transport_sendFastifyApiResponse_ts[&quot;src/features/transport/sendFastifyApiResponse.ts&quot;]
   module_src_types_fastify_ts[&quot;src/types/fastify.ts&quot;]
   export_ComposeAuthorizedApiRuntimeOptions[&quot;ComposeAuthorizedApiRuntimeOptions&quot;]
   module_node_modules__ankhorage_api_dist_types_api_d_ts --&gt; export_ComposeAuthorizedApiRuntimeOptions
@@ -2099,6 +2296,8 @@ handlers into Fastify request/reply code.</p>
   module_src_types_fastify_ts --&gt; export_FastifyApiTransportRequest
   export_FastifyApiTransportRequest -.-&gt; export_FastifyReply
   export_FastifyApiTransportRequest -.-&gt; export_FastifyRequest
+  export_FastifyAuthenticatedCaller[&quot;FastifyAuthenticatedCaller&quot;]
+  module_src_types_fastify_ts --&gt; export_FastifyAuthenticatedCaller
   export_FastifyCorsOptions[&quot;FastifyCorsOptions&quot;]
   module_node_modules__fastify_cors_types_index_d_ts --&gt; export_FastifyCorsOptions
   export_FastifyInstance[&quot;FastifyInstance&quot;]
@@ -2119,6 +2318,8 @@ handlers into Fastify request/reply code.</p>
   export_FastifyServerOptions -.-&gt; export_FastifyInstance
   export_FastifyServerOptions -.-&gt; export_FastifyReply
   export_FastifyServerOptions -.-&gt; export_FastifyRequest
+  export_FastifyTrustedExternalApiBrokerRoute[&quot;FastifyTrustedExternalApiBrokerRoute&quot;]
+  module_src_types_fastify_ts --&gt; export_FastifyTrustedExternalApiBrokerRoute
   export_registerAuthorizedFastifyApiAsync[&quot;registerAuthorizedFastifyApiAsync&quot;]
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts --&gt; export_registerAuthorizedFastifyApiAsync
   export_registerAuthorizedFastifyApiAsync -.-&gt; export_ComposeAuthorizedApiRuntimeOptions
@@ -2136,6 +2337,15 @@ handlers into Fastify request/reply code.</p>
   module_src_features_host_registerFastifyCorsAsync_ts --&gt; export_registerFastifyCorsAsync
   export_registerFastifyCorsAsync -.-&gt; export_FastifyCorsOptions
   export_registerFastifyCorsAsync -.-&gt; export_FastifyInstance
+  export_registerTrustedExternalApiBrokerFastifyAsync[&quot;registerTrustedExternalApiBrokerFastifyAsync&quot;]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --&gt; export_registerTrustedExternalApiBrokerFastifyAsync
+  export_registerTrustedExternalApiBrokerFastifyAsync -.-&gt; export_FastifyInstance
+  export_registerTrustedExternalApiBrokerFastifyAsync -.-&gt; export_FastifyTrustedExternalApiBrokerRoute
+  export_registerTrustedExternalApiBrokerFastifyAsync -.-&gt; export_RegisterTrustedExternalApiBrokerFastifyOptions
+  export_RegisterTrustedExternalApiBrokerFastifyOptions[&quot;RegisterTrustedExternalApiBrokerFastifyOptions&quot;]
+  module_src_types_fastify_ts --&gt; export_RegisterTrustedExternalApiBrokerFastifyOptions
+  export_RegisterTrustedExternalApiBrokerFastifyOptions -.-&gt; export_FastifyAuthenticatedCaller
+  export_RegisterTrustedExternalApiBrokerFastifyOptions -.-&gt; export_FastifyRequest
 </div>
     <details>
       <summary>View Mermaid source</summary>
@@ -2157,6 +2367,9 @@ handlers into Fastify request/reply code.</p>
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts[&quot;src/features/transport/registerAuthorizedFastifyApiAsync.ts&quot;]
   module_src_features_transport_registerFastifyApiAsync_test_ts[&quot;src/features/transport/registerFastifyApiAsync.test.ts&quot;]
   module_src_features_transport_registerFastifyApiAsync_ts[&quot;src/features/transport/registerFastifyApiAsync.ts&quot;]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts[&quot;src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts&quot;]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts[&quot;src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts&quot;]
+  module_src_features_transport_sendFastifyApiResponse_ts[&quot;src/features/transport/sendFastifyApiResponse.ts&quot;]
   module_src_types_fastify_ts[&quot;src/types/fastify.ts&quot;]
   export_ComposeAuthorizedApiRuntimeOptions[&quot;ComposeAuthorizedApiRuntimeOptions&quot;]
   module_node_modules__ankhorage_api_dist_types_api_d_ts --&gt; export_ComposeAuthorizedApiRuntimeOptions
@@ -2171,6 +2384,8 @@ handlers into Fastify request/reply code.</p>
   module_src_types_fastify_ts --&gt; export_FastifyApiTransportRequest
   export_FastifyApiTransportRequest -.-&gt; export_FastifyReply
   export_FastifyApiTransportRequest -.-&gt; export_FastifyRequest
+  export_FastifyAuthenticatedCaller[&quot;FastifyAuthenticatedCaller&quot;]
+  module_src_types_fastify_ts --&gt; export_FastifyAuthenticatedCaller
   export_FastifyCorsOptions[&quot;FastifyCorsOptions&quot;]
   module_node_modules__fastify_cors_types_index_d_ts --&gt; export_FastifyCorsOptions
   export_FastifyInstance[&quot;FastifyInstance&quot;]
@@ -2191,6 +2406,8 @@ handlers into Fastify request/reply code.</p>
   export_FastifyServerOptions -.-&gt; export_FastifyInstance
   export_FastifyServerOptions -.-&gt; export_FastifyReply
   export_FastifyServerOptions -.-&gt; export_FastifyRequest
+  export_FastifyTrustedExternalApiBrokerRoute[&quot;FastifyTrustedExternalApiBrokerRoute&quot;]
+  module_src_types_fastify_ts --&gt; export_FastifyTrustedExternalApiBrokerRoute
   export_registerAuthorizedFastifyApiAsync[&quot;registerAuthorizedFastifyApiAsync&quot;]
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts --&gt; export_registerAuthorizedFastifyApiAsync
   export_registerAuthorizedFastifyApiAsync -.-&gt; export_ComposeAuthorizedApiRuntimeOptions
@@ -2208,6 +2425,15 @@ handlers into Fastify request/reply code.</p>
   module_src_features_host_registerFastifyCorsAsync_ts --&gt; export_registerFastifyCorsAsync
   export_registerFastifyCorsAsync -.-&gt; export_FastifyCorsOptions
   export_registerFastifyCorsAsync -.-&gt; export_FastifyInstance
+  export_registerTrustedExternalApiBrokerFastifyAsync[&quot;registerTrustedExternalApiBrokerFastifyAsync&quot;]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --&gt; export_registerTrustedExternalApiBrokerFastifyAsync
+  export_registerTrustedExternalApiBrokerFastifyAsync -.-&gt; export_FastifyInstance
+  export_registerTrustedExternalApiBrokerFastifyAsync -.-&gt; export_FastifyTrustedExternalApiBrokerRoute
+  export_registerTrustedExternalApiBrokerFastifyAsync -.-&gt; export_RegisterTrustedExternalApiBrokerFastifyOptions
+  export_RegisterTrustedExternalApiBrokerFastifyOptions[&quot;RegisterTrustedExternalApiBrokerFastifyOptions&quot;]
+  module_src_types_fastify_ts --&gt; export_RegisterTrustedExternalApiBrokerFastifyOptions
+  export_RegisterTrustedExternalApiBrokerFastifyOptions -.-&gt; export_FastifyAuthenticatedCaller
+  export_RegisterTrustedExternalApiBrokerFastifyOptions -.-&gt; export_FastifyRequest
 </pre>
     </details>
   </article><article class="item" data-search="createFastifyApiServer sequence diagrams/sequences/create-fastify-api-server.mmd">
@@ -2276,6 +2502,24 @@ handlers into Fastify request/reply code.</p>
   participant_createFastifyApiAdapter--&gt;&gt;participant_registerFastifyApiAsync: return
 </pre>
     </details>
+  </article><article class="item" data-search="registerTrustedExternalApiBrokerFastifyAsync sequence diagrams/sequences/register-trusted-external-api-broker-fastify-async.mmd">
+    <h3>registerTrustedExternalApiBrokerFastifyAsync sequence</h3>
+    <p class="muted"><code>diagrams/sequences/register-trusted-external-api-broker-fastify-async.mmd</code></p>
+    <div class="mermaid">sequenceDiagram
+  participant participant_createTrustedExternalApiBroker as createTrustedExternalApiBroker
+  participant participant_registerTrustedExternalApiBrokerFastifyAsync as registerTrustedExternalApiBrokerFastifyAsync
+  participant_registerTrustedExternalApiBrokerFastifyAsync-&gt;&gt;participant_createTrustedExternalApiBroker: createTrustedExternalApiBroker()
+  participant_createTrustedExternalApiBroker--&gt;&gt;participant_registerTrustedExternalApiBrokerFastifyAsync: return
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>sequenceDiagram
+  participant participant_createTrustedExternalApiBroker as createTrustedExternalApiBroker
+  participant participant_registerTrustedExternalApiBrokerFastifyAsync as registerTrustedExternalApiBrokerFastifyAsync
+  participant_registerTrustedExternalApiBrokerFastifyAsync-&gt;&gt;participant_createTrustedExternalApiBroker: createTrustedExternalApiBroker()
+  participant_createTrustedExternalApiBroker--&gt;&gt;participant_registerTrustedExternalApiBrokerFastifyAsync: return
+</pre>
+    </details>
   </article>
     </section>
         </section>
@@ -2332,29 +2576,24 @@ handlers into Fastify request/reply code.</p>
     <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:24:1</code></p>
     <p>Normalize one Fastify request into the framework-neutral API request contract.</p>
     
-  </article><article class="item" data-search="sendApiResponse src/features/transport/createFastifyApiAdapter.ts Send one framework-neutral API response through the original Fastify reply object.">
-    <h3>sendApiResponse</h3>
-    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:41:1</code></p>
-    <p>Send one framework-neutral API response through the original Fastify reply object.</p>
-    
   </article><article class="item" data-search="readStringRecord src/features/transport/createFastifyApiAdapter.ts Normalize unknown route params into string values.">
     <h3>readStringRecord</h3>
-    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:55:1</code></p>
+    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:41:1</code></p>
     <p>Normalize unknown route params into string values.</p>
     
   </article><article class="item" data-search="readQueryRecord src/features/transport/createFastifyApiAdapter.ts Normalize Fastify query values to the portable API query contract.">
     <h3>readQueryRecord</h3>
-    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:65:1</code></p>
+    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:51:1</code></p>
     <p>Normalize Fastify query values to the portable API query contract.</p>
     
   </article><article class="item" data-search="readHeaders src/features/transport/createFastifyApiAdapter.ts Normalize Fastify headers into one stable string-valued record.">
     <h3>readHeaders</h3>
-    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:86:1</code></p>
+    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:72:1</code></p>
     <p>Normalize Fastify headers into one stable string-valued record.</p>
     
   </article><article class="item" data-search="isRecord src/features/transport/createFastifyApiAdapter.ts Detect a record at the external transport boundary.">
     <h3>isRecord</h3>
-    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:99:1</code></p>
+    <p class="muted"><code>src/features/transport/createFastifyApiAdapter.ts:85:1</code></p>
     <p>Detect a record at the external transport boundary.</p>
     
   </article>
@@ -2396,6 +2635,81 @@ handlers into Fastify request/reply code.</p>
     <h3>joinPrefix</h3>
     <p class="muted"><code>src/features/transport/registerFastifyApiAsync.ts:61:1</code></p>
     <p>Prefix one generated route without duplicating slash separators.</p>
+    
+  </article>
+    </section>
+  </section><section id="view-src-features-transport-registertrustedexternalapibrokerfastifyasync-test-ts" class="view" data-view="src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts" hidden>
+    <section class="panel">
+      <h2>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts</h2>
+      <article class="item" data-search="createServer src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts Create and track one isolated Fastify server for an external broker transport test.">
+    <h3>createServer</h3>
+    <p class="muted"><code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts:174:1</code></p>
+    <p>Create and track one isolated Fastify server for an external broker transport test.</p>
+    
+  </article><article class="item" data-search="postBroker src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts Execute one normal external broker request against the fixed generated-app route.">
+    <h3>postBroker</h3>
+    <p class="muted"><code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts:181:1</code></p>
+    <p>Execute one normal external broker request against the fixed generated-app route.</p>
+    
+  </article><article class="item" data-search="recordingOptions src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts ">
+    <h3>recordingOptions</h3>
+    <p class="muted"><code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts:190:1</code></p>
+    <p class="empty">No description available.</p>
+    
+  </article><article class="item" data-search="trustedOptions src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts Provide secure host ports with narrow defaults that individual tests can override.">
+    <h3>trustedOptions</h3>
+    <p class="muted"><code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts:242:1</code></p>
+    <p>Provide secure host ports with narrow defaults that individual tests can override.</p>
+    
+  </article>
+    </section>
+  </section><section id="view-src-features-transport-registertrustedexternalapibrokerfastifyasync-ts" class="view" data-view="src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts" hidden>
+    <section class="panel">
+      <h2>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts</h2>
+      <article class="item" data-search="registerTrustedExternalApiBrokerFastifyAsync src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts Register the deployable Fastify transport for trusted generated-app external API operations.">
+    <h3>registerTrustedExternalApiBrokerFastifyAsync</h3>
+    <p class="muted"><code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts:21:1</code></p>
+    <p>Register the deployable Fastify transport for trusted generated-app external API operations.</p>
+    
+  </article><article class="item" data-search="resolveCallerAsync src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts Authenticate one caller without exposing host authentication failures to the client.">
+    <h3>resolveCallerAsync</h3>
+    <p class="muted"><code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts:69:1</code></p>
+    <p>Authenticate one caller without exposing host authentication failures to the client.</p>
+    
+  </article><article class="item" data-search="resolveScopeAsync src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts Resolve a complete host-owned application scope without exposing mapping failures to the client.">
+    <h3>resolveScopeAsync</h3>
+    <p class="muted"><code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts:81:1</code></p>
+    <p>Resolve a complete host-owned application scope without exposing mapping failures to the client.</p>
+    
+  </article><article class="item" data-search="readBrokerRequest src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts Read the only client-controlled broker values from an exact Fastify route and bounded request body.">
+    <h3>readBrokerRequest</h3>
+    <p class="muted"><code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts:95:1</code></p>
+    <p>Read the only client-controlled broker values from an exact Fastify route and bounded request body.</p>
+    
+  </article><article class="item" data-search="isTrustedScope src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts Accept only a fully specified server-owned generated-app application scope.">
+    <h3>isTrustedScope</h3>
+    <p class="muted"><code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts:115:1</code></p>
+    <p>Accept only a fully specified server-owned generated-app application scope.</p>
+    
+  </article><article class="item" data-search="readStringRecord src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts Normalize Fastify route params into string values.">
+    <h3>readStringRecord</h3>
+    <p class="muted"><code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts:125:1</code></p>
+    <p>Normalize Fastify route params into string values.</p>
+    
+  </article><article class="item" data-search="isRecord src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts Detect one record at the Fastify transport boundary.">
+    <h3>isRecord</h3>
+    <p class="muted"><code>src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts:135:1</code></p>
+    <p>Detect one record at the Fastify transport boundary.</p>
+    
+  </article>
+    </section>
+  </section><section id="view-src-features-transport-sendfastifyapiresponse-ts" class="view" data-view="src/features/transport/sendFastifyApiResponse.ts" hidden>
+    <section class="panel">
+      <h2>src/features/transport/sendFastifyApiResponse.ts</h2>
+      <article class="item" data-search="sendFastifyApiResponse src/features/transport/sendFastifyApiResponse.ts Send one framework-neutral API response through the original Fastify reply object.">
+    <h3>sendFastifyApiResponse</h3>
+    <p class="muted"><code>src/features/transport/sendFastifyApiResponse.ts:6:1</code></p>
+    <p>Send one framework-neutral API response through the original Fastify reply object.</p>
     
   </article>
     </section>

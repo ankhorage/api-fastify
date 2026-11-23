@@ -50,8 +50,8 @@
     {
       "id": "tests",
       "label": "tests",
-      "value": "checked",
-      "color": "0a7f3f"
+      "value": "configured",
+      "color": "6f42c1"
     },
     {
       "id": "docs",
@@ -126,16 +126,20 @@
         "createFastifyApiAdapter",
         "createFastifyApiServer",
         "FastifyApiTransportRequest",
+        "FastifyAuthenticatedCaller",
         "FastifyCorsOptions",
         "FastifyInstance",
         "FastifyRegisteredOperation",
         "FastifyReply",
         "FastifyRequest",
         "FastifyServerOptions",
+        "FastifyTrustedExternalApiBrokerRoute",
         "registerAuthorizedFastifyApiAsync",
         "registerFastifyApiAsync",
         "RegisterFastifyApiOptions",
-        "registerFastifyCorsAsync"
+        "registerFastifyCorsAsync",
+        "registerTrustedExternalApiBrokerFastifyAsync",
+        "RegisterTrustedExternalApiBrokerFastifyOptions"
       ]
     },
     {
@@ -214,6 +218,7 @@
       "path": "src/features/transport/createFastifyApiAdapter.ts",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/transport/sendFastifyApiResponse.ts",
         "src/types/fastify.ts"
       ],
       "exports": [
@@ -253,19 +258,52 @@
       ]
     },
     {
+      "path": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/host/createFastifyApiServer.ts",
+        "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      ],
+      "exports": []
+    },
+    {
+      "path": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/transport/sendFastifyApiResponse.ts",
+        "src/types/fastify.ts"
+      ],
+      "exports": [
+        "registerTrustedExternalApiBrokerFastifyAsync"
+      ]
+    },
+    {
+      "path": "src/features/transport/sendFastifyApiResponse.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/fastify.ts"
+      ],
+      "exports": [
+        "sendFastifyApiResponse"
+      ]
+    },
+    {
       "path": "src/types/fastify.ts",
       "isEntrypoint": false,
       "dependencies": [],
       "exports": [
         "ComposeAuthorizedApiRuntimeOptions",
         "FastifyApiTransportRequest",
+        "FastifyAuthenticatedCaller",
         "FastifyCorsOptions",
         "FastifyInstance",
         "FastifyRegisteredOperation",
         "FastifyReply",
         "FastifyRequest",
         "FastifyServerOptions",
-        "RegisterFastifyApiOptions"
+        "FastifyTrustedExternalApiBrokerRoute",
+        "RegisterFastifyApiOptions",
+        "RegisterTrustedExternalApiBrokerFastifyOptions"
       ]
     }
   ],
@@ -402,7 +440,7 @@
       "modulePath": "src/types/fastify.ts",
       "sourceLocation": {
         "filePath": "src/types/fastify.ts",
-        "line": 22,
+        "line": 24,
         "column": 1
       },
       "exportPaths": [
@@ -429,6 +467,28 @@
           "description": null
         }
       ],
+      "structuredRows": []
+    },
+    {
+      "name": "FastifyAuthenticatedCaller",
+      "title": null,
+      "description": "Describe one authenticated caller supplied by the deployable Fastify host.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/types/fastify.ts",
+      "sourceLocation": {
+        "filePath": "src/types/fastify.ts",
+        "line": 30,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/apiFastify.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
       "structuredRows": []
     },
     {
@@ -583,7 +643,7 @@
       "signatures": [],
       "members": [
         {
-          "name": "__@asyncDispose@1535",
+          "name": "__@asyncDispose@1590",
           "kind": "method",
           "type": "() => Promise<undefined>",
           "required": true,
@@ -1135,7 +1195,7 @@
       "modulePath": "src/types/fastify.ts",
       "sourceLocation": {
         "filePath": "src/types/fastify.ts",
-        "line": 31,
+        "line": 36,
         "column": 1
       },
       "exportPaths": [
@@ -1940,6 +2000,36 @@
       "structuredRows": []
     },
     {
+      "name": "FastifyTrustedExternalApiBrokerRoute",
+      "title": null,
+      "description": "Describe the route registered for the deployable generated-app external API broker.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/types/fastify.ts",
+      "sourceLocation": {
+        "filePath": "src/types/fastify.ts",
+        "line": 64,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/apiFastify.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "path",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "registerAuthorizedFastifyApiAsync",
       "title": null,
       "description": "Compose authorized API handlers before registering their canonical operation bindings with Fastify.",
@@ -2055,7 +2145,7 @@
       "modulePath": "src/types/fastify.ts",
       "sourceLocation": {
         "filePath": "src/types/fastify.ts",
-        "line": 27,
+        "line": 32,
         "column": 1
       },
       "exportPaths": [
@@ -2117,6 +2207,127 @@
         }
       ],
       "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "registerTrustedExternalApiBrokerFastifyAsync",
+      "title": null,
+      "description": "Register the deployable Fastify transport for trusted generated-app external API operations.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "function",
+      "modulePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+      "sourceLocation": {
+        "filePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "line": 21,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/apiFastify.ts"
+      ],
+      "relatedSymbols": [
+        "FastifyInstance",
+        "FastifyTrustedExternalApiBrokerRoute",
+        "RegisterTrustedExternalApiBrokerFastifyOptions"
+      ],
+      "signatures": [
+        {
+          "label": "(server: FastifyInstance<import(\"fastify\").RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, import(\"fastify\").FastifyBaseLogger, import(\"fastify\").FastifyTypeProviderDefault>, options: RegisterTrustedExternalApiBrokerFastifyOptions) => Promise<FastifyTrustedExternalApiBrokerRoute>",
+          "parameters": [
+            {
+              "name": "options",
+              "type": "RegisterTrustedExternalApiBrokerFastifyOptions",
+              "required": true,
+              "description": null
+            },
+            {
+              "name": "server",
+              "type": "FastifyInstance<import(\"fastify\").RawServerDefault, import(\"node:http\").IncomingMessage, import(\"node:http\").ServerResponse<import(\"node:http\").IncomingMessage>, import(\"fastify\").FastifyBaseLogger, import(\"fastify\").FastifyTypeProviderDefault>",
+              "required": true,
+              "description": null
+            }
+          ],
+          "returnType": "Promise<FastifyTrustedExternalApiBrokerRoute>",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "RegisterTrustedExternalApiBrokerFastifyOptions",
+      "title": null,
+      "description": "Configure the host-owned dependencies for one generated-app external API broker route.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/types/fastify.ts",
+      "sourceLocation": {
+        "filePath": "src/types/fastify.ts",
+        "line": 42,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/apiFastify.ts"
+      ],
+      "relatedSymbols": [
+        "FastifyAuthenticatedCaller",
+        "FastifyRequest"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "authenticateCallerAsync",
+          "kind": "property",
+          "type": "(request: FastifyRequest) => FastifyAuthenticatedCaller | undefined | Promise<FastifyAuthenticatedCaller | undefined>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "authorizeAsync",
+          "kind": "property",
+          "type": "(input: { readonly context: TrustedExternalApiBrokerContext; readonly request: import(\"@ankhorage/api\").TrustedExternalApiBrokerRequest; }) => boolean | Promise<boolean>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "executeOperationAsync",
+          "kind": "property",
+          "type": "(input: { readonly operation: import(\"@ankhorage/api\").TrustedExternalApiOperation; readonly input: unknown; readonly credentials?: import(\"@ankhorage/api\").TrustedExternalApiCredentials; }) => import(\"@ankhorage/api\").TrustedExternalApiExecutionResult | Promise<import(\"@ankhorage/api\").TrustedExternalApiExecutionResult>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "resolveCredentialsAsync",
+          "kind": "property",
+          "type": "(input: { readonly scope: TrustedExternalApiBrokerContext[\"scope\"]; readonly operation: import(\"@ankhorage/api\").TrustedExternalApiOperation; }) => import(\"@ankhorage/api\").TrustedExternalApiCredentials | undefined | Promise<import(\"@ankhorage/api\").TrustedExternalApiCredentials | undefined>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "resolveOperationAsync",
+          "kind": "property",
+          "type": "(input: { readonly scope: TrustedExternalApiBrokerContext[\"scope\"]; readonly request: import(\"@ankhorage/api\").TrustedExternalApiBrokerRequest; }) => import(\"@ankhorage/api\").TrustedExternalApiOperation | undefined | Promise<import(\"@ankhorage/api\").TrustedExternalApiOperation | undefined>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "resolveScopeAsync",
+          "kind": "property",
+          "type": "(input: { readonly request: FastifyRequest; readonly caller: FastifyAuthenticatedCaller; }) => TrustedExternalApiBrokerContext[\"scope\"] | undefined | Promise<TrustedExternalApiBrokerContext[\"scope\"] | undefined>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "validateInputAsync",
+          "kind": "property",
+          "type": "(input: { readonly operation: import(\"@ankhorage/api\").TrustedExternalApiOperation; readonly input: unknown; }) => unknown",
+          "required": true,
+          "description": null
+        }
+      ],
       "structuredRows": []
     }
   ],
@@ -2189,24 +2400,13 @@
       }
     },
     {
-      "name": "sendApiResponse",
-      "description": "Send one framework-neutral API response through the original Fastify reply object.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/transport/createFastifyApiAdapter.ts",
-        "line": 41,
-        "column": 1
-      }
-    },
-    {
       "name": "readStringRecord",
       "description": "Normalize unknown route params into string values.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/transport/createFastifyApiAdapter.ts",
-        "line": 55,
+        "line": 41,
         "column": 1
       }
     },
@@ -2217,7 +2417,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/transport/createFastifyApiAdapter.ts",
-        "line": 65,
+        "line": 51,
         "column": 1
       }
     },
@@ -2228,7 +2428,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/transport/createFastifyApiAdapter.ts",
-        "line": 86,
+        "line": 72,
         "column": 1
       }
     },
@@ -2239,7 +2439,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/transport/createFastifyApiAdapter.ts",
-        "line": 99,
+        "line": 85,
         "column": 1
       }
     },
@@ -2297,6 +2497,138 @@
         "line": 61,
         "column": 1
       }
+    },
+    {
+      "name": "createServer",
+      "description": "Create and track one isolated Fastify server for an external broker transport test.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "line": 174,
+        "column": 1
+      }
+    },
+    {
+      "name": "postBroker",
+      "description": "Execute one normal external broker request against the fixed generated-app route.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "line": 181,
+        "column": 1
+      }
+    },
+    {
+      "name": "recordingOptions",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "line": 190,
+        "column": 1
+      }
+    },
+    {
+      "name": "trustedOptions",
+      "description": "Provide secure host ports with narrow defaults that individual tests can override.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "line": 242,
+        "column": 1
+      }
+    },
+    {
+      "name": "registerTrustedExternalApiBrokerFastifyAsync",
+      "description": "Register the deployable Fastify transport for trusted generated-app external API operations.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "line": 21,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveCallerAsync",
+      "description": "Authenticate one caller without exposing host authentication failures to the client.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "line": 69,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveScopeAsync",
+      "description": "Resolve a complete host-owned application scope without exposing mapping failures to the client.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "line": 81,
+        "column": 1
+      }
+    },
+    {
+      "name": "readBrokerRequest",
+      "description": "Read the only client-controlled broker values from an exact Fastify route and bounded request body.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "line": 95,
+        "column": 1
+      }
+    },
+    {
+      "name": "isTrustedScope",
+      "description": "Accept only a fully specified server-owned generated-app application scope.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "line": 115,
+        "column": 1
+      }
+    },
+    {
+      "name": "readStringRecord",
+      "description": "Normalize Fastify route params into string values.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "line": 125,
+        "column": 1
+      }
+    },
+    {
+      "name": "isRecord",
+      "description": "Detect one record at the Fastify transport boundary.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "line": 135,
+        "column": 1
+      }
+    },
+    {
+      "name": "sendFastifyApiResponse",
+      "description": "Send one framework-neutral API response through the original Fastify reply object.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/transport/sendFastifyApiResponse.ts",
+        "line": 6,
+        "column": 1
+      }
     }
   ],
   "sequenceScenarios": [
@@ -2339,6 +2671,14 @@
       "symbolName": "registerFastifyCorsAsync",
       "description": "Register Fastify CORS so consumers do not own the plugin directly.",
       "isReadme": false
+    },
+    {
+      "kind": "export",
+      "name": "registerTrustedExternalApiBrokerFastifyAsync",
+      "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+      "symbolName": "registerTrustedExternalApiBrokerFastifyAsync",
+      "description": "Register the deployable Fastify transport for trusted generated-app external API operations.",
+      "isReadme": false
     }
   ],
   "graphs": {
@@ -2376,6 +2716,11 @@
       {
         "fromPath": "src/apiFastify.ts",
         "toPath": "src/features/transport/registerFastifyApiAsync.ts",
+        "sourcePath": "src/apiFastify.ts"
+      },
+      {
+        "fromPath": "src/apiFastify.ts",
+        "toPath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
         "sourcePath": "src/apiFastify.ts"
       },
       {
@@ -2429,6 +2774,11 @@
         "sourcePath": "src/features/transport/createFastifyApiAdapter.ts"
       },
       {
+        "fromPath": "src/features/transport/createFastifyApiAdapter.ts",
+        "toPath": "src/features/transport/sendFastifyApiResponse.ts",
+        "sourcePath": "src/features/transport/createFastifyApiAdapter.ts"
+      },
+      {
         "fromPath": "src/features/transport/registerAuthorizedFastifyApiAsync.ts",
         "toPath": "src/types/fastify.ts",
         "sourcePath": "src/features/transport/registerAuthorizedFastifyApiAsync.ts"
@@ -2462,6 +2812,31 @@
         "fromPath": "src/features/transport/registerFastifyApiAsync.ts",
         "toPath": "src/features/transport/createFastifyApiAdapter.ts",
         "sourcePath": "src/features/transport/registerFastifyApiAsync.ts"
+      },
+      {
+        "fromPath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "toPath": "src/features/host/createFastifyApiServer.ts",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromPath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "toPath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromPath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "toPath": "src/types/fastify.ts",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromPath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "toPath": "src/features/transport/sendFastifyApiResponse.ts",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromPath": "src/features/transport/sendFastifyApiResponse.ts",
+        "toPath": "src/types/fastify.ts",
+        "sourcePath": "src/features/transport/sendFastifyApiResponse.ts"
       }
     ],
     "calls": [
@@ -2587,8 +2962,8 @@
       },
       {
         "fromSymbol": "fromApiResponseAsync",
-        "toSymbol": "sendApiResponse",
-        "callExpression": "sendApiResponse",
+        "toSymbol": "sendFastifyApiResponse",
+        "callExpression": "sendFastifyApiResponse",
         "sourcePath": "src/features/transport/createFastifyApiAdapter.ts"
       },
       {
@@ -2722,6 +3097,168 @@
         "toSymbol": "handler",
         "callExpression": "handler",
         "sourcePath": "src/features/transport/registerFastifyApiAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "toSymbol": "afterEach",
+        "callExpression": "afterEach",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "toSymbol": "describe",
+        "callExpression": "describe",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "toSymbol": "test",
+        "callExpression": "test",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "toSymbol": "createServer",
+        "callExpression": "createServer",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "toSymbol": "registerTrustedExternalApiBrokerFastifyAsync",
+        "callExpression": "registerTrustedExternalApiBrokerFastifyAsync",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "toSymbol": "recordingOptions",
+        "callExpression": "recordingOptions",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "toSymbol": "postBroker",
+        "callExpression": "postBroker",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts",
+        "toSymbol": "trustedOptions",
+        "callExpression": "trustedOptions",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "createServer",
+        "toSymbol": "createFastifyApiServer",
+        "callExpression": "createFastifyApiServer",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "recordingOptions",
+        "toSymbol": "trustedOptions",
+        "callExpression": "trustedOptions",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "resolveScopeAsync",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "authorizeAsync",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "resolveOperationAsync",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "executeOperationAsync",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"
+      },
+      {
+        "fromSymbol": "registerTrustedExternalApiBrokerFastifyAsync",
+        "toSymbol": "createTrustedExternalApiBroker",
+        "callExpression": "createTrustedExternalApiBroker",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "toSymbol": "resolveCallerAsync",
+        "callExpression": "resolveCallerAsync",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "toSymbol": "sendFastifyApiResponse",
+        "callExpression": "sendFastifyApiResponse",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "toSymbol": "resolveScopeAsync",
+        "callExpression": "resolveScopeAsync",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts",
+        "toSymbol": "readBrokerRequest",
+        "callExpression": "readBrokerRequest",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "resolveCallerAsync",
+        "toSymbol": "authenticateCallerAsync",
+        "callExpression": "options.authenticateCallerAsync",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "resolveScopeAsync",
+        "toSymbol": "resolveScopeAsync",
+        "callExpression": "options.resolveScopeAsync",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "resolveScopeAsync",
+        "toSymbol": "isTrustedScope",
+        "callExpression": "isTrustedScope",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "readBrokerRequest",
+        "toSymbol": "readStringRecord",
+        "callExpression": "readStringRecord",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "readBrokerRequest",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "isTrustedScope",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "readStringRecord",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
       }
     ],
     "typeReferences": [
@@ -2894,6 +3431,46 @@
         "fromSymbol": "registerFastifyApiAsync",
         "toType": "ServerResponse",
         "sourcePath": "src/features/transport/registerFastifyApiAsync.ts"
+      },
+      {
+        "fromSymbol": "registerTrustedExternalApiBrokerFastifyAsync",
+        "toType": "FastifyBaseLogger",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "registerTrustedExternalApiBrokerFastifyAsync",
+        "toType": "FastifyInstance",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "registerTrustedExternalApiBrokerFastifyAsync",
+        "toType": "FastifyTrustedExternalApiBrokerRoute",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "registerTrustedExternalApiBrokerFastifyAsync",
+        "toType": "FastifyTypeProviderDefault",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "registerTrustedExternalApiBrokerFastifyAsync",
+        "toType": "IncomingMessage",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "registerTrustedExternalApiBrokerFastifyAsync",
+        "toType": "RawServerDefault",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "registerTrustedExternalApiBrokerFastifyAsync",
+        "toType": "RegisterTrustedExternalApiBrokerFastifyOptions",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
+      },
+      {
+        "fromSymbol": "registerTrustedExternalApiBrokerFastifyAsync",
+        "toType": "ServerResponse",
+        "sourcePath": "src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"
       },
       {
         "fromSymbol": "ComposeAuthorizedApiRuntimeOptions",
@@ -3804,6 +4381,41 @@
         "fromSymbol": "FastifyServerOptions",
         "toType": "ValidatorFactory",
         "sourcePath": "node_modules/fastify/fastify.d.ts"
+      },
+      {
+        "fromSymbol": "RegisterTrustedExternalApiBrokerFastifyOptions",
+        "toType": "FastifyAuthenticatedCaller",
+        "sourcePath": "src/types/fastify.ts"
+      },
+      {
+        "fromSymbol": "RegisterTrustedExternalApiBrokerFastifyOptions",
+        "toType": "FastifyRequest",
+        "sourcePath": "src/types/fastify.ts"
+      },
+      {
+        "fromSymbol": "RegisterTrustedExternalApiBrokerFastifyOptions",
+        "toType": "TrustedExternalApiBrokerContext",
+        "sourcePath": "src/types/fastify.ts"
+      },
+      {
+        "fromSymbol": "RegisterTrustedExternalApiBrokerFastifyOptions",
+        "toType": "TrustedExternalApiBrokerRequest",
+        "sourcePath": "src/types/fastify.ts"
+      },
+      {
+        "fromSymbol": "RegisterTrustedExternalApiBrokerFastifyOptions",
+        "toType": "TrustedExternalApiCredentials",
+        "sourcePath": "src/types/fastify.ts"
+      },
+      {
+        "fromSymbol": "RegisterTrustedExternalApiBrokerFastifyOptions",
+        "toType": "TrustedExternalApiExecutionResult",
+        "sourcePath": "src/types/fastify.ts"
+      },
+      {
+        "fromSymbol": "RegisterTrustedExternalApiBrokerFastifyOptions",
+        "toType": "TrustedExternalApiOperation",
+        "sourcePath": "src/types/fastify.ts"
       }
     ],
     "componentComposition": []
