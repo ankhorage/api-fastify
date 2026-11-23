@@ -334,7 +334,7 @@
     "signatures": [],
     "members": [
       {
-        "name": "__@asyncDispose@1590",
+        "name": "__@asyncDispose@1584",
         "kind": "method",
         "type": "() => Promise<undefined>",
         "required": true,

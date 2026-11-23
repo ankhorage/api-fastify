@@ -1,5 +1,11 @@
 # @ankhorage/api-fastify
 
+## 0.4.0
+
+### Minor Changes
+
+- 0534a4b: Add the deployable Fastify transport for trusted generated-app external API broker operations.
+
 ## 0.3.0
 
 ### Minor Changes
