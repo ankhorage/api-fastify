@@ -46,7 +46,7 @@ Create the Fastify server owned by the Ankhorage Fastify API adapter package.
 
 Kind: `type`
 Module: `src/types/fastify.ts`
-Source: `src/types/fastify.ts:22:1`
+Source: `src/types/fastify.ts:24:1`
 
 ### Members
 
@@ -54,6 +54,14 @@ Source: `src/types/fastify.ts:22:1`
 | --- | --- | --- | --- | --- |
 | reply | property | `FastifyReply<import("fastify").RouteGenericInterface, import("fastify").RawServerDefault, import("node:http").IncomingMessage, import("node:http").ServerResponse<import("node:http").IncomingMessage>, unknown, import("fastify").FastifySchema, import("fastify").FastifyTypeProviderDefault, unknown>` | yes |  |
 | request | property | `FastifyRequest<import("fastify").RouteGenericInterface, import("fastify").RawServerDefault, import("node:http").IncomingMessage, import("fastify").FastifySchema, import("fastify").FastifyTypeProviderDefault, unknown, import("fastify").FastifyBaseLogger, import("fastify/types/type-provider").ResolveFastifyRequestType<import("fastify").FastifyTypeProviderDefault, import("fastify").FastifySchema, import("fastify").RouteGenericInterface>>` | yes |  |
+
+## FastifyAuthenticatedCaller
+
+Kind: `unknown`
+Module: `src/types/fastify.ts`
+Source: `src/types/fastify.ts:30:1`
+
+Describe one authenticated caller supplied by the deployable Fastify host.
 
 ## FastifyCorsOptions
 
@@ -91,7 +99,7 @@ Source: `node_modules/fastify/types/instance.d.ts:120:1`
 
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| __@asyncDispose@1535 | method | `() => Promise<undefined>` | yes |  |
+| __@asyncDispose@1590 | method | `() => Promise<undefined>` | yes |  |
 | addConstraintStrategy | method | `(strategy: ConstraintStrategy<FindMyWayVersion<RawServer>, unknown>) => void` | yes |  |
 | addContentTypeParser | property | `AddContentTypeParser<RawServer, RawRequest, RouteGenericInterface, FastifySchema, TypeProvider>` | yes |  |
 | addHook | method | `{ <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onRequestHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> \| onRequestAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = onRequestHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: "onRequest", hook: Fn extends unknown ? Fn extends AsyncFunction ? onRequestAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : onRequestHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends preParsingHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> \| preParsingAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = preParsingHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: "preParsing", hook: Fn extends unknown ? Fn extends AsyncFunction ? preParsingAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : preParsingHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends preValidationHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> \| preValidationAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = preValidationHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: "preValidation", hook: Fn extends unknown ? Fn extends AsyncFunction ? preValidationAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : preValidationHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends preHandlerHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> \| preHandlerAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = preHandlerHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: "preHandler", hook: Fn extends unknown ? Fn extends AsyncFunction ? preHandlerAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : preHandlerHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <PreSerializationPayload = unknown, RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends preSerializationHookHandler<PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> \| preSerializationAsyncHookHandler<PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = preSerializationHookHandler<PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: "preSerialization", hook: Fn extends unknown ? Fn extends AsyncFunction ? preSerializationAsyncHookHandler<PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : preSerializationHookHandler<PreSerializationPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <OnSendPayload = unknown, RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onSendHookHandler<OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> \| onSendAsyncHookHandler<OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = onSendHookHandler<OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: "onSend", hook: Fn extends unknown ? Fn extends AsyncFunction ? onSendAsyncHookHandler<OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : onSendHookHandler<OnSendPayload, RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onResponseHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> \| onResponseAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = onResponseHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: "onResponse", hook: Fn extends unknown ? Fn extends AsyncFunction ? onResponseAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : onResponseHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onTimeoutHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> \| onTimeoutAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = onTimeoutHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: "onTimeout", hook: Fn extends unknown ? Fn extends AsyncFunction ? onTimeoutAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : onTimeoutHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onRequestAbortHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> \| onRequestAbortAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> = onRequestAbortHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>>(name: "onRequestAbort", hook: Fn extends unknown ? Fn extends AsyncFunction ? onRequestAbortAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : onRequestAbortHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger, Fn extends onErrorHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger> \| onErrorAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger> = onErrorHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger>>(name: "onError", hook: Fn extends unknown ? Fn extends AsyncFunction ? onErrorAsyncHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger> : onErrorHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, FastifyError, SchemaCompiler, TypeProvider, Logger> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <RouteGeneric extends RouteGenericInterface = RouteGenericInterface, ContextConfig = unknown, SchemaCompiler extends FastifySchema = FastifySchema, Logger extends FastifyBaseLogger = FastifyBaseLogger>(name: "onRoute", hook: onRouteHookHandler<RawServer, RawRequest, RawReply, RouteGeneric, ContextConfig, SchemaCompiler, TypeProvider, Logger>): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; (name: "onRegister", hook: onRegisterHookHandler<RawServer, RawRequest, RawReply, Logger, TypeProvider>): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <Fn extends onReadyHookHandler \| onReadyAsyncHookHandler = onReadyHookHandler<RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, FastifyBaseLogger, FastifyTypeProviderDefault>>(name: "onReady", hook: Fn extends unknown ? Fn extends AsyncFunction ? onReadyAsyncHookHandler : onReadyHookHandler : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <Fn extends onListenHookHandler<RawServer, RawRequest, RawReply, Logger, TypeProvider> \| onListenAsyncHookHandler<RawServer, RawRequest, RawReply, Logger, TypeProvider> = onListenHookHandler<RawServer, RawRequest, RawReply, Logger, TypeProvider>>(name: "onListen", hook: Fn extends unknown ? Fn extends AsyncFunction ? onListenAsyncHookHandler : onListenHookHandler : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <Fn extends onCloseHookHandler \| onCloseAsyncHookHandler = onCloseHookHandler<RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, FastifyBaseLogger, FastifyTypeProviderDefault>>(name: "onClose", hook: Fn extends unknown ? Fn extends AsyncFunction ? onCloseAsyncHookHandler : onCloseHookHandler : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <Fn extends preCloseHookHandler \| preCloseAsyncHookHandler = preCloseHookHandler<RawServerDefault, http.IncomingMessage, http.ServerResponse<http.IncomingMessage>, FastifyBaseLogger, FastifyTypeProviderDefault>>(name: "preClose", hook: Fn extends unknown ? Fn extends AsyncFunction ? preCloseAsyncHookHandler : preCloseHookHandler : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; <K extends ApplicationHook \| LifecycleHook, Fn extends (...args: any) => Promise<any> \| any>(name: K, hook: Fn extends unknown ? Fn extends AsyncFunction ? HookAsyncLookup<K> : HookLookup<K> : Fn): FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>; }` | yes |  |
@@ -173,7 +181,7 @@ Source: `node_modules/fastify/types/instance.d.ts:120:1`
 
 Kind: `type`
 Module: `src/types/fastify.ts`
-Source: `src/types/fastify.ts:31:1`
+Source: `src/types/fastify.ts:36:1`
 
 ### Members
 
@@ -315,6 +323,20 @@ Source: `node_modules/fastify/fastify.d.ts:120:3`
 | trustProxy | property | `string \| boolean \| string[] \| ((address: string, hop: number) => boolean)` | no |  |
 | useSemicolonDelimiter | property | `boolean` | no |  |
 
+## FastifyTrustedExternalApiBrokerRoute
+
+Kind: `type`
+Module: `src/types/fastify.ts`
+Source: `src/types/fastify.ts:64:1`
+
+Describe the route registered for the deployable generated-app external API broker.
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| path | property | `string` | yes |  |
+
 ## registerAuthorizedFastifyApiAsync
 
 Kind: `function`
@@ -351,7 +373,7 @@ Register every runtime operation as a Fastify route using one shared transport a
 
 Kind: `type`
 Module: `src/types/fastify.ts`
-Source: `src/types/fastify.ts:27:1`
+Source: `src/types/fastify.ts:32:1`
 
 ### Members
 
@@ -373,3 +395,38 @@ Register Fastify CORS so consumers do not own the plugin directly.
   - options: `FastifyCorsOptions`
   - server: `FastifyInstance<import("fastify").RawServerDefault, import("node:http").IncomingMessage, import("node:http").ServerResponse<import("node:http").IncomingMessage>, import("fastify").FastifyBaseLogger, import("fastify").FastifyTypeProviderDefault>`
   - returns: `Promise<void>`
+
+## registerTrustedExternalApiBrokerFastifyAsync
+
+Kind: `function`
+Module: `src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts`
+Source: `src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts:21:1`
+
+Register the deployable Fastify transport for trusted generated-app external API operations.
+
+### Signatures
+
+- `(server: FastifyInstance<import("fastify").RawServerDefault, import("node:http").IncomingMessage, import("node:http").ServerResponse<import("node:http").IncomingMessage>, import("fastify").FastifyBaseLogger, import("fastify").FastifyTypeProviderDefault>, options: RegisterTrustedExternalApiBrokerFastifyOptions) => Promise<FastifyTrustedExternalApiBrokerRoute>`
+  - options: `RegisterTrustedExternalApiBrokerFastifyOptions`
+  - server: `FastifyInstance<import("fastify").RawServerDefault, import("node:http").IncomingMessage, import("node:http").ServerResponse<import("node:http").IncomingMessage>, import("fastify").FastifyBaseLogger, import("fastify").FastifyTypeProviderDefault>`
+  - returns: `Promise<FastifyTrustedExternalApiBrokerRoute>`
+
+## RegisterTrustedExternalApiBrokerFastifyOptions
+
+Kind: `type`
+Module: `src/types/fastify.ts`
+Source: `src/types/fastify.ts:42:1`
+
+Configure the host-owned dependencies for one generated-app external API broker route.
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| authenticateCallerAsync | property | `(request: FastifyRequest) => FastifyAuthenticatedCaller \| undefined \| Promise<FastifyAuthenticatedCaller \| undefined>` | yes |  |
+| authorizeAsync | property | `(input: { readonly context: TrustedExternalApiBrokerContext; readonly request: import("@ankhorage/api").TrustedExternalApiBrokerRequest; }) => boolean \| Promise<boolean>` | yes |  |
+| executeOperationAsync | property | `(input: { readonly operation: import("@ankhorage/api").TrustedExternalApiOperation; readonly input: unknown; readonly credentials?: import("@ankhorage/api").TrustedExternalApiCredentials; }) => import("@ankhorage/api").TrustedExternalApiExecutionResult \| Promise<import("@ankhorage/api").TrustedExternalApiExecutionResult>` | yes |  |
+| resolveCredentialsAsync | property | `(input: { readonly scope: TrustedExternalApiBrokerContext["scope"]; readonly operation: import("@ankhorage/api").TrustedExternalApiOperation; }) => import("@ankhorage/api").TrustedExternalApiCredentials \| undefined \| Promise<import("@ankhorage/api").TrustedExternalApiCredentials \| undefined>` | yes |  |
+| resolveOperationAsync | property | `(input: { readonly scope: TrustedExternalApiBrokerContext["scope"]; readonly request: import("@ankhorage/api").TrustedExternalApiBrokerRequest; }) => import("@ankhorage/api").TrustedExternalApiOperation \| undefined \| Promise<import("@ankhorage/api").TrustedExternalApiOperation \| undefined>` | yes |  |
+| resolveScopeAsync | property | `(input: { readonly request: FastifyRequest; readonly caller: FastifyAuthenticatedCaller; }) => TrustedExternalApiBrokerContext["scope"] \| undefined \| Promise<TrustedExternalApiBrokerContext["scope"] \| undefined>` | yes |  |
+| validateInputAsync | property | `(input: { readonly operation: import("@ankhorage/api").TrustedExternalApiOperation; readonly input: unknown; }) => unknown` | yes |  |

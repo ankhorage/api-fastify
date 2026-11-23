@@ -1,11 +1,11 @@
 import type {
   ApiOperationBinding,
   ApiRequest,
-  ApiResponse,
   ApiTransportAdapter,
 } from "@ankhorage/api";
 
 import type { FastifyApiTransportRequest } from "../../types/fastify.js";
+import { sendFastifyApiResponse } from "./sendFastifyApiResponse.js";
 
 /*** Create the Fastify transport mapper for the canonical Ankhorage API runtime. */
 export function createFastifyApiAdapter(): ApiTransportAdapter<
@@ -16,7 +16,7 @@ export function createFastifyApiAdapter(): ApiTransportAdapter<
     toApiRequestAsync: (transport, binding) =>
       Promise.resolve(toApiRequest(transport, binding)),
     fromApiResponseAsync: (response, transport) =>
-      Promise.resolve(sendApiResponse(response, transport)),
+      Promise.resolve(sendFastifyApiResponse(response, transport)),
   };
 }
 
@@ -35,20 +35,6 @@ function toApiRequest(
       ? {}
       : { body: transport.request.body }),
   };
-}
-
-/*** Send one framework-neutral API response through the original Fastify reply object. */
-function sendApiResponse(
-  response: ApiResponse,
-  transport: FastifyApiTransportRequest,
-): unknown {
-  for (const [name, value] of Object.entries(response.headers)) {
-    transport.reply.header(name, value);
-  }
-  transport.reply.status(response.status);
-  return response.body === undefined
-    ? transport.reply.send()
-    : transport.reply.send(response.body);
 }
 
 /*** Normalize unknown route params into string values. */

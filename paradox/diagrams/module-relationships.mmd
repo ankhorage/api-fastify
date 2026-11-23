@@ -16,6 +16,9 @@ graph LR
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts["src/features/transport/registerAuthorizedFastifyApiAsync.ts"]
   module_src_features_transport_registerFastifyApiAsync_test_ts["src/features/transport/registerFastifyApiAsync.test.ts"]
   module_src_features_transport_registerFastifyApiAsync_ts["src/features/transport/registerFastifyApiAsync.ts"]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts["src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts["src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"]
+  module_src_features_transport_sendFastifyApiResponse_ts["src/features/transport/sendFastifyApiResponse.ts"]
   module_src_types_fastify_ts["src/types/fastify.ts"]
   module_examples_basic_usage_index_ts --> module_src_apiFastify_ts
   module_src_apiFastify_test_ts --> module_package_json
@@ -27,6 +30,7 @@ graph LR
   module_src_cli_createApiAdapterCliProvider_ts --> module_src_capabilities_index_ts
   module_src_cli_createApiAdapterCliProvider_ts --> module_src_cli_commands_routes_ts
   module_src_cli_index_ts --> module_src_cli_createApiAdapterCliProvider_ts
+  module_src_features_transport_createFastifyApiAdapter_ts --> module_src_features_transport_sendFastifyApiResponse_ts
   module_src_features_transport_createFastifyApiAdapter_ts --> module_src_types_fastify_ts
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts --> module_src_features_transport_registerFastifyApiAsync_ts
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts --> module_src_types_fastify_ts
@@ -35,3 +39,8 @@ graph LR
   module_src_features_transport_registerFastifyApiAsync_test_ts --> module_src_features_transport_registerFastifyApiAsync_ts
   module_src_features_transport_registerFastifyApiAsync_ts --> module_src_features_transport_createFastifyApiAdapter_ts
   module_src_features_transport_registerFastifyApiAsync_ts --> module_src_types_fastify_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts --> module_src_features_host_createFastifyApiServer_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts --> module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --> module_src_features_transport_sendFastifyApiResponse_ts
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --> module_src_types_fastify_ts
+  module_src_features_transport_sendFastifyApiResponse_ts --> module_src_types_fastify_ts

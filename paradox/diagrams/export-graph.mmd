@@ -16,6 +16,9 @@ graph LR
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts["src/features/transport/registerAuthorizedFastifyApiAsync.ts"]
   module_src_features_transport_registerFastifyApiAsync_test_ts["src/features/transport/registerFastifyApiAsync.test.ts"]
   module_src_features_transport_registerFastifyApiAsync_ts["src/features/transport/registerFastifyApiAsync.ts"]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_test_ts["src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.test.ts"]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts["src/features/transport/registerTrustedExternalApiBrokerFastifyAsync.ts"]
+  module_src_features_transport_sendFastifyApiResponse_ts["src/features/transport/sendFastifyApiResponse.ts"]
   module_src_types_fastify_ts["src/types/fastify.ts"]
   export_ComposeAuthorizedApiRuntimeOptions["ComposeAuthorizedApiRuntimeOptions"]
   module_node_modules__ankhorage_api_dist_types_api_d_ts --> export_ComposeAuthorizedApiRuntimeOptions
@@ -30,6 +33,8 @@ graph LR
   module_src_types_fastify_ts --> export_FastifyApiTransportRequest
   export_FastifyApiTransportRequest -.-> export_FastifyReply
   export_FastifyApiTransportRequest -.-> export_FastifyRequest
+  export_FastifyAuthenticatedCaller["FastifyAuthenticatedCaller"]
+  module_src_types_fastify_ts --> export_FastifyAuthenticatedCaller
   export_FastifyCorsOptions["FastifyCorsOptions"]
   module_node_modules__fastify_cors_types_index_d_ts --> export_FastifyCorsOptions
   export_FastifyInstance["FastifyInstance"]
@@ -50,6 +55,8 @@ graph LR
   export_FastifyServerOptions -.-> export_FastifyInstance
   export_FastifyServerOptions -.-> export_FastifyReply
   export_FastifyServerOptions -.-> export_FastifyRequest
+  export_FastifyTrustedExternalApiBrokerRoute["FastifyTrustedExternalApiBrokerRoute"]
+  module_src_types_fastify_ts --> export_FastifyTrustedExternalApiBrokerRoute
   export_registerAuthorizedFastifyApiAsync["registerAuthorizedFastifyApiAsync"]
   module_src_features_transport_registerAuthorizedFastifyApiAsync_ts --> export_registerAuthorizedFastifyApiAsync
   export_registerAuthorizedFastifyApiAsync -.-> export_ComposeAuthorizedApiRuntimeOptions
@@ -67,3 +74,12 @@ graph LR
   module_src_features_host_registerFastifyCorsAsync_ts --> export_registerFastifyCorsAsync
   export_registerFastifyCorsAsync -.-> export_FastifyCorsOptions
   export_registerFastifyCorsAsync -.-> export_FastifyInstance
+  export_registerTrustedExternalApiBrokerFastifyAsync["registerTrustedExternalApiBrokerFastifyAsync"]
+  module_src_features_transport_registerTrustedExternalApiBrokerFastifyAsync_ts --> export_registerTrustedExternalApiBrokerFastifyAsync
+  export_registerTrustedExternalApiBrokerFastifyAsync -.-> export_FastifyInstance
+  export_registerTrustedExternalApiBrokerFastifyAsync -.-> export_FastifyTrustedExternalApiBrokerRoute
+  export_registerTrustedExternalApiBrokerFastifyAsync -.-> export_RegisterTrustedExternalApiBrokerFastifyOptions
+  export_RegisterTrustedExternalApiBrokerFastifyOptions["RegisterTrustedExternalApiBrokerFastifyOptions"]
+  module_src_types_fastify_ts --> export_RegisterTrustedExternalApiBrokerFastifyOptions
+  export_RegisterTrustedExternalApiBrokerFastifyOptions -.-> export_FastifyAuthenticatedCaller
+  export_RegisterTrustedExternalApiBrokerFastifyOptions -.-> export_FastifyRequest
